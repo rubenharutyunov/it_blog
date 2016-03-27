@@ -1,7 +1,7 @@
 import random
 from django.core.management.base import BaseCommand
 from blog.models import Comment, Post
-from django.contrib.auth.models import User
+from users.models import User
 
 class Command(BaseCommand):
     def add_arguments(self, parser):

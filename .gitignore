@@ -1,3 +1,4 @@
+media
 *.pyc
 *.sqlite3
 it_blog/secret_key.py

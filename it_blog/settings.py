@@ -42,7 +42,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'users',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
+
+CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -86,6 +96,15 @@ DATABASES = {
     }
 }
 
+CKEDITOR_CONFIGS = {
+    'default': {
+        'skin': 'bootstrapck',
+        'toolbar': 'full',
+        'height': '300px',
+        'width': '100%',
+    },
+}
+
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -119,8 +138,3 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.9/howto/static-files/
-
-STATIC_URL = '/static/'
