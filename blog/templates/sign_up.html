@@ -13,6 +13,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <link href="css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
 </head>
 <body>
     <nav class="navbar navbar-default no-margin">
@@ -140,68 +143,105 @@
             </ul>
         </div><!-- /#sidebar-wrapper -->
         <!-- Page Content -->
-        <div class="placeholder" style="height:100; display:none;"></div>
         <div id="page-content-wrapper">
             <div class="container-fluid xyz">
                 <div class="row">
-                    <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-                        <h2 class="main-title text-uppercase">IT Blog - Most viewed</h2>
-                        <div id="post-init" class="post">
-                            <h3 class="post-title"><a href="post.html">Lorem ipsum Dolore sit quis sit.</a></h3>
-                            <div class="post-tags">
-                                <div class="post-tag"><a href="">Lorem ipsum</a></div>
-                                <div class="post-tag"><a href="">Deserunt qui</a></div>
-                                <div class="post-tag"><a href="">eu exercitation.</a></div>
-                                <div class="post-tag"><a href="">Lorem qui</a></div>
-                                <div class="post-tag"><a href="">Deserunt ipsum</a></div>
-                                <div class="post-tag"><a href="">Lorem Deserunt</a></div>
-                                <div class="post-tag"><a href="">qui exercitation</a></div>
-                                <div class="post-tag"><a href="">ipsum qui</a></div>
-                            </div>
-                            
-                            <div class="post-content">
-                                <div class="post-thumbnail">
-                                    <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Post-Image&w=200&h=200" alt="">
-                                </div>
-                                <div class="post-text">
-                                    Lorem ipsum Elit dolore ut sed deserunt qui eiusmod officia mollit irure dolore eiusmod consequat enim reprehenderit veniam id magna Excepteur voluptate sed sed ullamco fugiat veniam Excepteur eiusmod non nostrud qui minim nulla in laborum ex id reprehenderit occaecat consectetur veniam amet id esse sed consequat ea Excepteur commodo occaecat aliquip Ut anim Excepteur reprehenderit laboris culpa Excepteur commodo in exercitation officia sed sed non non aute elit ut nostrud amet sit dolor nisi veniam officia laborum dolor eu in amet ut pariatur ex labore eiusmod dolor proident esse pariatur minim ullamco nisi eiusmod voluptate fugiat laboris ex cillum amet in tempor officia ut ut proident Duis irure Ut aliquip esse aute in dolor elit est in id est incididunt dolor elit dolore aliquip et aute sunt elit in consequat sit deserunt pariatur fugiat quis esse aute ex commodo fugiat dolor aliqua sunt laboris mollit aliquip sunt sed Excepteur ullamco est eu tempor exercitation ut Ut dolore culpa deserunt anim sunt est non aliquip minim cupidatat qui incididunt nostrud fugiat laboris laboris fugiat occaecat Duis dolore ut consequat sed dolore in Duis occaecat consectetur aliqua fugiat esse do pariatur incididunt incididunt cupidatat sunt reprehenderit nostrud laboris elit quis laboris irure aute occaecat minim dolor sunt dolor ut qui tempor ut enim fugiat esse commodo quis eiusmod exercitation cupidatat incididunt deserunt pariatur id deserunt ullamco Excepteur in officia laboris mollit consequat anim sint laboris id in sed non dolore ullamco proident proident in ad nostrud veniam occaecat ea sed ex elit officia in sed laboris anim sed anim in ut nostrud magna adipisicing incididunt et velit.
+                    <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                        <h2 class="reg">Registration Form</h2>
+                        <form class="reg-form form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="firstName" class="col-lg-2 col-md-3 control-label">First Name</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus>
                                 </div>
                             </div>
-                            <div class="post-info">
-                                <div class="post-datetime">
-                                    <i class="fa fa-clock-o"></i> March 10, 2016 15:30 
-                                </div>
-                                <div class="post-author">
-                                    <i class="fa fa-user "></i> <a href="user.html">Admin</a>
-                                </div>
-                                <div class="post-like">
-                                    Likes: 496&nbsp; <a href="" title="Like this post!"><i class="fa fa-thumbs-o-up "></i></a>
-                                </div>
-                                <div class="post-bookmark">
-                                    <a href=""><i class="fa fa-star-o"></i></a> 193
-                                </div>
-                                <div class="post-views">
-                                    <i class="fa fa-eye"></i> 5862
-                                </div>
-                                 <div class="post-category">
-                                   <i class="fa fa-tag"></i><a href=""> Lorem ipsum</a>
-                                </div>
-                                <div class="post-more">
-                                    <a href="post.html">read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
+                            <div class="form-group">
+                                <label for="lastName" class="col-lg-2 col-md-3 control-label">Last Name</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="text" id="lastName" placeholder="Last Name" class="form-control" autofocus>
                                 </div>
                             </div>
-                        </div>
-                        <div class="posts-pagination text-center">
-                            <ul class="pagination">
-                            <li><a class="active" href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                        </div>
-                    </div>
-                     <div class="clearfix visible-xs"></div>
+                            <div class="form-group">
+                                <label for="email" class="col-lg-2 col-md-3 control-label">Email</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="email" id="email" placeholder="Email" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-lg-2 col-md-3 control-label">Password</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="password" id="password" placeholder="Password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password2" class="col-lg-2 col-md-3 control-label">Retype password</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="password2" id="password2" placeholder="Password" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="about" class="col-lg-2 col-md-3 control-label">About You</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <textarea id="about" placeholder="About You" class="form-control"></textarea> 
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label for="facebook" class="col-lg-2 col-md-3 control-label">Facebook</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="facebook" id="facebook" placeholder="Facebook" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="gplus" class="col-lg-2 col-md-3 control-label">Google+</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="gplus" id="gplus" placeholder="Google+" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="twitter" class="col-lg-2 col-md-3 control-label">Twitter</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="twitter" id="twitter" placeholder="Twitter" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="github" class="col-lg-2 col-md-3 control-label">Github</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="github" id="github" placeholder="Github" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="vk" class="col-lg-2 col-md-3 control-label">VK</label>
+                                <div class="col-lg-4 col-md-6">
+                                    <input type="vk" id="vk" placeholder="VK" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-2 col-md-3">Preferences</label>
+                                <div class="col-lg-3 col-md-4">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" id="showEmail" value="showEmail">Show email in profile
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+                                <div class="col-lg-2 col-md-3 col-lg-offset-2 col-md-offset-3">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox">I accept <a href="#">terms</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+                                <div class="col-lg-2 col-md-3 col-md-offset-6 col-lg-offset-4">
+                                    <button type="submit" class="btn btn-primary btn-block">Register</button>
+                                </div>
+                            </div>
+                        </form> <!-- /form -->
+                    </div> <!-- ./container -->
+                    <div class="clearfix visible-xs"></div>
                     <div class="col-lg-3 col-md-4 col-sm-5 col-sx-12 sidebars">
                         <div class="sidebar">
                             <h3>New</h3>

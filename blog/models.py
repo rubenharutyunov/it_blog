@@ -23,7 +23,8 @@ class Post(models.Model):
         ordering = ['-date_time', 'title']  
 
     def __str__(self):
-        return self.title    
+        return self.title
+
 
 class Comment(models.Model):
     text = models.TextField(max_length=255)

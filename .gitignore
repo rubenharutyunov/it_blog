@@ -2,3 +2,7 @@ media
 *.pyc
 *.sqlite3
 it_blog/secret_key.py
+.idea/*
+PKGBUILD
+static/*
+!static/blog
