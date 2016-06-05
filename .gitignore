@@ -6,3 +6,4 @@ it_blog/secret_key.py
 PKGBUILD
 static/*
 !static/blog
+it_blog/production_settings.py
