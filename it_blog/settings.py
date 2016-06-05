@@ -25,8 +25,10 @@ try:
 except ImportError:
     SECRET_KEY = ''
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+try:
+    from it_blog.production_settings import *
+except ImportError:
+    from it_blog.local_settings import *
 
 ALLOWED_HOSTS = []
 
@@ -54,7 +56,7 @@ MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR)
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -87,17 +89,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'it_blog.wsgi.application'
 
-
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'bootstrapck',
@@ -107,7 +98,6 @@ CKEDITOR_CONFIGS = {
         'width': '100%',
     },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
