@@ -1,8 +1,12 @@
-{% extends "../../templates/base.html" %}
+{% extends "base.html" %}
+{% block nav %}
+    {% include "navigation.html" with active="profile" %}
+{% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="main-title text-uppercase">Lorem ipsum Dolore sit quis sit.</h2>
-    <div class="post">
+    <h2 class="main-title text-uppercase">IT Blog - Most viewed</h2>
+    <div id="post-init" class="post">
+        <h3 class="post-title"><a href="post.html">Lorem ipsum Dolore sit quis sit.</a></h3>
         <div class="post-tags">
             <div class="post-tag"><a href="">Lorem ipsum</a></div>
             <div class="post-tag"><a href="">Deserunt qui</a></div>
@@ -19,21 +23,6 @@
                 <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=Post-Image&w=200&h=200" alt="">
             </div>
             <div class="post-text">
-                Lorem ipsum Elit dolore ut sed deserunt qui eiusmod officia mollit irure dolore eiusmod consequat enim reprehenderit veniam id magna Excepteur voluptate sed sed ullamco fugiat veniam Excepteur eiusmod non nostrud qui minim nulla in laborum ex id reprehenderit occaecat consectetur veniam amet id esse sed consequat ea Excepteur commodo occaecat aliquip Ut anim Excepteur reprehenderit laboris culpa Excepteur commodo in exercitation officia sed sed non non aute elit ut nostrud amet sit dolor nisi veniam officia laborum dolor eu in amet ut pariatur ex labore eiusmod dolor proident esse pariatur minim ullamco nisi eiusmod voluptate fugiat laboris ex cillum amet in tempor officia ut ut proident Duis irure Ut aliquip esse aute in dolor elit est in id est incididunt dolor elit dolore aliquip et aute sunt elit in consequat sit deserunt pariatur fugiat quis esse aute ex commodo fugiat dolor aliqua sunt laboris mollit aliquip sunt sed Excepteur ullamco est eu tempor exercitation ut Ut dolore culpa deserunt anim sunt est non aliquip minim cupidatat qui incididunt nostrud fugiat laboris laboris fugiat occaecat Duis dolore ut consequat sed dolore in Duis occaecat consectetur aliqua fugiat esse do pariatur incididunt incididunt cupidatat sunt reprehenderit nostrud laboris elit quis laboris irure aute occaecat minim dolor sunt dolor ut qui tempor ut enim fugiat esse commodo quis eiusmod exercitation cupidatat incididunt deserunt pariatur id deserunt ullamco Excepteur in officia laboris mollit consequat anim sint laboris id in sed non dolore ullamco proident proident in ad nostrud veniam occaecat ea sed ex elit officia in sed laboris anim sed anim in ut nostrud magna adipisicing incididunt et velit.
-<pre><code>
-public class DoubleScanner {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        double res = 0.0;
-    while (scanner.hasNext()) {
-        try {
-            res += Double.parseDouble(scanner.next());
-        } catch (Exception e) {}
-    }
-    System.out.printf("%.6f", res);
-    }
-}
-</code></pre>
                 Lorem ipsum Elit dolore ut sed deserunt qui eiusmod officia mollit irure dolore eiusmod consequat enim reprehenderit veniam id magna Excepteur voluptate sed sed ullamco fugiat veniam Excepteur eiusmod non nostrud qui minim nulla in laborum ex id reprehenderit occaecat consectetur veniam amet id esse sed consequat ea Excepteur commodo occaecat aliquip Ut anim Excepteur reprehenderit laboris culpa Excepteur commodo in exercitation officia sed sed non non aute elit ut nostrud amet sit dolor nisi veniam officia laborum dolor eu in amet ut pariatur ex labore eiusmod dolor proident esse pariatur minim ullamco nisi eiusmod voluptate fugiat laboris ex cillum amet in tempor officia ut ut proident Duis irure Ut aliquip esse aute in dolor elit est in id est incididunt dolor elit dolore aliquip et aute sunt elit in consequat sit deserunt pariatur fugiat quis esse aute ex commodo fugiat dolor aliqua sunt laboris mollit aliquip sunt sed Excepteur ullamco est eu tempor exercitation ut Ut dolore culpa deserunt anim sunt est non aliquip minim cupidatat qui incididunt nostrud fugiat laboris laboris fugiat occaecat Duis dolore ut consequat sed dolore in Duis occaecat consectetur aliqua fugiat esse do pariatur incididunt incididunt cupidatat sunt reprehenderit nostrud laboris elit quis laboris irure aute occaecat minim dolor sunt dolor ut qui tempor ut enim fugiat esse commodo quis eiusmod exercitation cupidatat incididunt deserunt pariatur id deserunt ullamco Excepteur in officia laboris mollit consequat anim sint laboris id in sed non dolore ullamco proident proident in ad nostrud veniam occaecat ea sed ex elit officia in sed laboris anim sed anim in ut nostrud magna adipisicing incididunt et velit.
             </div>
         </div>
@@ -56,71 +45,19 @@ public class DoubleScanner {
              <div class="post-category">
                <i class="fa fa-tag"></i><a href=""> Lorem ipsum</a>
             </div>
-        </div>
-    </div>
-    <div class="container comments">
-        <h4>Comments:</h4>
-        <div class="row">
-            <div class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
-                <div class="comment-info">
-                    <div class="comment-author">
-                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">Admin</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="comment-text">
-                    Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
-                </div>
-                <div class="comment-reply">
-                    <a href=""><i class="fa fa-reply"></i> Reply</a>
-                </div>
-                <div class="comment-replies">
-                    <div class="comment">
-                        <div class="comment-info">
-                            <div class="comment-author">
-                                <i class="fa fa-user "></i> <a href="">User</a>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="comment-text">
-                            Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
-                        </div>
-                        <div class="comment-reply">
-                            <a href=""><i class="fa fa-reply"></i> Reply</a>
-                        </div>
-                        <div class="comment-replies">
-                            <div class="comment">
-                                <div class="comment-info">
-                                    <div class="comment-author">
-                                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">Admin</a>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="comment-text">
-                                    Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
-                                </div>
-                                <div class="comment-reply">
-                                    <a href=""><i class="fa fa-reply"></i> Reply</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="post-more">
+                <a href="post.html">read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
             </div>
         </div>
-        <div class="row">
-            <form class="col-md-5 comment-form">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="comment">Add comment:</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="comment" id="comment" cols="100" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </fieldset>
-            </form>
-        </div>
+    </div>
+    <div class="posts-pagination text-center">
+        <ul class="pagination">
+        <li><a class="active" href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+    </ul>
     </div>
 </div>
 {% endblock %}

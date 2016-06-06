@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Blog</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    {% load staticfiles %}
+    <script src="{% static 'js/script.js' %}"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default no-margin">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header fixed-brand">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+              <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand" href="base.html"><img src="{% static 'images/logo_transparent.png' %}" alt=""> IT Blog</a>
+        </div><!-- navbar-header-->
+    </nav>
+    <div id="wrapper" class="toggled-2">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            {% block nav %}
+            {% endblock %}
+        </div><!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div class="placeholder" style="height:100; display:none;"></div>
+        <div id="page-content-wrapper">
+            <div class="container-fluid xyz">
+                <div class="row">
+                    {% block main_content %}
+
+                    {% endblock %}
+                     <div class="clearfix visible-xs"></div>
+
+                    {% block sidebars %}
+
+                    {% endblock %}
+                </div>
+            </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    <div class="clearfix visible-xs"></div>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-xs-5">
+                     © IT Blog 2016
+                </div>
+                <div class="col-md-7 col-xs-7 social">
+                     <a href=""><i class="fa fa-facebook-square"></i></a>
+                     <a href=""><i class="fa fa-google-plus-square"></i></a>
+                     <a href=""><i class="fa fa-twitter-square"></i></a>
+                     <a href=""><i class="fa fa-github-square"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>   
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+</body>
+</html>

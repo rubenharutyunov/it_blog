@@ -1,64 +1,24 @@
 {% extends "../../templates/base.html" %}
 {% block main_content %}
-    <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="add">Add post</h2>
-    <form class="add-form form-horizontal" role="form">
-        <div class="form-group">
-            <label for="title" class="col-lg-2 col-md-3 control-label">Title</label>
-            <div class="col-lg-4 col-md-6">
-                <input type="text" id="title" placeholder="Title" class="form-control" autofocus>
+    <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
+    <h2 class="main-title text-uppercase">IT Blog - sign in</h2>
+    <div class="post col-lg-6">
+        <form role="form">
+            <div class="form-group">
+                <label for="email">Email address:</label>
+                <input type="email" class="form-control" id="email">
             </div>
-        </div>
-        <div class="form-group">
-            <label for="about" class="col-lg-2 col-md-3 control-label">Content</label>
-            <div class="col-lg-9 col-md-9">
-                <textarea rows="10" id="about" placeholder="Content" class="form-control"></textarea>
+            <div class="form-group">
+                <label for="pwd">Password:</label>
+                <input type="password" class="form-control" id="pwd">
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 col-md-3 control-label" for="sel1">Category</label>
-            <div class="col-lg-9 col-md-9">
-                <select class="form-control" id="cat">
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                </select>
+            <div class="checkbox">
+                <label><input type="checkbox">Remember me</label>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="col-lg-2 col-md-3 control-label" for="sel2">Tags</label>
-            <div class="col-lg-9 col-md-9">
-                <select multiple class="form-control" id="tags">
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label class="control-label col-lg-2 col-md-3">Preferences</label>
-            <div class="col-lg-3 col-md-4">
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox" id="showEmail" value="showEmail">Show email in profile
-                    </label>
-                </div>
-            </div>
-        </div> <!-- /.form-group -->
-        <div class="form-group">
-            <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
-                <button type="submit" class="btn btn-primary btn-block">Add post</button>
-            </div>
-        </div>
-    </form> <!-- /form -->
-</div> <!-- ./container -->
+            <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+    </div>
+</div>
 {% endblock %}
 {% block sidebars %}
     <div class="col-lg-3 col-md-4 col-sm-5 col-sx-12 sidebars">

@@ -1,47 +1,74 @@
 {% extends "../../templates/base.html" %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="add">Add post</h2>
-    <form class="add-form form-horizontal" role="form">
+    <h2 class="reg">Registration Form</h2>
+    <form class="reg-form form-horizontal" role="form">
         <div class="form-group">
-            <label for="title" class="col-lg-2 col-md-3 control-label">Title</label>
+            <label for="firstName" class="col-lg-2 col-md-3 control-label">First Name</label>
             <div class="col-lg-4 col-md-6">
-                <input type="text" id="title" placeholder="Title" class="form-control" autofocus>
+                <input type="text" id="firstName" placeholder="First Name" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group">
-            <label for="about" class="col-lg-2 col-md-3 control-label">Content</label>
-            <div class="col-lg-9 col-md-9">
-                <textarea rows="10" id="about" placeholder="Content" class="form-control"></textarea>
+            <label for="lastName" class="col-lg-2 col-md-3 control-label">Last Name</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="text" id="lastName" placeholder="Last Name" class="form-control" autofocus>
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 col-md-3 control-label" for="sel1">Category</label>
-            <div class="col-lg-9 col-md-9">
-                <select class="form-control" id="cat">
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                </select>
+            <label for="email" class="col-lg-2 col-md-3 control-label">Email</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="email" id="email" placeholder="Email" class="form-control">
             </div>
         </div>
         <div class="form-group">
-            <label class="col-lg-2 col-md-3 control-label" for="sel2">Tags</label>
-            <div class="col-lg-9 col-md-9">
-                <select multiple class="form-control" id="tags">
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                    <option>Lorem ipsum.</option>
-                    <option>Consectetur</option>
-                    <option>consectetur</option>
-                    <option>incididunt</option>
-                </select>
+            <label for="password" class="col-lg-2 col-md-3 control-label">Password</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="password" id="password" placeholder="Password" class="form-control">
             </div>
         </div>
-
+        <div class="form-group">
+            <label for="password2" class="col-lg-2 col-md-3 control-label">Retype password</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="password2" id="password2" placeholder="Password" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="about" class="col-lg-2 col-md-3 control-label">About You</label>
+            <div class="col-lg-4 col-md-6">
+                <textarea id="about" placeholder="About You" class="form-control"></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="facebook" class="col-lg-2 col-md-3 control-label">Facebook</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="facebook" id="facebook" placeholder="Facebook" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gplus" class="col-lg-2 col-md-3 control-label">Google+</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="gplus" id="gplus" placeholder="Google+" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="twitter" class="col-lg-2 col-md-3 control-label">Twitter</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="twitter" id="twitter" placeholder="Twitter" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="github" class="col-lg-2 col-md-3 control-label">Github</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="github" id="github" placeholder="Github" class="form-control">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="vk" class="col-lg-2 col-md-3 control-label">VK</label>
+            <div class="col-lg-4 col-md-6">
+                <input type="vk" id="vk" placeholder="VK" class="form-control">
+            </div>
+        </div>
         <div class="form-group">
             <label class="control-label col-lg-2 col-md-3">Preferences</label>
             <div class="col-lg-3 col-md-4">
@@ -53,8 +80,17 @@
             </div>
         </div> <!-- /.form-group -->
         <div class="form-group">
-            <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
-                <button type="submit" class="btn btn-primary btn-block">Add post</button>
+            <div class="col-lg-2 col-md-3 col-lg-offset-2 col-md-offset-3">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">I accept <a href="#">terms</a>
+                    </label>
+                </div>
+            </div>
+        </div> <!-- /.form-group -->
+        <div class="form-group">
+            <div class="col-lg-2 col-md-3 col-md-offset-6 col-lg-offset-4">
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
         </div>
     </form> <!-- /form -->

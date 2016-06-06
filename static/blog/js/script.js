@@ -50,6 +50,7 @@ function cloneContent() {
 $(document).ready(function() {
     initMenu();
     cloneContent();
+    hljs.initHighlightingOnLoad();
 });
 
 
