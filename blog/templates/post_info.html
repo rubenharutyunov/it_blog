@@ -1,0 +1,23 @@
+<div class="post-datetime">
+    <i class="fa fa-clock-o"></i> {{ post.date_time }}
+</div>
+<div class="post-author">
+    <i class="fa fa-user "></i> <a href="{% url 'user' post.author.username %}">{{ post.author }}</a>
+</div>
+<div class="post-like">
+    Likes: {{ post.likes }}&nbsp; <a href="" title="Like this post!"><i class="fa fa-thumbs-o-up "></i></a>
+</div>
+<div class="post-bookmark">
+    <a href=""><i class="fa fa-star-o"></i></a> {{ post.user_set.all | length }}
+</div>
+<div class="post-views">
+    <i class="fa fa-eye"></i> {{ post.views }}
+</div>
+ <div class="post-category">
+   <i class="fa fa-tag"></i><a href="{% url "category" post.category.slug %}"> {{ post.category }}</a>
+</div>
+{% if not full %}
+    <div class="post-more">
+        <a href="{% url 'post' post.slug %}">read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
+    </div>
+{% endif %}
