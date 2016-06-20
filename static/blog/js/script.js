@@ -49,7 +49,7 @@ function cloneContent() {
 
 $(document).ready(function() {
     initMenu();
-    cloneContent();
+    //cloneContent();
     hljs.initHighlightingOnLoad();
 });
 

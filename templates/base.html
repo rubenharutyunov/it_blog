@@ -24,7 +24,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
               <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="base.html"><img src="{% static 'blog/images/logo_transparent.png' %}" alt=""> IT Blog</a>
+            <a class="navbar-brand" href="/"><img src="{% static 'blog/images/logo_transparent.png' %}" alt=""> IT Blog</a>
         </div><!-- navbar-header-->
     </nav>
     <div id="wrapper" class="toggled-2">
@@ -43,9 +43,8 @@
                     {% endblock %}
                      <div class="clearfix visible-xs"></div>
 
-                    {% block sidebars %}
-
-                    {% endblock %}
+                    {% load sidebar %}
+                    {% get_sidebar %}
                 </div>
             </div>
 

@@ -5,6 +5,7 @@ from users.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     text = RichTextUploadingField()
@@ -45,17 +46,18 @@ class Comment(models.Model):
 
 
 class Category(models.Model):
-   title = models.CharField(max_length=255)
-   description = RichTextField()
-   slug = models.SlugField(unique=True, null=True)
+    title = models.CharField(max_length=255)
+    description = RichTextField()
+    slug = models.SlugField(unique=True, null=True)
 
-   class Meta:
-       verbose_name = "Category"
-       verbose_name_plural = "Categories"
+    class Meta:
+        verbose_name = "Category"
+        verbose_name_plural = "Categories"
 
-   def __str__(self):
-       return self.title
-       
+    def __str__(self):
+        return self.title
+
+
 class Tag(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(unique=True, null=True)  
@@ -66,4 +68,3 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
-                                                        

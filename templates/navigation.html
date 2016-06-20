@@ -1,53 +1,58 @@
 <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
     <li class="{% if active == 'home' %} active{% endif %}">
-        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-home fa-stack-1x "></i></span>blog</a>
+        <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-home fa-stack-1x "></i></span>Blog</a>
            <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-            <li class="active_sub">
-                <a href="#">
-                    <span class="fa-stack fa-lg pull-left">
-                        <i class="fa fa-eye fa-stack-1x "></i>
-                    </span> most viewed
-                </a>
-            </li>
-            <li>
-                <a href="#">
+           {% load get_from_dict %}
+            <li class="{% if active_sub == "new" %}active_sub{% endif %}">
+                <a href="{% url 'new_posts' %}">
                     <span class="fa-stack fa-lg pull-left">
                         <i class="fa fa-clock-o fa-stack-1x "></i>
-                    </span> new
+                    </span> New
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{% if active_sub == "most_viewed" %}active_sub{% endif %}">
+                <a href="{% url 'most_viewed_posts' %}">
+                    <span class="fa-stack fa-lg pull-left">
+                        <i class="fa fa-eye fa-stack-1x "></i>
+                    </span> Most Viewed
+                </a>
+            </li>
+            <li class="{% if active_sub == "best" %}active_sub{% endif %}">
+                <a href="{% url 'best_posts' %}">
                     <span class="fa-stack fa-lg pull-left">
                         <i class="fa fa-thumbs-up fa-stack-1x "></i>
-                    </span> best
+                    </span> Best
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{% if active_sub == "categories" %}active_sub{% endif %}">
+                <a href="{% url 'categories' %}">
                     <span class="fa-stack fa-lg pull-left">
                         <i class="fa fa-tag fa-stack-1x"></i>
-                    </span> categories
+                    </span> Categories
                 </a>
             </li>
-            <li>
-                <a href="#">
+            <li class="{% if active_sub == "tags" %}active_sub{% endif %}">
+                <a href="{% url 'tags' %}">
                     <span class="fa-stack fa-lg pull-left">
                         <i class="fa fa-tags fa-stack-1x"></i>
-                    </span> tags
+                    </span> Tags
                 </a>
             </li>
         </ul>
     </li>
-    <li class="{% if active == 'profile' %} active{% endif %}">
+    <li class="{% if active == 'Profile' %} active{% endif %}">
         <a href="#">
             <span class="fa-stack fa-lg pull-left">
                 <i class="fa fa-user fa-stack-1x "></i>
             </span> Profile
         </a>
         <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-            <li><a href="../users/templates/sign_in.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-in fa-stack-1x "></i></span>Sign in</a></li>
-            <li><a href="../users/templates/sign_up.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user-plus fa-stack-1x "></i></span>Sign up</a></li>
+            <li class="{% if active_sub == 'sign_in' %}active_sub{% endif %}">
+                <a href="../users/templates/sign_in.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-in fa-stack-1x "></i></span>Sign in</a>
+            </li>
+            <li class="{% if active_sub == 'sign_up' %}active_sub{% endif %}">
+                <a href="../users/templates/sign_up.html"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user-plus fa-stack-1x "></i></span>Sign up</a>
+            </li>
 
         </ul>
     </li>
@@ -76,9 +81,8 @@
                 <div class="row">
                     <form class="col-lg-9 col-md-10 col-sm-10 col-xs-10 navbar-form navbar-left" role="search">
                         <input type="text" class="form-control" placeholder="Search">
-                </form>
+                    </form>
                 </div>
-
             </li>
         </ul>
     </li>
