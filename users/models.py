@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager, Group
 
+
 class User(AbstractUser):
     rating = models.IntegerField(default=0)
     avatar = models.ImageField(blank=True, null=True)
@@ -14,7 +15,6 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+
 class Group(Group):
     pass
-                    
-    

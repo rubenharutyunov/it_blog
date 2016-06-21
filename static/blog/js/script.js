@@ -26,31 +26,34 @@ function initMenu() {
     );
 }
 
-function cloneContent() {
-    var content = $('#post-init').html();
-    for (var i = 0; i < 10; i++) {
-        var newdiv = $("<div class='post post"+i+"'>");
-        newdiv.html(content);
-        $('#post-init').after(newdiv);
-    }
-    var comment = $('.comment-init').html();
-    for (var i = 0; i < 3; i++) {
-        var newdiv = $("<div class='comment col-lg-9 col-md-8 col-sm-7 col-xs-12 comment-"+i+"'>");
-        newdiv.html(comment);
-        $('.comment-init').after(newdiv);
-    }
-    var user = $('.user-init').html();
-    for (var i = 0; i < 3; i++) {
-        var newdiv = $("<div class='user user"+i+"'>");
-        newdiv.html(user);
-        $('.user-init').after(newdiv);
-    }
+function handle_reply(id) {
+    var comment = $(".comment-reply");
+    var textarea = $(".comment-form textarea");
+    var parent = $(".comment-form input[name='parent']");
+    var label = $(".comment-form label");
+    comment.click(function (event) {
+        event.preventDefault();
+        var id = $(this).parent().attr("id");
+        console.log(parseInt(id));
+        var author = $(this).parent().find('.comment-author').text().trim();
+        parent.val(id);
+        textarea.val("@"+author+", ");
+        textarea.focus();
+        label.text("Reply to " + author);
+    });
+    var clear_button = $(".btn-clear");
+    clear_button.click(function (event) {
+        textarea.val("");
+        parent.val("");
+        label.text("Add comment:");
+        $(".errorlist").hide();
+    });
 }
 
 $(document).ready(function() {
     initMenu();
-    //cloneContent();
     hljs.initHighlightingOnLoad();
+    handle_reply();
 });
 
 

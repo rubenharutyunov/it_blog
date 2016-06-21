@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from users.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
+from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Post(models.Model):
@@ -27,19 +28,22 @@ class Post(models.Model):
         return self.title
 
 
-class Comment(models.Model):
+class Comment(MPTTModel):
     text = models.TextField(max_length=255)
-    slug = models.SlugField(unique=True, null=True)
     author = models.ForeignKey(User, editable=False)
     date_time = models.DateTimeField(auto_now=True) 
     likes = models.IntegerField(default=0)
-    post = models.ForeignKey(Post, blank=True, null=True)
+    post = models.ForeignKey(Post)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
 
     class Meta:
         verbose_name = 'Comment'
         verbose_name_plural = 'Comments'
         get_latest_by = "date_time"
         ordering = ['-post', 'date_time']
+
+    class MPTTMeta:
+        order_insertion_by = ['-date_time']
 
     def __str__(self):
         return "User %s at %s" % (self.author, self.post)     

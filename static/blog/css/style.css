@@ -322,6 +322,19 @@ a:hover {
     width: 100%;
 }
 
+.btn-clear {
+    float: right;
+    background: #ff2e34;
+    border: 1px solid #ff0000;
+}
+
+.btn-clear:hover, .btn-clear:focus {
+    float: right;
+    background: #ff0008 !important;
+    border: 1px solid #ff0000 !important;
+
+}
+
 .user-social {
         font-size: 2.5em;
 }

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'users',
     'ckeditor',
     'ckeditor_uploader',
+    'mptt',
 ]
 
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
@@ -78,6 +79,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'blog.context_processors.add_types.add_types'
             ],
         },
          'DIRS': [os.path.join(BASE_DIR, 'templates')],

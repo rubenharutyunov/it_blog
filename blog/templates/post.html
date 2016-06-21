@@ -16,65 +16,36 @@
     </div>
     <div class="container comments">
         <h4>Comments:</h4>
+        {% load mptt_tags %}
         <div class="row">
-            <div class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
+             {% recursetree comments %}
+            <div id="{{ node.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
                 <div class="comment-info">
                     <div class="comment-author">
-                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">Admin</a>
+                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">{{ node.author }}</a>
                     </div>
                 </div>
                 <hr>
                 <div class="comment-text">
-                    Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
+                    {{ node.text }}
                 </div>
                 <div class="comment-reply">
-                    <a href=""><i class="fa fa-reply"></i> Reply</a>
+                    <a href="#"><i class="fa fa-reply"></i> Reply</a>
                 </div>
-                <div class="comment-replies">
-                    <div class="comment">
-                        <div class="comment-info">
-                            <div class="comment-author">
-                                <i class="fa fa-user "></i> <a href="">User</a>
-                            </div>
-                        </div>
-                        <hr>
-                        <div class="comment-text">
-                            Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
-                        </div>
-                        <div class="comment-reply">
-                            <a href=""><i class="fa fa-reply"></i> Reply</a>
-                        </div>
-                        <div class="comment-replies">
-                            <div class="comment">
-                                <div class="comment-info">
-                                    <div class="comment-author">
-                                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">Admin</a>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="comment-text">
-                                    Lorem ipsum Dolore dolore dolore magna fugiat ullamco id eiusmod adipisicing tempor ad.
-                                </div>
-                                <div class="comment-reply">
-                                    <a href=""><i class="fa fa-reply"></i> Reply</a>
-                                </div>
-                            </div>
-                        </div>
+                {% if not node.is_leaf_node %}
+                    <div class="comment-replies">
+                        {{ children }}
                     </div>
-                </div>
+                {% endif %}
             </div>
+            {% endrecursetree %}
         </div>
         <div class="row">
-            <form class="col-md-5 comment-form">
-                <fieldset>
-                    <div class="form-group">
-                        <label for="comment">Add comment:</label>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="comment" id="comment" cols="100" rows="5"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </fieldset>
+            <form method="post" action="{% url 'post' post.slug %}" class="col-md-5 comment-form">
+                {{ comment_form }}
+                 {% csrf_token %}
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <input class="btn btn-clear btn-primary" type="button" value="Clear">
             </form>
         </div>
     </div>
