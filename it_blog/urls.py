@@ -17,10 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from it_blog import settings
 from blog import urls as blog_urls
+from users import urls as users_url
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^', include(blog_urls)),
+    url(r'^', include(users_url)),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ] 

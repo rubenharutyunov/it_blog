@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block nav %}
-    {% load get_from_dict %}
+    {% load blog_tags %}
     {% include "navigation.html" with active="home" active_sub=type types=types %}
 {% endblock %}
 {% block main_content %}

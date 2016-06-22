@@ -1,6 +1,4 @@
 from django.db import models
-from django.template.defaultfilters import slugify
-from django.core.exceptions import ValidationError
 from users.models import User
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
@@ -12,7 +10,7 @@ class Post(models.Model):
     text = RichTextUploadingField()
     slug = models.SlugField(unique=True)
     views = models.IntegerField(default=0)  
-    likes = models.IntegerField(default=0) 
+    likes = models.ManyToManyField(User, related_name='likes')
     date_time = models.DateTimeField(auto_now=True) 
     author = models.ForeignKey(User)
     category = models.ForeignKey('blog.Category', blank=True, null=True)
@@ -22,7 +20,7 @@ class Post(models.Model):
         verbose_name = 'Post'
         verbose_name_plural = 'Posts'
         get_latest_by = "-date_time"
-        ordering = ['-date_time', 'title']  
+        ordering = ['-date_time', 'title']
 
     def __str__(self):
         return self.title

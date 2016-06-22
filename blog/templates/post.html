@@ -40,14 +40,22 @@
             </div>
             {% endrecursetree %}
         </div>
-        <div class="row">
-            <form method="post" action="{% url 'post' post.slug %}" class="col-md-5 comment-form">
-                {{ comment_form }}
-                 {% csrf_token %}
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <input class="btn btn-clear btn-primary" type="button" value="Clear">
-            </form>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div class="row">
+                <form method="post" action="{% url 'post' post.slug %}" class="col-md-5 comment-form">
+                    {{ comment_form }}
+                     {% csrf_token %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <input class="btn btn-clear btn-primary" type="button" value="Clear">
+                </form>
+            </div>
+        {% else %}
+            <div class="row">
+                <p>
+                    You need to <a href="{% url 'sign_in' %}">sign in</a> or <a href="{% url 'sign_up' %}">sign up</a> to add comment
+                </p>
+            </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

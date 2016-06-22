@@ -3,6 +3,7 @@ from blog.models import Post, Comment, Category, Tag
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 
+
 # Helper functions
 def save_current_user(request, instance, form):
     user = request.user 
@@ -12,10 +13,12 @@ def save_current_user(request, instance, form):
     form.save_m2m()
     return instance
 
+
 def truncate_text(text):
     if len(text) < 100:
         return text
     return "%s..." % obj.text[:100]
+
 
 def show_urls(objects):
     res = ''
@@ -29,11 +32,10 @@ def show_urls(objects):
     return res or None
     
 
-
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
-    readonly_fields = ('views', 'likes', 'author')
-    list_display = ('title', 'date_time', 'author', 'views', 'likes', 'comment_count', 'post_tags', 'post_category')
+    readonly_fields = ('views',  'author')
+    list_display = ('title', 'date_time', 'author', 'views', 'post_likes', 'comment_count', 'post_tags', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('author__username', 'category', 'tags')
 
@@ -41,7 +43,11 @@ class PostAdmin(admin.ModelAdmin):
         tags = obj.tags.all()
         return show_urls(tags)
     post_tags.short_description = "Tags"
-    post_tags.allow_tags = True   
+    post_tags.allow_tags = True
+
+    def post_likes(self, obj):
+        return len(obj.likes.all())
+    post_likes.short_description = "Likes"
 
     def post_category(self, obj):
         category = obj.category
@@ -83,7 +89,7 @@ class CategoryAdmin(admin.ModelAdmin):
         return show_urls(posts)
     post_count.allow_tags = True    
     post_count.short_description = 'Posts in category'  
-    
+
 class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'post_count')

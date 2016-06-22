@@ -219,6 +219,18 @@ a:hover {
     font-size: 1.2em !important;
 }
 
+.liked {
+    color: #2EC7F3;
+}
+
+.liked:focus {
+    color: #2EC7F3;
+}
+
+.post-like .anon {
+    cursor: not-allowed;
+}
+
 .pagination>li>a.active {
     background-color: #2EC7F3;
     color: #fff;

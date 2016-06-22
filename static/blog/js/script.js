@@ -50,10 +50,39 @@ function handle_reply(id) {
     });
 }
 
+function handle_likes() {
+    $(".post-like a").click(function (event) {
+        event.preventDefault();
+        var id = $('.post-like a').attr("id");
+        var $this = $(this);
+        $.ajax({
+               type: "POST",
+               url: "/like/",
+               data: {'post_id': $(this).attr('id'), 'csrfmiddlewaretoken': csrf},
+               dataType: "json",
+               success: function(response) {
+                   if (response.status != 'AUTH_REQUIRED') {
+                       if (response.status == "LIKED") {
+                           $this.addClass('liked');
+                       } else {
+                           $this.removeClass('liked');
+                       }
+                   }
+                   var id = $this.attr("id");
+                   $('.likes#'+id).text(response.likes);
+                },
+                error: function(rs, e) {
+                       console.log(rs.responseText); // For debug
+                }
+          });
+    });
+}
+
 $(document).ready(function() {
     initMenu();
     hljs.initHighlightingOnLoad();
     handle_reply();
+    handle_likes();
 });
 
 
