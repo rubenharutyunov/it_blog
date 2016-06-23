@@ -1,7 +1,8 @@
 from django.contrib import admin
-from blog.models import Post, Comment, Category, Tag  
+from blog.models import Post, Comment, Category, Tag
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
+from mptt.admin import MPTTModelAdmin
 
 
 # Helper functions
@@ -26,7 +27,7 @@ def show_urls(objects):
         if object_:
             info = (object_._meta.app_label, object_._meta.model_name)
             admin_url = reverse('admin:%s_%s_change' % info, args=(object_.pk,))
-            res += '<a href="%s">%s</a>%s &nbsp;' % (admin_url,object_.title, ',' if count<len(objects)-1 else '')
+            res += '<a href="%s">%s</a>%s &nbsp;' % (admin_url,object_.title, ',' if count < len(objects)-1 else '')
         else:
             return None    
     return res or None
@@ -62,7 +63,8 @@ class PostAdmin(admin.ModelAdmin):
     def save_model(self, request, instance, form, change):
         return save_current_user(request, instance, form) 
 
-class CommentAdmin(admin.ModelAdmin):
+
+class CommentAdmin(MPTTModelAdmin):
     list_display = ('post', 'author', 'date_time', 'truncate')
     readonly_fields = ('likes',)
     search_fields = ('text',)
@@ -91,6 +93,7 @@ class CategoryAdmin(admin.ModelAdmin):
     post_count.allow_tags = True    
     post_count.short_description = 'Posts in category'  
 
+
 class TagAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'post_count')
@@ -101,7 +104,7 @@ class TagAdmin(admin.ModelAdmin):
     post_count.short_description = 'Posts with tag'
     post_count.allow_tags = True        
         
-admin.site.register(Category, CategoryAdmin)    
-admin.site.register(Tag, TagAdmin)       
+admin.site.register(Category, CategoryAdmin)
+admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
