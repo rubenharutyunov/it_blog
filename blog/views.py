@@ -6,7 +6,6 @@ from django import http
 from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
-from django.contrib.auth.decorators import login_required
 from blog.forms import CommentForm
 import json
 
@@ -109,6 +108,24 @@ def like(request):
     else:
         status = 'AUTH_REQUIRED'
     res = {'status': status, 'likes': post.likes.count()}
+    return HttpResponse(json.dumps(res), content_type='application/json')
+
+
+@require_POST
+def add_to_fav(request):
+    post_id = request.POST.get('post_id')
+    post = get_object_or_404(Post, id=post_id)
+    user = request.user
+    if request.user.is_authenticated():
+        if not user.favorite_posts.filter(id=post_id):
+            status = 'ADDED'
+            user.favorite_posts.add(post)
+        else:
+            status = 'REMOVED'
+            user.favorite_posts.remove(post)
+    else:
+        status = 'AUTH_REQUIRED'
+    res = {'status': status, 'count': post.favorite.count()}
     return HttpResponse(json.dumps(res), content_type='application/json')
 
 

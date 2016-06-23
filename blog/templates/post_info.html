@@ -6,7 +6,7 @@
     <i class="fa fa-user "></i> <a href="{% url 'user' post.author.username %}">{{ post.author }}</a>
 </div>
 <div class="post-like">
-    Likes: <span id="{{ post.id }}" class="likes">{{ post.likes.count }}</span>&nbsp;
+    Likes: <span class="likes{{ post.id }}">{{ post.likes.count }}</span>&nbsp;
     <a class="{{ request.user|liked:post }}{% if not request.user.is_authenticated %}anon{% endif %}" id="{{ post.id }}" href=""
         {% if request.user.is_authenticated %}
             title="Like this post!">
@@ -17,7 +17,10 @@
     </a>
 </div>
 <div class="post-bookmark">
-    <a href=""><i class="fa fa-star-o"></i></a> {{ post.user_set.all | length }}
+    <a class="{{ request.user|fav:post.id }}{% if not request.user.is_authenticated %}anon{% endif %}" id="{{ post.id }}" href="">
+        <i class="fa fa-star-o"></i>
+    </a>
+    <span class="favs{{ post.id }}">{{ post.favorite.count }}</span>
 </div>
 <div class="post-views">
     <i class="fa fa-eye"></i> {{ post.views }}

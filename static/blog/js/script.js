@@ -53,7 +53,6 @@ function handle_reply(id) {
 function handle_likes() {
     $(".post-like a").click(function (event) {
         event.preventDefault();
-        var id = $('.post-like a').attr("id");
         var $this = $(this);
         $.ajax({
                type: "POST",
@@ -67,9 +66,36 @@ function handle_likes() {
                        } else {
                            $this.removeClass('liked');
                        }
+                       var id = $this.attr("id");
+                       $('.likes'+id).text(response.likes);
                    }
-                   var id = $this.attr("id");
-                   $('.likes#'+id).text(response.likes);
+                },
+                error: function(rs, e) {
+                       console.log(rs.responseText); // For debug
+                }
+          });
+    });
+}
+
+function handle_fav() {
+    $('.post-bookmark a').click(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        $.ajax({
+               type: "POST",
+               url: "/fav/",
+               data: {'post_id': $(this).attr('id'), 'csrfmiddlewaretoken': csrf},
+               dataType: "json",
+               success: function(response) {
+                   if (response.status != 'AUTH_REQUIRED') {
+                       if (response.status == "ADDED") {
+                           $this.addClass('fav');
+                       } else {
+                           $this.removeClass('fav');
+                       }
+                       var id = $this.attr("id");
+                       $('.favs'+id).text(response.count);
+                   }
                 },
                 error: function(rs, e) {
                        console.log(rs.responseText); // For debug
@@ -83,6 +109,7 @@ $(document).ready(function() {
     hljs.initHighlightingOnLoad();
     handle_reply();
     handle_likes();
+    handle_fav();
 });
 
 

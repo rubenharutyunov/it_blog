@@ -219,15 +219,15 @@ a:hover {
     font-size: 1.2em !important;
 }
 
-.liked {
+.liked, .fav {
     color: #2EC7F3;
 }
 
-.liked:focus {
+.liked:focus, .fav:focus {
     color: #2EC7F3;
 }
 
-.post-like .anon {
+a.anon {
     cursor: not-allowed;
 }
 

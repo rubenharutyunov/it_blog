@@ -5,7 +5,7 @@ from django.contrib.auth.models import AbstractUser, UserManager, Group
 class User(AbstractUser):
     rating = models.IntegerField(default=0)
     avatar = models.ImageField(blank=True, null=True)
-    favorite_posts = models.ManyToManyField('blog.Post', blank=True)
+    favorite_posts = models.ManyToManyField('blog.Post', blank=True, related_name='favorite')
 
     class Meta:
         verbose_name = "User"
