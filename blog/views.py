@@ -131,3 +131,10 @@ def add_to_fav(request):
 
 def placeholder(request, *args, **kwargs):
     return HttpResponse("placeholder")
+
+
+@require_POST
+def delete_comment(request):
+    comment_id = request.POST.get('comment_id')
+    get_object_or_404(Comment, id=comment_id).delete()
+    return HttpResponse(json.dumps({'status': 'OK'}))

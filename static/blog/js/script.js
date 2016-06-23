@@ -35,7 +35,7 @@ function handle_reply(id) {
         event.preventDefault();
         var id = $(this).parent().attr("id");
         console.log(parseInt(id));
-        var author = $(this).parent().find('.comment-author').text().trim();
+        var author = $(this).parent().find('.comment'+ id + '-author').text().trim();
         parent.val(id);
         textarea.val("@"+author+", ");
         textarea.focus();
@@ -71,7 +71,7 @@ function handle_likes() {
                    }
                 },
                 error: function(rs, e) {
-                       console.log(rs.responseText); // For debug
+                    console.log(rs.responseText); // For debug
                 }
           });
     });
@@ -98,7 +98,29 @@ function handle_fav() {
                    }
                 },
                 error: function(rs, e) {
-                       console.log(rs.responseText); // For debug
+                    console.log(rs.responseText); // For debug
+                }
+          });
+    });
+}
+
+function handle_comment_del() {
+    $('.comment-delete a').click(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        $.ajax({
+               type: "POST",
+               url: "/del_comment/",
+               data: {'comment_id': $(this).attr('class'), 'csrfmiddlewaretoken': csrf},
+               dataType: "json",
+               success: function(response) {
+                   if (response.status == 'OK') {
+                       var comment =  $('.comment#'+$this.attr('class'));
+                      comment.hide('slow');
+                   }
+                },
+                error: function(rs, e) {
+                    console.log(rs.responseText); // For debug
                 }
           });
     });
@@ -110,6 +132,7 @@ $(document).ready(function() {
     handle_reply();
     handle_likes();
     handle_fav();
+    handle_comment_del();
 });
 
 

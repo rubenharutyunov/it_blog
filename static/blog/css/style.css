@@ -327,6 +327,10 @@ a.anon {
     margin-left: 2%;
 }
 
+.comment-delete, .comment-reply {
+    display: inline-block;
+}
+
 .comment-form {
     margin-top: 1%;
 }
