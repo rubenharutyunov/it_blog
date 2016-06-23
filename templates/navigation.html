@@ -40,20 +40,45 @@
             </li>
         </ul>
     </li>
-    <li class="{% if active == 'Profile' %} active{% endif %}">
-        <a href="{% url 'profile' %}">
+    <li class="{% if active == 'profile' %} active{% endif %}">
+        <a href="">
             <span class="fa-stack fa-lg pull-left">
                 <i class="fa fa-user fa-stack-1x "></i>
             </span> Profile
         </a>
         <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-            <li class="{% if active_sub == 'sign_in' %}active_sub{% endif %}">
-                <a href="{% url 'sign_in' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-in fa-stack-1x "></i></span>Sign in</a>
-            </li>
-            <li class="{% if active_sub == 'sign_up' %}active_sub{% endif %}">
-                <a href="{% url 'sign_up' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user-plus fa-stack-1x "></i></span>Sign up</a>
-            </li>
-
+            {% if not request.user.is_authenticated %}
+                <li class="{% if active_sub == 'sign_in' %}active_sub{% endif %}">
+                    <a href="{% url 'sign_in' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-sign-in fa-stack-1x "></i></span>Sign in</a>
+                </li>
+                <li class="{% if active_sub == 'sign_up' %}active_sub{% endif %}">
+                    <a href="{% url 'sign_up' %}"><span class="fa-stack fa-lg pull-left"><i class="fa fa-user-plus fa-stack-1x "></i></span>Sign up</a>
+                </li>
+            {% else %}
+                <li class="{% if active_sub == 'profile' %}active_sub{% endif %} ">
+                    <a href="{% url 'user' request.user.username %}">
+                        <span class="fa-stack fa-lg pull-left">
+                            <i class="fa fa-hand-paper-o fa-stack-1x "></i>
+                        </span> Hello, {{ request.user.username }}
+                    </a>
+                </li>
+                {% if request.user.is_staff %}
+                    <li>
+                        <a href="/admin/">
+                            <span class="fa-stack fa-lg pull-left">
+                                <i class="fa fa-cogs fa-stack-1x "></i>
+                            </span> Manage site
+                        </a>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'sign_out' %}">
+                        <span class="fa-stack fa-lg pull-left">
+                            <i class="fa fa-sign-out fa-stack-1x "></i>
+                        </span> Sign out
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </li>
     <li class="{% if active == 'users' %} active{% endif %}">

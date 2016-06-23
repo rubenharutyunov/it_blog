@@ -1,86 +1,39 @@
-{% extends "../../templates/base.html" %}
+{% extends "base.html" %}
+{% block nav %}
+    {% include "navigation.html" with active="profile" active_sub='sign_in' %}
+{% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
     <h2 class="main-title text-uppercase">IT Blog - sign in</h2>
     <div class="post col-lg-6">
-        <form role="form">
-            <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email">
+        <form action="#" method="POST" role="form">
+            {% csrf_token %}
+            {% load blog_tags %}
+            <div class="form-group {% if form.username_or_email.errors %}has-error{% endif %}">
+                <label class="control-label" name="{{ form.username_or_email.name }}" for="email">{{ form.username_or_email.label }}</label>
+                {{ form.username_or_email|add_class:"form-control" }}
+                 <span class="help-block">
+                    {% for error in  form.username_or_email.errors %}{{ error }}{% endfor %}
+                </span>
+            </div>
+            <div class="form-group {% if form.password.errors %}has-error{% endif %}">
+                <label class="control-label" name="{{ form.password.name }}" for="password">{{ form.password.label }}</label>
+                {{ form.password|add_class:"form-control" }}
+                <span class="help-block">
+                    {% for error in  form.password.errors %}{{ error }}{% endfor %}
+                </span>
             </div>
             <div class="form-group">
-                <label for="pwd">Password:</label>
-                <input type="password" class="form-control" id="pwd">
+                <label name="{{ form.remember.name }}" for="email">{{ form.remember.label }}</label>
+                {{ form.remember }}
             </div>
-            <div class="checkbox">
-                <label><input type="checkbox">Remember me</label>
-            </div>
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %} {{error}} {% endfor %}
+                </div>
+            {% endif %}
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
-    </div>
-</div>
-{% endblock %}
-{% block sidebars %}
-    <div class="col-lg-3 col-md-4 col-sm-5 col-sx-12 sidebars">
-    <div class="sidebar">
-        <h3>New</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Best</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Top categories</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Top tags</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
     </div>
 </div>
 {% endblock %}

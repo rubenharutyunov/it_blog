@@ -86,6 +86,10 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = ['users.auth.EmailAndUsernameAuth']
+
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
 WSGI_APPLICATION = 'it_blog.wsgi.application'
 
 CKEDITOR_CONFIGS = {

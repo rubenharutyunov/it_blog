@@ -320,6 +320,7 @@ a.anon {
 
 .comment-replies {
     margin: 15px;
+    width: 120%;
 }
 
 .comment-replies .comment {

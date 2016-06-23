@@ -17,7 +17,7 @@ def save_current_user(request, instance, form):
 def truncate_text(text):
     if len(text) < 100:
         return text
-    return "%s..." % obj.text[:100]
+    return "%s..." % text[:100]
 
 
 def show_urls(objects):
@@ -74,6 +74,7 @@ class CommentAdmin(admin.ModelAdmin):
 
     def save_model(self, request, instance, form, change):
         return save_current_user(request, instance, form) 
+
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}

@@ -20,3 +20,8 @@ def liked(user, post):
         if user.favorite_posts.filter(id=post):
             return 'fav'
     return ''
+
+
+@register.filter(name='add_class')
+def add_class(field, classname):
+    return field.as_widget(attrs={'class': classname})
