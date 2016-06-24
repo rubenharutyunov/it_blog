@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.template.loader import render_to_string
 from django.http import HttpResponse
 from blog.models import Post, Comment, Category, Tag
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
@@ -129,12 +130,31 @@ def add_to_fav(request):
     return HttpResponse(json.dumps(res), content_type='application/json')
 
 
-def placeholder(request, *args, **kwargs):
-    return HttpResponse("placeholder")
-
-
 @require_POST
 def delete_comment(request):
     comment_id = request.POST.get('comment_id')
     get_object_or_404(Comment, id=comment_id).delete()
     return HttpResponse(json.dumps({'status': 'OK'}))
+
+
+@require_POST
+def add_comment(request):
+    post_id = request.POST.get('post_id')
+    comment_text = request.POST.get('text')
+    comment_author = request.user
+    comment_parent = request.POST.get('parent')
+    post = get_object_or_404(Post, id=post_id)
+    if comment_parent:  # If have parents (is reply)
+        comment = Comment.objects.create(text=comment_text, author=comment_author, post=post, parent_id=comment_parent)
+        comments = get_object_or_404(Comment, id=comment_parent).get_descendants()  # Get all descendants in tree
+    else:
+        comment = Comment.objects.create(text=comment_text, author=comment_author, post=post)
+        comments = [comment]  # Single comment
+    res_html = render_to_string('comment.html', {
+        'comments': comments,
+    }, request=request)
+    return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment.id, 'html': res_html}))
+
+
+def placeholder(request, *args, **kwargs):
+    return HttpResponse("placeholder")

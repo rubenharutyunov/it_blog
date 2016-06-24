@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from blog.views import placeholder, get_posts, get_post, posts_in_category, get_categories_tags, placeholder, like, add_to_fav, delete_comment
+from blog.views import placeholder, get_posts, get_post, posts_in_category, get_categories_tags, placeholder, like, add_to_fav, delete_comment, add_comment
 
 urlpatterns = [
     url(r'^$', get_posts, name='new_posts'),
@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^like/', like, name='like'),
     url(r'^fav/', add_to_fav, name='fav'),
     url(r'^del_comment/', delete_comment, name='del_comment'),
+    url(r'^add_comment/', add_comment, name='add_comment'),
     url(r'^categories/', get_categories_tags, {'type': 'categories'}, name='categories'),
     url(r'^tags/', get_categories_tags, {'type': 'tags'}, name='tags'),
     url(r'^category/(?P<slug>[\w-]+)/$', posts_in_category, {'type': 'category'}, name='category'),

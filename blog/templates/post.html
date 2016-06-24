@@ -17,12 +17,15 @@
     <div class="container comments">
         <h4>Comments:</h4>
         {% load mptt_tags %}
-        <div class="row">
-             {% recursetree comments %}
+        <div class="row comments-container">
+            {% recursetree comments %}
             <div id="{{ node.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
                 <div class="comment-info">
-                    <div class="comment{{ node.id }}-author">
-                        <i class="fa fa-user "></i> <a href="../../users/templates/user.html">{{ node.author }}</a>
+                    <div class="comment-author comment{{ node.id }}-author">
+                        <i class="fa fa-user "></i> <a href="{% url 'user' node.author.username %}">{{ node.author }}</a>
+                    </div>
+                    <div class="comment-datetime">
+                        {{ node.date_time }}
                     </div>
                 </div>
                 <hr>
@@ -37,11 +40,11 @@
                         <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> Delete</a>
                     </div>
                 {% endif %}
-                {% if not node.is_leaf_node %}
-                    <div class="comment-replies">
+                <div class="comment-replies">
+                    {% if not node.is_leaf_node %}
                         {{ children }}
-                    </div>
-                {% endif %}
+                    {% endif %}
+                </div>
             </div>
             {% endrecursetree %}
         </div>
@@ -50,7 +53,7 @@
                 <form method="post" action="{% url 'post' post.slug %}" class="col-md-5 comment-form">
                     {{ comment_form }}
                      {% csrf_token %}
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button data-post-id="{{ post.id }}" type="submit" class="btn btn-primary">Submit</button>
                     <input class="btn btn-clear btn-primary" type="button" value="Clear">
                 </form>
             </div>

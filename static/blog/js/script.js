@@ -26,30 +26,6 @@ function initMenu() {
     );
 }
 
-function handle_reply(id) {
-    var comment = $(".comment-reply");
-    var textarea = $(".comment-form textarea");
-    var parent = $(".comment-form input[name='parent']");
-    var label = $(".comment-form label");
-    comment.click(function (event) {
-        event.preventDefault();
-        var id = $(this).parent().attr("id");
-        console.log(parseInt(id));
-        var author = $(this).parent().find('.comment'+ id + '-author').text().trim();
-        parent.val(id);
-        textarea.val("@"+author+", ");
-        textarea.focus();
-        label.text("Reply to " + author);
-    });
-    var clear_button = $(".btn-clear");
-    clear_button.click(function (event) {
-        textarea.val("");
-        parent.val("");
-        label.text("Add comment:");
-        $(".errorlist").hide();
-    });
-}
-
 function handle_likes() {
     $(".post-like a").click(function (event) {
         event.preventDefault();
@@ -105,7 +81,7 @@ function handle_fav() {
 }
 
 function handle_comment_del() {
-    $('.comment-delete a').click(function (event) {
+    $(document).on('click', '.comment-delete a', function (event) {
         event.preventDefault();
         var $this = $(this);
         $.ajax({
@@ -116,7 +92,7 @@ function handle_comment_del() {
                success: function(response) {
                    if (response.status == 'OK') {
                        var comment =  $('.comment#'+$this.attr('class'));
-                      comment.hide('slow');
+                       comment.hide('slow');
                    }
                 },
                 error: function(rs, e) {
@@ -126,6 +102,66 @@ function handle_comment_del() {
     });
 }
 
+function handle_comment_add() {
+    $('.comment-form button').click(function(event) {
+        event.preventDefault();
+        var $this = $(this);
+        var form_data = $('.comment-form').serializeArray();
+        form_data.push({name: 'post_id', value: $this.attr('data-post-id')});
+        $.ajax({
+               type: "POST",
+               url: "/add_comment/",
+               data: form_data,
+               dataType: "json",
+               success: function(response) {
+                   if (response.status == 'OK') {
+                       var comment_container = $('.comments-container');
+                       var parent_id = $this.parent().find('input[name="parent"]').attr('value');
+                       if (parent_id) {
+                           $('#'+parent_id+" .comment-replies").html(response.html);
+                       } else {
+                           comment_container.prepend(response.html);
+                       }
+                       var new_comment = $('.comment#'+response.comment_id);
+                       clear_comment_form();
+                       $('html, body').animate({
+                           scrollTop: new_comment.offset().top
+                       }, 500);
+                   }
+                },
+                error: function(rs, e) {
+                    console.log(rs.responseText); // For debug
+                }
+          });
+    });
+}
+
+function handle_reply(id) {
+    var textarea = $(".comment-form textarea");
+    var parent = $(".comment-form input[name='parent']");
+    var label = $(".comment-form label");
+    $(document).on("click", '.comment-reply', function(event) {
+        event.preventDefault();
+        var id = $(this).parent().attr("id");
+        var author = $(this).parent().find('.comment'+ id + '-author').text().trim();
+        parent.val(id);
+        textarea.val("@"+author+", ");
+        textarea.focus();
+        label.text("Reply to " + author);
+    });
+    var clear_button = $(".btn-clear");
+    clear_button.click(function (event) {
+        clear_comment_form();
+    });
+}
+
+function clear_comment_form() {
+    var textarea = $(".comment-form textarea").val("");
+    var parent = $(".comment-form input[name='parent']").val("");
+    var label = $(".comment-form label").text("Add comment:");
+    $(".errorlist").hide();
+}
+
 $(document).ready(function() {
     initMenu();
     hljs.initHighlightingOnLoad();
@@ -133,6 +169,7 @@ $(document).ready(function() {
     handle_likes();
     handle_fav();
     handle_comment_del();
+    handle_comment_add();
 });
 
 
@@ -140,7 +177,6 @@ $(window).on("scroll", function() {
     if ($(window).scrollTop() > 50) {
         $('#sidebar-wrapper').addClass('sidebar-wrapper-scrolled')
     } else {
-        console.log("top")
         $('#sidebar-wrapper').removeClass('sidebar-wrapper-scrolled')
     }
 });

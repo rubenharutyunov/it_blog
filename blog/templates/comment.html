@@ -1,0 +1,30 @@
+{% load mptt_tags %}
+{% recursetree comments %}
+            <div id="{{ node.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div class="comment-info">
+                    <div class="comment-author comment{{ node.id }}-author">
+                        <i class="fa fa-user "></i> <a href="{% url 'user' node.author.username %}">{{ node.author }}</a>
+                    </div>
+                    <div class="comment-datetime">
+                        {{ node.date_time }}
+                    </div>
+                </div>
+                <hr>
+                <div class="comment-text">
+                    {{ node.text }}
+                </div>
+                <div class="comment-reply">
+                    <a href="#"><i class="fa fa-reply"></i> Reply</a>
+                </div>
+                {% if request.user == node.author or perms.blog.can_delete_comment %}
+                    <div class="comment-delete">
+                        <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> Delete</a>
+                    </div>
+                {% endif %}
+                <div class="comment-replies">
+                    {% if not node.is_leaf_node %}
+                        {{ children }}
+                    {% endif %}
+                </div>
+            </div>
+            {% endrecursetree %}

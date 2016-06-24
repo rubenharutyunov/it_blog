@@ -327,8 +327,13 @@ a.anon {
     margin-left: 2%;
 }
 
-.comment-delete, .comment-reply {
+.comment-delete, .comment-reply, .comment-author, .comment-datetime {
     display: inline-block;
+}
+
+.comment-datetime {
+    font-size: 0.9em;
+    margin-left: 1%;
 }
 
 .comment-form {
