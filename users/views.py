@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from users.forms import SignInForm
-
+from users.models import User
 
 def sign_in(request):
     if request.method == 'GET':
@@ -34,3 +35,10 @@ def sign_out(request):
     if user.is_authenticated():
         logout(request)
     return HttpResponseRedirect('/')
+
+
+def get_users(request):
+    users = User.objects.all()
+    return render(request, 'users.html', {
+        'users': users
+    })

@@ -18,6 +18,8 @@ class UserAdmin(BaseUserAdmin):
             'rating',
             'favorite_posts',
         )}),
+        ('Links', {'classes': ('collapse',), 'fields': ('website', 'facebook', 'gplus',
+                              'twitter', 'github', 'linkedin', 'vk')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
     )

@@ -1,96 +1,53 @@
-{% extends "../../templates/base.html" %}
+{% extends "base.html" %}
+{% block nav %}
+    {% include "navigation.html" with active="users" %}
+{% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <div class="user user-init">
-        <h3 class="main-title text-uppercase">User - Admin</h3>
-        <div class="user-content">
-            <div class="user-avatar">
-                <img src="http://cdn1.tnwcdn.com/wp-content/blogs.dir/1/files/2015/12/anonymous.jpg" alt="">
-            </div>
-            <div class="user-info">
-                <ul>
-                    <li>First name: Admin</li>
-                    <li>Last name: Adminyan</li>
-                    <li>Email: root@localhost.local</li>
-                    <li>Posts: <a href="../../templates/base.html">4534</a></li>
-                    <li>Comments: <a href="#">459</a></li>
-                    <li>Last seen: 08-04-16 23:55</li>
-                    <li>Likes: 4045</li>
-                    <li>Questions: (Soon)</li>
-                </ul>
-                <div class="user-social">
-                    <a href=""><i class="fa fa-facebook-square"></i></a>
-                    <a href=""><i class="fa fa-google-plus-square"></i></a>
-                    <a href=""><i class="fa fa-twitter-square"></i></a>
-                    <a href=""><i class="fa fa-github-square"></i></a>
-                    <a href=""><i class="fa fa-vk"></i></i></a>
+        {% for user in users %}
+            <div class="user user-init">
+                <h3 class="main-title text-uppercase">User - {{ user.username }}</h3>
+                <div class="user-content">
+                    <div class="user-avatar">
+                        {% if user.avatar %}
+                            <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.username }}">
+                        {% else %}
+                            <i class="fa fa-user-secret" aria-hidden="true"></i>
+                        {% endif %}
+                    </div>
+                    <div class="user-info">
+                        <ul>
+                            <li>First name: {{ user.first_name }}</li>
+                            <li>Last name: {{ user.last_name }}</li>
+                            <li>Posts: <a href="../../templates/base.html">{{ user.post_set.count }}</a></li>
+                            <li>Comments: <a href="#">{{ user.comment_set.count }}</a></li>
+                            <li>Last seen: {{ user.last_login }}</li>
+                            <li>Likes: {{ user.likes.count }}</li>
+                            <li>Questions: (Soon)</li>
+                        </ul>
+                        <div class="user-social">
+                            {% if user.website %}
+                                <a href="{{ user.website }}"><i class="fa fa-globe" aria-hidden="true"></i></a>
+                            {% endif %}
+                            {% if user.facebook %}
+                                <a href="{{ user.facebook }}"><i class="fa fa-facebook-square"></i></a>
+                            {% endif %}
+                            {% if user.gplus %}
+                                <a href="{{ user.gplus }}"><i class="fa fa-google-plus-square"></i></a>
+                            {% endif %}
+                            {% if user.twitter %}
+                                <a href="{{ user.twitter }}"><i class="fa fa-twitter-square"></i></a>
+                            {% endif %}
+                            {% if user.github %}
+                                <a href="{{ user.github }}"><i class="fa fa-github-square"></i></a>
+                            {% endif %}
+                            {% if user.vk %}
+                                <a href="{{ user.vk }}"><i class="fa fa-vk"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
-</div>
-{% endblock %}
-{% block sidebars %}
-    <div class="col-lg-3 col-md-4 col-sm-5 col-sx-12 sidebars">
-    <div class="sidebar">
-        <h3>New</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Best</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Top categories</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-    <div class="sidebar">
-        <h3>Top tags</h3>
-        <ul class="sidebar-posts">
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-            <li><a href="">Lorem ipsum dit dolor amet</a></li>
-        </ul>
-    </div>
-</div>
 {% endblock %}
