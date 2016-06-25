@@ -1,3 +1,9 @@
+/*
+WARNING: This code is just HORRIBLE O_o
+Maybe i'll refactor it or rewrite from scratch..
+..in the next life...
+* */
+
 function initMenu() {
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
@@ -102,37 +108,54 @@ function handle_comment_del() {
     });
 }
 
-function handle_comment_add() {
-    $('.comment-form button').click(function(event) {
-        event.preventDefault();
-        var $this = $(this);
-        var form_data = $('.comment-form').serializeArray();
-        form_data.push({name: 'post_id', value: $this.attr('data-post-id')});
-        $.ajax({
-               type: "POST",
-               url: "/add_comment/",
-               data: form_data,
-               dataType: "json",
-               success: function(response) {
-                   if (response.status == 'OK') {
-                       var comment_container = $('.comments-container');
-                       var parent_id = $this.parent().find('input[name="parent"]').attr('value');
-                       if (parent_id) {
-                           $('#'+parent_id+" .comment-replies").html(response.html);
+function add_edit_comment(form_data) {
+    var comment_form = $('.comment-form');
+    form_data.push({name: 'post_id', value: comment_form.find('button').attr('data-post-id')});
+    var comment_id = comment_form.find('button').attr('data-comment-id');
+    var url;
+    if (comment_id) {
+        url = '/edit_comment/';
+        form_data.push({name: 'comment_id', value: comment_id});
+    } else {
+        url = '/add_comment/';
+    }
+    $.ajax({
+           type: "POST",
+           url: url,
+           data: form_data,
+           dataType: "json",
+           success: function(response) {
+               if (response.status == 'OK') {
+                   var comment_container = $('.comments-container');
+                   var parent_id = comment_form.find('input[name="parent"]').attr('value');
+                   if (comment_id) { // If comment ID is set (Editing comment)
+                           $('.comment#'+comment_id + ' > .comment-text').text($('.comment-form textarea').val());
+                           $('.comment#'+comment_id + ' > .comment-replies').html(response.replies);
+                   } else {
+                       if (parent_id) {  // If parent ID is set (is a reply)
+                           $('#' + parent_id + " .comment-replies").html(response.html);
                        } else {
                            comment_container.prepend(response.html);
                        }
-                       var new_comment = $('.comment#'+response.comment_id);
-                       clear_comment_form();
-                       $('html, body').animate({
-                           scrollTop: new_comment.offset().top
-                       }, 500);
                    }
-                },
-                error: function(rs, e) {
-                    console.log(rs.responseText); // For debug
-                }
-          });
+                   var new_comment = $('.comment#'+response.comment_id);
+                   clear_comment_form();
+                   $('html, body').animate({
+                       scrollTop: new_comment.offset().top
+                   }, 500);
+               }
+           },
+           error: function(rs, e) {
+                console.log(rs.responseText); // For debug
+           }
+    });
+}
+
+function handle_comment_add() {
+    $('.comment-form button').click(function(event) {
+        event.preventDefault();
+        var form_data = $('.comment-form').serializeArray();
+        add_edit_comment(form_data);
     });
 }
 
@@ -175,10 +198,30 @@ function handle_comments_refresh() {
     })
 }
 
+function handle_comment_edit() {
+    $(document).on('click', '.comment-edit a', function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        var comment_form = $('.comment-form');
+        var comment = $this.parent().parent();
+        var textarea = comment_form.find('textarea');
+        var label = comment_form.find('label');
+        var comment_text = comment.find('.comment-text')[0].innerText;
+        var comment_id = $this.attr('class');
+        textarea.val(comment_text);
+        textarea.focus();
+        label.text("Edit comment");
+        comment_form.find('button').attr('data-comment-id', comment_id);
+    })
+}
+
+
 function clear_comment_form() {
     var textarea = $(".comment-form textarea").val("");
     var parent = $(".comment-form input[name='parent']").val("");
     var label = $(".comment-form label").text("Add comment:");
+    $('.comment-form button').removeAttr('data-comment-id');
+    $('.comment-form input[name="parent"]').removeAttr('value');
     $(".errorlist").hide();
 }
 
@@ -191,6 +234,7 @@ $(document).ready(function() {
     handle_comment_del();
     handle_comment_add();
     handle_comments_refresh();
+    handle_comment_edit();
 });
 
 

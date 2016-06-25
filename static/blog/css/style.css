@@ -328,6 +328,10 @@ a.anon {
     padding: 0 1% 1% 2%;
 }
 
+.comment-delete {
+    margin-left: 1%;
+}
+
 .comment-replies {
     margin: 15px;
     width: 120%;
@@ -337,7 +341,7 @@ a.anon {
     margin-left: 2%;
 }
 
-.comment-delete, .comment-reply, .comment-author, .comment-datetime {
+.comment-delete, .comment-reply, .comment-author, .comment-datetime, .comment-edit {
     display: inline-block;
 }
 

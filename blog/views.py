@@ -1,3 +1,4 @@
+from datetime import datetime
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -150,19 +151,35 @@ def add_comment(request):
     else:
         comment = Comment.objects.create(text=comment_text, author=comment_author, post=post)
         comments = [comment]  # Single comment
-    res_html = render_to_string('comment.html', {
+    res_html = render_to_string('comments.html', {
         'comments': comments,
     }, request=request)
     return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment.id, 'html': res_html}))
 
 
+@require_POST
 def refresh_comments(request):
     post_id = request.POST.get('post_id')
     post = get_object_or_404(Post, id=post_id)
     comments = post.comment_set.all()
-    return HttpResponse(render_to_string('comment.html', {
+    return HttpResponse(render_to_string('comments.html', {
         'comments': comments,
     }, request=request))
+
+
+@require_POST
+def edit_comment(request):
+    comment_text = request.POST.get('text')
+    comment_id = request.POST.get('comment_id')
+    comment = get_object_or_404(Comment, id=comment_id)
+    comment.text = comment_text
+    comment.save()
+    descendants = comment.get_descendants()
+    replies = render_to_string('comments.html', {
+        'comments': descendants
+    }, request=request)
+    return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment_id, 'replies': replies}))
+
 
 
 def placeholder(request, *args, **kwargs):
