@@ -156,5 +156,14 @@ def add_comment(request):
     return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment.id, 'html': res_html}))
 
 
+def refresh_comments(request):
+    post_id = request.POST.get('post_id')
+    post = get_object_or_404(Post, id=post_id)
+    comments = post.comment_set.all()
+    return HttpResponse(render_to_string('comment.html', {
+        'comments': comments,
+    }, request=request))
+
+
 def placeholder(request, *args, **kwargs):
     return HttpResponse("placeholder")

@@ -297,6 +297,16 @@ a.anon {
 
 /* Post comments */
 
+.comments-title {
+    display: inline-block;
+}
+
+.comments .refresh {
+    display: inline-block;
+    position: absolute;
+    right: 25px;
+}
+
 .comment {
     border-radius: 30px;
     margin: 1% 0;

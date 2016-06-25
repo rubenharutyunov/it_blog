@@ -155,6 +155,26 @@ function handle_reply(id) {
     });
 }
 
+function handle_comments_refresh() {
+    $('.comments .refresh').click(function (event) {
+        event.preventDefault();
+        var $this = $(this);
+        var post_id = $this.attr('data-post-id');
+        $.ajax({
+               type: "POST",
+               url: "/refresh_comments/",
+               data: {'post_id': post_id,'csrfmiddlewaretoken': csrf},
+               dataType: "html",
+               success: function(response) {
+                   $this.parent().find('.comments-container').html(response).hide(0).fadeIn("slow");
+                },
+                error: function(rs, e) {
+                    console.log(rs.responseText); // For debug
+                }
+          });
+    })
+}
+
 function clear_comment_form() {
     var textarea = $(".comment-form textarea").val("");
     var parent = $(".comment-form input[name='parent']").val("");
@@ -170,6 +190,7 @@ $(document).ready(function() {
     handle_fav();
     handle_comment_del();
     handle_comment_add();
+    handle_comments_refresh();
 });
 
 
