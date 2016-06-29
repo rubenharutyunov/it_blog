@@ -5,49 +5,11 @@
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
         {% for user in users %}
-            <div class="user user-init">
-                <h3 class="main-title text-uppercase">User - {{ user.username }}</h3>
-                <div class="user-content">
-                    <div class="user-avatar">
-                        {% if user.avatar %}
-                            <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.username }}">
-                        {% else %}
-                            <i class="fa fa-user-secret" aria-hidden="true"></i>
-                        {% endif %}
-                    </div>
-                    <div class="user-info">
-                        <ul>
-                            <li>First name: {{ user.first_name }}</li>
-                            <li>Last name: {{ user.last_name }}</li>
-                            <li>Posts: <a href="../../templates/base.html">{{ user.post_set.count }}</a></li>
-                            <li>Comments: <a href="#">{{ user.comment_set.count }}</a></li>
-                            <li>Last seen: {{ user.last_login }}</li>
-                            <li>Likes: {{ user.likes.count }}</li>
-                            <li>Questions: (Soon)</li>
-                        </ul>
-                        <div class="user-social">
-                            {% if user.website %}
-                                <a href="{{ user.website }}"><i class="fa fa-globe" aria-hidden="true"></i></a>
-                            {% endif %}
-                            {% if user.facebook %}
-                                <a href="{{ user.facebook }}"><i class="fa fa-facebook-square"></i></a>
-                            {% endif %}
-                            {% if user.gplus %}
-                                <a href="{{ user.gplus }}"><i class="fa fa-google-plus-square"></i></a>
-                            {% endif %}
-                            {% if user.twitter %}
-                                <a href="{{ user.twitter }}"><i class="fa fa-twitter-square"></i></a>
-                            {% endif %}
-                            {% if user.github %}
-                                <a href="{{ user.github }}"><i class="fa fa-github-square"></i></a>
-                            {% endif %}
-                            {% if user.vk %}
-                                <a href="{{ user.vk }}"><i class="fa fa-vk"></i></a>
-                            {% endif %}
-                        </div>
-                    </div>
-                </div>
-            </div>
+             <div class="user user-init">
+                <h3 class="main-title text-uppercase"><a href="{% url 'user' user.username %}">User - {{ user.username }}</a></h3>
+                {% include 'single_user.html' with user=user %}
+             </div>
         {% endfor %}
+        {% include 'pagination.html' with obj=users %}
     </div>
 {% endblock %}

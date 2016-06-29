@@ -1,11 +1,13 @@
-<ul class="pagination">
-    {% if obj.has_next %}
-        {% for page_num in obj.paginator.page_range %}
-            {% if page_num == obj.number %}
-                <li><a class="active" href="">{{ page_num }}</a></li>
-            {% else %}
-                <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
-            {% endif %}
-        {%  endfor %}
-    {% endif %}
-</ul>
+<div class="posts-pagination text-center">
+    <ul class="pagination">
+        {% if obj.paginator.num_pages > 1 %}
+            {% for page_num in obj.paginator.page_range %}
+                {% if page_num == obj.number %}
+                    <li><a class="active" href="">{{ page_num }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                {% endif %}
+            {%  endfor %}
+        {% endif %}
+    </ul>
+</div>

@@ -1,0 +1,45 @@
+<div class="user-content">
+    <div class="user-avatar">
+        {% if user.avatar %}
+            <img src="{{ MEDIA_URL }}{{ user.avatar }}" alt="{{ user.username }}">
+        {% else %}
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+        {% endif %}
+    </div>
+    <div class="user-info">
+        <ul>
+            <li>First name: {% if user.first_name %}{{ user.first_name }}{% else %}Not set{% endif %}</li>
+            <li>Last name: {% if user.last_name %}{{ user.last_name }}{% else %}Not set{% endif %}</li>
+            <li>Posts:
+                {% if user.post_set.count > 0 %}
+                    <a href="{% url 'user_posts' user.username %}">
+                {% endif %}
+                {{ user.post_set.count }}</a>
+            </li>
+            <li>Comments: {% if user.comment_set.count > 0 %}<a href="#">{% endif %}{{ user.comment_set.count }}</a></li>
+            <li>Last seen: {{ user.last_login }}</li>
+            <li>Likes: {{ user.likes.count }}</li>
+            <li>Questions: (Soon)</li>
+        </ul>
+        <div class="user-social">
+            {% if user.website %}
+                <a href="{{ user.website }}"><i class="fa fa-globe" aria-hidden="true"></i></a>
+            {% endif %}
+            {% if user.facebook %}
+                <a href="{{ user.facebook }}"><i class="fa fa-facebook-square"></i></a>
+            {% endif %}
+            {% if user.gplus %}
+                <a href="{{ user.gplus }}"><i class="fa fa-google-plus-square"></i></a>
+            {% endif %}
+            {% if user.twitter %}
+                <a href="{{ user.twitter }}"><i class="fa fa-twitter-square"></i></a>
+            {% endif %}
+            {% if user.github %}
+                <a href="{{ user.github }}"><i class="fa fa-github-square"></i></a>
+            {% endif %}
+            {% if user.vk %}
+                <a href="{{ user.vk }}"><i class="fa fa-vk"></i></a>
+            {% endif %}
+        </div>
+    </div>
+</div>

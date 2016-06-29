@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block nav %}
+    {% include "navigation.html" with active="profile" %}
+{% endblock %}
+{% block main_content %}
+    <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
+        <h2 class="main-title text-uppercase">
+            IT Blog - {{ username }}'s comments
+        </h2>
+        {% load mptt_tags %}
+        <div class="row comments-container">
+            {% recursetree comments %}
+            <div id="{{ node.id }}" class="comment comment-full col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                <div class="comment-info">
+                    <div class="comment-author comment{{ node.id }}-author">
+                        <i class="fa fa-user "></i> <a href="{% url 'user' node.author.username %}">{{ node.author }}</a>
+                    </div>
+                    <div class="comment-datetime">
+                        {{ node.date_time }}
+                    </div>
+                    <div class="comment-post">
+                        <a href="{% url 'post' node.post.slug %}">To post {{ node.post }}</a>
+                    </div>
+                </div>
+                <hr>
+                <div class="comment-text">
+                    {{ node.text }}
+                </div>
+                {% if request.user == node.author or perms.blog.can_delete_comment %}
+                    <div class="comments-manage">`</div>
+                    <div class="comment-delete">
+                        <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> Delete</a>
+                    </div>
+                {% endif %}
+                <div class="comment-replies">
+                    {% if not node.is_leaf_node %}
+                        {{ children }}
+                    {% endif %}
+                </div>
+            </div>
+            {% endrecursetree %}
+        </div>
+    </div>
+{% endblock %}

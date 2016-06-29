@@ -15,7 +15,7 @@ class UserAdmin(BaseUserAdmin):
             'last_name',
             'email',
             'avatar',
-            'rating',
+            'personal_info',
             'favorite_posts',
         )}),
         ('Links', {'classes': ('collapse',), 'fields': ('website', 'facebook', 'gplus',

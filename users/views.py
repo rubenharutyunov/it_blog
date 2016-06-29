@@ -4,6 +4,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from users.forms import SignInForm
 from users.models import User
+from blog.views import pagination
 
 def sign_in(request):
     if request.method == 'GET':
@@ -39,6 +40,32 @@ def sign_out(request):
 
 def get_users(request):
     users = User.objects.all()
+    users = pagination(request, users, 20)
     return render(request, 'users.html', {
         'users': users
+    })
+
+
+def get_user_posts(request, username):
+    user = get_object_or_404(User, username=username)
+    posts = pagination(request, user.post_set.all(), 10)
+    return render(request, 'posts.html', {
+        'posts': posts,
+        'additional': "%s's posts" % username
+    })
+
+
+def get_user_comments(request, username):
+    user = get_object_or_404(User, username=username)
+    comments = pagination(request, user.comment_set.all(), 20)
+    return render(request, 'user_comments.html', {
+        'comments': comments,
+        'username': user.username
+    })
+
+
+def get_user(request, username):
+    user = get_object_or_404(User, username=username)
+    return render(request, 'user.html', {
+        'user': user
     })

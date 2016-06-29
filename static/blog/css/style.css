@@ -333,11 +333,11 @@ a.anon {
 }
 
 .comment-reply {
-    padding: 0 1% 1% 2%;
+    padding: 0 1% 1% 0;
 }
 
-.comment-delete {
-    margin-left: 1%;
+.comment-edit {
+    margin-right: 1%;
 }
 
 .comment-replies {
@@ -349,13 +349,18 @@ a.anon {
     margin-left: 2%;
 }
 
-.comment-delete, .comment-reply, .comment-author, .comment-datetime, .comment-edit {
+.comment-delete, .comment-reply, .comment-author, .comment-datetime, .comment-edit, .comment-post {
     display: inline-block;
 }
 
-.comment-datetime {
+.comment-datetime, .comment-post {
     font-size: 0.9em;
     margin-left: 1%;
+}
+
+.comments-manage {
+    display: inline-block;
+    margin-left: 2%;
 }
 
 .comment-form {
@@ -433,6 +438,14 @@ h2.reg {
 
 .user {
     margin-bottom: 2%;
+}
+
+.user-personal-info {
+    margin-top: 5%;
+}
+
+.user-personal-info-header {
+    margin: 7% 0 4% 0;
 }
 
 /* Media queries */

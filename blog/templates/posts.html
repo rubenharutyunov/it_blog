@@ -5,26 +5,23 @@
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="main-title text-uppercase">IT Blog - {{ types|get:type }} {{ additional }}</h2>
-    {% for post in posts %}
-    <div id="post-init" class="post">
-        <h3 class="post-title"><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
-        <div class="post-tags">
-            {% include "post_tags.html" with post=post %}
+        <h2 class="main-title text-uppercase">
+            IT Blog - {% if type %}{{ types|get:type }}{% endif %} {{ additional }}
+        </h2>
+        {% for post in posts %}
+        <div id="post-init" class="post">
+            <h3 class="post-title"><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
+            <div class="post-tags">
+                {% include "post_tags.html" with post=post %}
+            </div>
+            <div class="post-content">
+                {{ post.text | truncatewords_html:200 | safe }}
+            </div>
+            <div class="post-info">
+                {% include "post_info.html" with post=post %}
+            </div>
         </div>
-        <div class="post-content">
-            {{ post.text | truncatewords_html:200 | safe }}
-        </div>
-        <div class="post-info">
-            {% include "post_info.html" with post=post %}
-        </div>
-    </div>
-    {% endfor %}
-    <div class="posts-pagination text-center">
+        {% endfor %}
         {% include "pagination.html" with obj=posts %}
     </div>
-</div>
-{% endblock %}
-{% block sidebars %}
-
 {% endblock %}

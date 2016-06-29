@@ -129,6 +129,7 @@ function add_edit_comment(form_data) {
                    var comment_container = $('.comments-container');
                    var parent_id = comment_form.find('input[name="parent"]').attr('value');
                    if (comment_id) { // If comment ID is set (Editing comment)
+                            console.log('HERE');
                            $('.comment#'+comment_id + ' > .comment-text').text($('.comment-form textarea').val());
                            $('.comment#'+comment_id + ' > .comment-replies').html(response.replies);
                    } else {
@@ -165,6 +166,7 @@ function handle_reply(id) {
     var label = $(".comment-form label");
     $(document).on("click", '.comment-reply', function(event) {
         event.preventDefault();
+        $('.comment-form button').removeAttr('data-comment-id'); // Remove comment ID (this is reply, not edit)
         var id = $(this).parent().attr("id");
         var author = $(this).parent().find('.comment'+ id + '-author').text().trim();
         parent.val(id);

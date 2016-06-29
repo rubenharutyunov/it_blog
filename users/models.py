@@ -26,6 +26,7 @@ class User(AbstractUser):
     avatar = models.ImageField(blank=True, null=True)
     about = RichTextUploadingField(blank=True)
     favorite_posts = models.ManyToManyField('blog.Post', blank=True, related_name='favorite')
+    personal_info = RichTextUploadingField(blank=True)
     website = models.URLField(blank=True)
     facebook = models.URLField(blank=True, validators=[URLDomainValidator(['fb.com', 'facebook.com'])])
     gplus = models.URLField(blank=True, verbose_name="Google Plus", validators=[URLDomainValidator(['plus.google.com'])])
