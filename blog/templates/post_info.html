@@ -28,9 +28,11 @@
 <div class="post-category">
    <i class="fa fa-tag"></i><a href="{% url "category" post.category.slug %}"> {{ post.category }}</a>
 </div>
-<div class="post-category">
-  <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-</div>
+{% if request.user == post.author or request.user.is_staff %}
+    <div class="post-edit">
+      <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+    </div>
+{% endif %}
 {% if not full %}
     <div class="post-more">
         <a href="{% url 'post' post.slug %}">read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;

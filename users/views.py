@@ -48,7 +48,7 @@ def get_users(request):
 
 def get_user_posts(request, username):
     user = get_object_or_404(User, username=username)
-    posts = pagination(request, user.post_set.all(), 10)
+    posts = pagination(request, user.post_set.filter(approved=True), 10)
     return render(request, 'posts.html', {
         'posts': posts,
         'additional': "%s's posts" % username
