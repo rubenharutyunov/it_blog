@@ -12,7 +12,8 @@
             <li>Last name: {% if user.last_name %}{{ user.last_name }}{% else %}Not set{% endif %}</li>
             <li>Posts:
                 {% if user.post_set.count > 0 %}
-                    <a href="{% url 'user_posts' user.username %}">{{ user.post_set.count }}</a>
+                    {% load blog_tags %}
+                    <a href="{% url 'user_posts' user.username %}">{{ user|approved_count }}</a>
                 {% else %}
                     {{ user.post_set.count }}
                 {% endif %}

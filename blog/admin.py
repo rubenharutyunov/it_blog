@@ -34,12 +34,18 @@ def show_urls(objects):
     return res or None
     
 
+def approve_action(modeladmin, request, queryset):
+    queryset.update(approved=True)
+approve_action.short_description = "Approve selected"
+
+
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('views',  'author')
     list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'comment_count', 'post_tags', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
+    actions = [approve_action]
 
     def post_tags(self, obj):
         tags = obj.tags.all()

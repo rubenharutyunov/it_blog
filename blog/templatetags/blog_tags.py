@@ -25,3 +25,8 @@ def liked(user, post):
 @register.filter(name='add_class')
 def add_class(field, classname):
     return field.as_widget(attrs={'class': classname})
+
+
+@register.filter(name='approved_count')
+def approved_count(user):
+    return user.post_set.filter(approved=True).count()

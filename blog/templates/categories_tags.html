@@ -1,7 +1,7 @@
-{% extends "base.html" %}
+{% extends "blog/base.html" %}
 {% block nav %}
     {% load blog_tags %}
-    {% include "navigation.html" with active="home" active_sub=type types=types %}
+    {% include "blog/navigation.html" with active="home" active_sub=type types=types %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">

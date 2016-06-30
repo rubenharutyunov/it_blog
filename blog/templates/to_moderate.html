@@ -1,0 +1,13 @@
+<ul class="actionlist">
+{% for post in posts %}
+    <li>
+        <a href="{% url 'admin:blog_post_change'  post.id %}">{{ post.title }}</a>
+        <br/>
+        <span class="mini quiet"><a href="{% url 'admin:users_user_change'  post.author.id %}">{{ post.author }}</a> at {{ post.date_time }}</span>
+    </li>
+{% endfor %}
+    {% if remaining %}
+        <li class="mini ">And {{ remaining }} more</li>
+    {% endif %}
+    <li><a href="{% url 'admin:blog_post_changelist' %}?approved__exact=0">See all</a></li>
+</ul>

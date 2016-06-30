@@ -1,0 +1,29 @@
+{% extends "admin/index.html" %}
+{% block content %}
+    {{ block.super }}
+{% endblock %}
+{% block sidebar %}
+    <div id="content-related">
+        <div class="module" id="modereate-actions-module">
+            <h2>Posts to moderate</h2>
+            {% load moderation %}
+            {% get_moderation_sidebar %}
+            {% for entry in posts %}
+                {{ post }}
+            <li class="{% if entry.is_addition %}addlink{% endif %}{% if entry.is_change %}changelink{% endif %}{% if entry.is_deletion %}deletelink{% endif %}">
+                {% if entry.is_deletion or not entry.get_admin_url %}
+                    {{ entry.object_repr }}
+                {% else %}
+                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                {% endif %}
+                <br/>
+                {% if entry.content_type %}
+                    <span class="mini quiet">{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
+                {% else %}
+                    <span class="mini quiet">'Unknown content'</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+            </ul>
+    </div>
+{% endblock %}
