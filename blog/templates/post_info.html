@@ -35,8 +35,13 @@
       <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
     </div>
 {% endif %}
+{% if request.user == post.author or request.user.is_staff %}
+    <div class="post-delete">
+      <a href="{% url "delete_post" post.slug %}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+    </div>
+{% endif %}
 {% if not full %}
     <div class="post-more">
-        <a href="{% url 'post' post.slug %}">read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
+        <a href="{% url 'post' post.slug %}">Read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
     </div>
 {% endif %}

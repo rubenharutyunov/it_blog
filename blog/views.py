@@ -1,6 +1,7 @@
+import json
 from django.shortcuts import render
 from django.template.loader import render_to_string
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from blog.models import Post, Comment, Category, Tag
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django import http
@@ -9,8 +10,8 @@ from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from blog.forms import CommentForm, PostForm
-import json
 
 
 def pagination(request, obj, items):
@@ -214,6 +215,15 @@ def add_edit_post(request, slug=None):
         return render(request, 'add_post_success.html', {
             'success': success
         })
+
+
+def delete_post(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    if request.user.is_staff or request.user == post.author:
+        post.delete()
+    else:
+        raise PermissionDenied
+    return HttpResponseRedirect(reverse('new_posts'))
 
 
 def placeholder(request, *args, **kwargs):
