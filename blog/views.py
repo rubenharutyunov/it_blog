@@ -207,7 +207,9 @@ def add_edit_post(request, slug=None):
             instance.author = request.user
             if not request.user.is_staff:
                 instance.approved = False
+
             instance.save()
+            form.save_m2m()
             success = True
         return render(request, 'add_post_success.html', {
             'success': success
