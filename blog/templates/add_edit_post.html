@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block nav %}
+    {% include "navigation.html" with active="add" %}
+{% endblock %}
+{% block main_content %}
+    <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
+        {% if edit %}
+            <h2 class="add">Edit post</h2>
+        {% else %}
+            <h2 class="add">Add post</h2>
+        {% endif %}
+        {% load staticfiles %}
+        {{ form.media }}
+        {% if not request.user.is_staff %}
+            <script src="{% static 'blog/js/disable_ckeditor_upload.js' %}"></script>
+        {% endif %}
+        <form action="" method="POST" class="add-form form-horizontal" role="form">
+            {% csrf_token %}
+            {% load blog_tags %}
+            <div class="form-group">
+                <label for="title" class="col-lg-2 col-md-3 control-label">{{ form.title.label }}</label>
+                <div class="col-lg-4 col-md-6">
+                    {{ form.title|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="text" class="col-lg-2 col-md-3 control-label">{{ form.text.label }}</label>
+                <div class="col-lg-9 col-md-9">
+                     {{ form.text|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="sel1">{{ form.category.label }}</label>
+                <div class="col-lg-9 col-md-9">
+                    {{ form.category|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-2 col-md-3 control-label" for="sel2">{{ form.tags.label }}</label>
+                <div class="col-lg-9 col-md-9">
+                    {{ form.tags|add_class:"form-control" }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
+                    {% if edit %}
+                        <button type="submit" class="btn btn-primary btn-block">Edit post</button>
+                    {% else %}
+                        <button type="submit" class="btn btn-primary btn-block">Add post</button>
+                    {% endif %}
+                </div>
+            </div>
+        </form> <!-- /form -->
+    </div> <!-- ./container -->
+{% endblock %}

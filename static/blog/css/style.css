@@ -152,6 +152,14 @@ a:hover {
     border: 1px solid #e7e7e7;
 }
 
+select#id_tags {
+    min-height: 200px;
+}
+
+#cke_id_text {
+    width: inherit !important;
+}
+
 .sidebars {
     padding-bottom: 2%;
 }

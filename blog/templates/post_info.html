@@ -25,8 +25,11 @@
 <div class="post-views">
     <i class="fa fa-eye"></i> {{ post.views }}
 </div>
- <div class="post-category">
+<div class="post-category">
    <i class="fa fa-tag"></i><a href="{% url "category" post.category.slug %}"> {{ post.category }}</a>
+</div>
+<div class="post-category">
+  <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
 </div>
 {% if not full %}
     <div class="post-more">

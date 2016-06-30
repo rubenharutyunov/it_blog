@@ -1,4 +1,3 @@
-from datetime import datetime
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -8,7 +7,9 @@ from django import http
 from django.db.models import F
 from django.shortcuts import get_object_or_404
 from django.views.decorators.http import require_POST
-from blog.forms import CommentForm
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import PermissionDenied
+from blog.forms import CommentForm, PostForm
 import json
 
 
@@ -26,11 +27,11 @@ def pagination(request, obj, items):
 
 def get_posts(request, order_by='new'):
     if order_by == 'most_viewed':
-        posts = Post.objects.order_by('-views')
+        posts = Post.objects.filter(approved=True).order_by('-views')
     elif order_by == 'new':
-        posts = Post.objects.order_by('-date_time')
+        posts = Post.objects.filter(approved=True).order_by('-date_time')
     else:  # Best
-        posts = Post.objects.order_by('-likes')
+        posts = Post.objects.filter(approved=True).order_by('-likes')
     posts = pagination(request, posts, 10)
     return render(request, 'posts.html', {
         'posts': posts,
@@ -180,6 +181,37 @@ def edit_comment(request):
     }, request=request)
     return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment_id, 'replies': replies}))
 
+
+@login_required
+def add_edit_post(request, slug=None):
+    if request.method == 'GET':
+        form = PostForm()
+        if slug:  # If editing
+            post = get_object_or_404(Post, slug=slug)
+            if request.user.is_staff or request.user == post.author:
+                form = PostForm(instance=post)
+            else:
+                raise PermissionDenied
+        return render(request, 'add_edit_post.html', {
+            'form': form,
+            'edit': slug is not None
+        })
+    else:  # POST
+        if not slug:
+            form = PostForm(request.POST)
+        else:
+            form = PostForm(request.POST, instance=get_object_or_404(Post, slug=slug))
+        success = False
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.author = request.user
+            if not request.user.is_staff:
+                instance.approved = False
+            instance.save()
+            success = True
+        return render(request, 'add_post_success.html', {
+            'success': success
+        })
 
 
 def placeholder(request, *args, **kwargs):

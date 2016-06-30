@@ -9,7 +9,8 @@ from mptt.admin import MPTTModelAdmin
 def save_current_user(request, instance, form):
     user = request.user 
     instance = form.save(commit=False)
-    instance.author = user
+    if not instance.author:
+        instance.author = user
     instance.save()
     form.save_m2m()
     return instance
@@ -36,9 +37,9 @@ def show_urls(objects):
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('views',  'author')
-    list_display = ('title', 'date_time', 'author', 'views', 'post_likes', 'comment_count', 'post_tags', 'post_category')
+    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'comment_count', 'post_tags', 'post_category')
     search_fields = ('title', 'text', 'author__username')
-    list_filter = ('author__username', 'category', 'tags')
+    list_filter = ('approved', 'author__username', 'category', 'tags')
 
     def post_tags(self, obj):
         tags = obj.tags.all()

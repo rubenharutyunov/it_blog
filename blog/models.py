@@ -1,5 +1,7 @@
+import itertools
 from django.db import models
 from users.models import User
+from django.template.defaultfilters import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 from mptt.models import MPTTModel, TreeForeignKey
@@ -10,11 +12,20 @@ class Post(models.Model):
     text = RichTextUploadingField()
     slug = models.SlugField(unique=True)
     views = models.IntegerField(default=0)  
-    likes = models.ManyToManyField(User, related_name='likes')
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
     date_time = models.DateTimeField(auto_now=True) 
     author = models.ForeignKey(User)
     category = models.ForeignKey('blog.Category', blank=True, null=True)
     tags = models.ManyToManyField('blog.Tag', blank=True)
+    approved = models.BooleanField(default=True)
+
+    def save(self, **kwargs):
+        self.slug = orig = slugify(self.title)
+        for x in itertools.count(1):
+            if not Post.objects.filter(slug=self.slug).exists():
+                break
+            self.slug = '%s-%d' % (orig, x)
+        super(Post, self).save()
 
     class Meta:
         verbose_name = 'Post'

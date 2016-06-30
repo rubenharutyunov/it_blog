@@ -1,12 +1,13 @@
 from django.conf.urls import url, include
-from blog.views import placeholder, get_posts, get_post, posts_in_category, get_categories_tags, placeholder, like, add_to_fav, delete_comment, add_comment, refresh_comments, edit_comment
+from blog.views import placeholder, get_posts, get_post, posts_in_category, get_categories_tags, placeholder, like, add_to_fav, delete_comment, add_comment, refresh_comments, edit_comment, add_edit_post
 
 urlpatterns = [
     url(r'^$', get_posts, name='new_posts'),
     url(r'^viewed/', get_posts, {'order_by': 'most_viewed'}, name='most_viewed_posts'),
     url(r'^best/', get_posts, {'order_by': 'best'}, name='best_posts'),
     url(r'^post/(?P<slug>[\w-]+)/$', get_post, name='post'),
-    url(r'^add/', placeholder, name='add_post'),
+    url(r'^add/', add_edit_post, name='add_post'),
+    url(r'^post/(?P<slug>[\w-]+)/edit/$', add_edit_post, name='edit_post'),
     url(r'^like/', like, name='like'),
     url(r'^fav/', add_to_fav, name='fav'),
     url(r'^del_comment/', delete_comment, name='del_comment'),
