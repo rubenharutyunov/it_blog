@@ -18,6 +18,7 @@ function format(state) {
 // Init
 function initSelect2(selector) {
     $(selector).select2({
+        width: "120px",
         templateResult: format,
         templateSelection: format,
         escapeMarkup: function(m) {return m;}

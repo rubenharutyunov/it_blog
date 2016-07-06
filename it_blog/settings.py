@@ -52,6 +52,9 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'mptt',
 ]
+
+SITE_ID = 1
+
 MPTT_DEFAULT_LEVEL_INDICATOR = ''
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
