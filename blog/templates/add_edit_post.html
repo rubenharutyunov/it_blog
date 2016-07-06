@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 {% block nav %}
-    {% include "blog/navigation.html" with active="add" %}
+    {% load nav_tags %}
+    {% get_nav 'main' request active="Add post" %}
 {% endblock %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">

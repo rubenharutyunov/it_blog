@@ -5,6 +5,7 @@ from blog.views import placeholder
 urlpatterns = [
     url(r'^users/', get_users, name='users'),
     url(r'^user/(?P<username>[\w-]+)/$', get_user, name='user'),
+    url(r'^profile/$', get_user, name='profile'),
     url(r'^user/(?P<username>[\w-]+)/posts/', get_user_posts, name='user_posts'),
     url(r'^user/(?P<username>[\w-]+)/comments/', get_user_comments, name='user_comments'),
     url(r'^sign_in/', sign_in, name='sign_in'),

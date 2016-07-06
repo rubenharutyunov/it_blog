@@ -55,7 +55,7 @@ def get_user_posts(request, username):
     })
 
 
-def get_user_comments(request, username):
+def get_user_comments(request, username=None):
     user = get_object_or_404(User, username=username)
     comments = pagination(request, user.comment_set.all(), 20)
     return render(request, 'user_comments.html', {
@@ -64,7 +64,8 @@ def get_user_comments(request, username):
     })
 
 
-def get_user(request, username):
+def get_user(request, username=None):
+    username = username or request.user.username
     user = get_object_or_404(User, username=username)
     return render(request, 'user.html', {
         'user': user

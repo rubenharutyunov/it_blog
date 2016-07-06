@@ -135,7 +135,6 @@ a:hover {
 }
 
 .nav-pills>li>ul>li.active_sub {
-    
     border-left: #2EC7F3 2px solid;
     background: rgba(255,255,255,0.2);
 }
@@ -170,6 +169,10 @@ select#id_tags {
     height: 50px;
     margin: -15px 0 0 -20px; 
     float: left;
+}
+
+#menu li {
+    list-style-type: none;
 }
 
 /* Post styles */
@@ -301,6 +304,10 @@ a.anon {
     background-color: #f8f8f8;
 }
 
+.footer .container {
+    margin-bottom: 0;
+}
+
 .social {
     text-align: end;
     margin-top: -15px;
@@ -309,6 +316,27 @@ a.anon {
 .social a {
     display: inline-block;
     font-size: 3em;
+}
+
+.social li {
+    display: inline-block;
+}
+
+.social .fa-stack {
+    position: inherit;
+    display: block;
+    width: inherit;
+    height: inherit;
+    line-height: inherit;
+    vertical-align: inherit;
+}
+
+.social .fa-lg {
+    font-size: inherit;
+}
+
+.social .fa-stack-1x, .fa-stack-2x {
+    position: inherit;
 }
 
 /* Post comments */

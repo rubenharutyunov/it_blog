@@ -1,7 +1,10 @@
 {% extends "blog/base.html" %}
 {% block nav %}
-    {% include "blog/navigation.html" with active="home" %}
+    {% load nav_tags %}
+    {% get_nav 'main' request active="Add post" %}
 {% endblock %}
+{% load nav_tags %}
+{% get_nav 'main' request active="Home" %}
 {% block main_content %}
  <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
     <h2 class="main-title text-uppercase">{{ post.title }}</h2>

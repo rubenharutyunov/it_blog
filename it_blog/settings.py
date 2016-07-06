@@ -43,13 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.flatpages',
     'blog',
     'users',
+    'navigation',
     'ckeditor',
     'ckeditor_uploader',
     'mptt',
 ]
-
+MPTT_DEFAULT_LEVEL_INDICATOR = ''
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
@@ -65,6 +68,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
 ]
 
 ROOT_URLCONF = 'it_blog.urls'
@@ -79,8 +83,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.media',
-                'blog.context_processors.add_types.add_types'
+                'django.core.context_processors.media'
             ],
         },
          'DIRS': [os.path.join(BASE_DIR, 'templates')],
@@ -135,6 +138,14 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+NAV_CLASSES = {
+    'main': {
+        'root_class': "sidebar-nav nav-pills nav-stacked",
+        'root_id': "menu",
+        'child_class': "nav-pills nav-stacked",
+    }
+}
 
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}

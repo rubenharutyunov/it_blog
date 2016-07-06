@@ -4,7 +4,9 @@ from users.models import User
 from django.template.defaultfilters import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
+from django.contrib.flatpages.models import FlatPage
 from mptt.models import MPTTModel, TreeForeignKey
+from django.core.urlresolvers import reverse
 
 
 class Post(models.Model):
@@ -19,6 +21,12 @@ class Post(models.Model):
     tags = models.ManyToManyField('blog.Tag', blank=True)
     approved = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
+        get_latest_by = "-date_time"
+        ordering = ['-date_time', 'title']
+
     def save(self, **kwargs):
         self.slug = orig = slugify(self.title)
         for x in itertools.count(1):
@@ -26,12 +34,6 @@ class Post(models.Model):
                 break
             self.slug = '%s-%d' % (orig, x)
         super(Post, self).save()
-
-    class Meta:
-        verbose_name = 'Post'
-        verbose_name_plural = 'Posts'
-        get_latest_by = "-date_time"
-        ordering = ['-date_time', 'title']
 
     def __str__(self):
         return self.title
@@ -81,3 +83,12 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class BlogFlatPage(FlatPage):
+    name = models.SlugField(help_text='Name for navigation menu. Now available: "about" and "contacts"')
+
+    class Meta:
+        verbose_name = "Blog Page"
+        verbose_name_plural = "Blog Pages"
+

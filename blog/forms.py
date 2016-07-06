@@ -1,6 +1,7 @@
 from django import forms
-from blog.models import Post
+from blog.models import Post, BlogFlatPage
 from ckeditor.widgets import CKEditorWidget
+from django.contrib.flatpages.admin import FlatpageForm
 
 
 class CommentForm(forms.Form):
@@ -17,3 +18,8 @@ class PostForm(forms.ModelForm):
             'Text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}),
         }
 
+
+class BlogFlatPageForm(FlatpageForm):
+    class Meta:
+        model = BlogFlatPage
+        fields = ('url', 'title', 'content', 'sites', 'name')

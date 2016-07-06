@@ -29,14 +29,17 @@ def pagination(request, obj, items):
 def get_posts(request, order_by='new'):
     if order_by == 'most_viewed':
         posts = Post.objects.filter(approved=True).order_by('-views')
+        type = "Most Viewed"
     elif order_by == 'new':
         posts = Post.objects.filter(approved=True).order_by('-date_time')
+        type = "New"
     else:  # Best
         posts = Post.objects.filter(approved=True).order_by('-likes')
+        type = "Best"
     posts = pagination(request, posts, 10)
     return render(request, 'posts.html', {
         'posts': posts,
-        'type': order_by
+        'type': type
     })
 
 

@@ -1,8 +1,13 @@
 from django.contrib import admin
-from blog.models import Post, Comment, Category, Tag
+from blog.models import Post, Comment, Category, Tag, BlogFlatPage
+from blog.forms import BlogFlatPageForm
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
+from django.db.models import TextField
 from mptt.admin import MPTTModelAdmin
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django.contrib.flatpages.admin import FlatPageAdmin
+from django.contrib.flatpages.models import FlatPage
 
 
 # Helper functions
@@ -110,8 +115,22 @@ class TagAdmin(admin.ModelAdmin):
         return show_urls(posts)
     post_count.short_description = 'Posts with tag'
     post_count.allow_tags = True        
-        
+
+
+class BlogFlatPageAdmin(FlatPageAdmin):
+    form = BlogFlatPageForm
+    fieldsets = (
+        (None, {'fields': ('url', 'title', 'content', 'sites', 'name')}),
+    )
+    formfield_overrides = {
+        TextField: {'widget': CKEditorUploadingWidget}
+    }
+
+
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Tag, TagAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(Comment, CommentAdmin)
+admin.site.unregister(FlatPage)
+admin.site.register(BlogFlatPage, BlogFlatPageAdmin)
+

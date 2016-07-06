@@ -1,0 +1,36 @@
+{% load mptt_tags %}
+{% with path=request.path %}
+<ul class="{{ attrs.root_class }}" id="{{ attrs.root_id }}">
+    {% if items %}
+        {% recursetree items %}
+        {% load nav_tags %}
+        <li class="{% get_active active node path %}">
+            {% if node.auth|check_perms:request.user %}
+                {% if  node.menu_name|is_search %}
+                    <li>
+                        <div class="row">
+                            <form class="col-lg-9 col-md-10 col-sm-10 col-xs-10 navbar-form navbar-left" role="search">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </form>
+                        </div>
+                    </li>
+                {% else %}
+                    <a href="{{ node.get_url }}">
+                        {% if node.icon %}
+                            <span class="fa-stack fa-lg pull-left">
+                                <i class="fa {{ node.icon }} fa-stack-1x "></i>
+                            </span>{{ node.menu_name|show_user:request }}
+                        {% endif %}
+                    </a>
+                {% endif %}
+                {% if not node.is_leaf_node %}
+                    <ul class="{{ attrs.child_class }}" id="{{ attrs.child_id }}">
+                        {{ children }}
+                    </ul>
+                {% endif %}
+            {% endif %}
+        </li>
+        {% endrecursetree %}
+    {% endif %}
+</ul>
+{% endwith %}
