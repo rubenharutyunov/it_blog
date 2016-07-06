@@ -1,0 +1,19 @@
+select[name^="blognavigationitem_set"] {
+    max-width: 120px;
+}
+
+.dynamic-blognavigationitem_set td {
+    padding: 0.7%;
+}
+
+.related-widget-wrapper-link {
+    display: none;
+}
+
+.related-widget-wrapper-link {
+    display: none;
+}
+
+.select2-dropdown {
+    width: 160px !important;
+}

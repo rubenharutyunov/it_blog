@@ -6,4 +6,7 @@ it_blog/secret_key.py
 PKGBUILD
 static/*
 !static/blog
+!static/navigation
+!static/bootstrap
+!static/font-awesome
 it_blog/production_settings.py

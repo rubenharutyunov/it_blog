@@ -1,0 +1,13 @@
+.select2-results .fa, .select2-selection .fa {
+    margin-right: 10px;
+    font-size: 1.5em;
+}
+
+.select2-selection {
+    padding: 5px !important;
+    height: 40px !important;
+}
+
+.select2-selection__arrow {
+    margin-top: 5px;
+}
