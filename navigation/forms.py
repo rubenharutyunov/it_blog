@@ -16,7 +16,7 @@ auth_choices = (
 
 class NavigationItemForm(forms.ModelForm):
     icon = forms.ChoiceField(required=False, choices=CHOICES, widget=AwesomeFontWidget(choices=CHOICES), label="Icon")
-    order = forms.IntegerField(widget=forms.HiddenInput)
+
     auth = forms.ChoiceField(required=False, choices=(auth_choices), label="Auth",
                              help_text="If user need to be authenticated to see item")
 

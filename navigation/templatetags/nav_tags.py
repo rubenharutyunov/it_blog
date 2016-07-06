@@ -1,5 +1,5 @@
 from django import template
-from navigation.models import BlogNavigation
+from navigation.models import BlogNavigation, BlogNavigationItem
 from django.conf import settings
 
 register = template.Library()
