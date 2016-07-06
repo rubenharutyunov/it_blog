@@ -9,4 +9,5 @@ static/*
 !static/navigation
 !static/bootstrap
 !static/font-awesome
+!static/jquery-3.0.0.min.js
 it_blog/production_settings.py
