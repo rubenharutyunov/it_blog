@@ -7,13 +7,9 @@
         <li class="{% get_active active node path %}">
             {% if node.auth|check_perms:request.user %}
                 {% if  node.menu_name|is_search %}
-                    <li>
-                        <div class="row">
-                            <form class="col-lg-9 col-md-10 col-sm-10 col-xs-10 navbar-form navbar-left" role="search">
-                                <input type="text" class="form-control" placeholder="Search">
-                            </form>
-                        </div>
-                    </li>
+                    <form action="{% url "haystack_search" %}" class="col-lg-9 col-md-10 col-sm-10 col-xs-10 navbar-form navbar-left" role="search">
+                        <input name="{{ search_form.q.name }}" type="text" class="form-control" placeholder="{{ search_form.q.label }}">
+                    </form>
                 {% else %}
                     <a href="{{ node.get_url }}">
                         {% if node.icon %}

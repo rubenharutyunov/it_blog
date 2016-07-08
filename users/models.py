@@ -24,7 +24,6 @@ class URLDomainValidator(object):
 class User(AbstractUser):
     rating = models.IntegerField(default=0)
     avatar = models.ImageField(blank=True, null=True)
-    about = RichTextUploadingField(blank=True)
     favorite_posts = models.ManyToManyField('blog.Post', blank=True, related_name='favorite')
     personal_info = RichTextUploadingField(blank=True)
     website = models.URLField(blank=True)

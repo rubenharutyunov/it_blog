@@ -19,6 +19,9 @@ from it_blog import settings
 from blog import urls as blog_urls
 from users import urls as users_url
 from django.conf.urls.static import static
+from haystack.views import search_view_factory
+from search.views import OneModelSearchView
+from search.forms import OneModelSearchForm
 
 urlpatterns = []
 
@@ -32,5 +35,6 @@ urlpatterns += [
     url(r'^', include(users_url)),
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    url(r'^search/$', search_view_factory(view_class=OneModelSearchView, form_class=OneModelSearchForm), name='haystack_search'),
 ] 
 

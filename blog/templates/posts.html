@@ -9,7 +9,7 @@
             IT Blog - {% if type %}{{ type }}{% endif %} {{ additional }}
         </h2>
         {% for post in posts %}
-        <div id="post-init" class="post">
+        <div class="post">
             <h3 class="post-title"><a href="{% url 'post' post.slug %}">{{ post.title }}</a></h3>
             <div class="post-tags">
                 {% include "post_tags.html" with post=post %}

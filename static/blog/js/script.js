@@ -11,20 +11,20 @@ function initMenu() {
         $(".comment-replies").toggleClass("toggled-comment");
         var ph = $(".placeholder")
         ph.height($(document).height());
-        $('#menu ul').hide();
+        $('#menu ul.nav-pills').hide();
     });
-    $('#menu ul').hide();
-    $('#menu ul').children('.current').parent().show();
+    $('#menu ul.nav-pills').hide();
+    $('#menu ul.nav-pills').children('.current').parent().show();
     $('#menu li a').click(
     function() {
         var checkElement = $(this).next();
         if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-            $('#menu ul:visible').slideDown('normal');
+            $('#menu ul.nav-pills:visible').slideDown('normal');
             checkElement.slideUp('normal');
             return false;
         }
         if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-            $('#menu ul:visible').slideUp('normal');
+            $('#menu ul.nav-pills:visible').slideUp('normal');
             checkElement.slideDown('normal');
             return false;
         }

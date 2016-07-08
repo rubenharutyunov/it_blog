@@ -120,7 +120,7 @@ class TagAdmin(admin.ModelAdmin):
 class BlogFlatPageAdmin(FlatPageAdmin):
     form = BlogFlatPageForm
     fieldsets = (
-        (None, {'fields': ('url', 'title', 'content', 'sites', 'name')}),
+        (None, {'fields': ('url', 'title', 'content', 'sites')}),
     )
     formfield_overrides = {
         TextField: {'widget': CKEditorUploadingWidget}

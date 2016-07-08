@@ -6,6 +6,7 @@ from django.forms.utils import flatatt
 from django.utils.encoding import force_text
 from django.utils.datastructures import MultiValueDict
 
+
 class AwesomeFontWidget(forms.Select):
     class Media:
         css = {

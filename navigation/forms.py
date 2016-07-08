@@ -2,7 +2,6 @@ from django import forms
 from navigation.models import BlogNavigationItem, BlogNavigation
 from navigation.widgets import AwesomeFontWidget
 from navigation.utils import get_icons
-from django.core.cache import cache
 
 
 CHOICES = get_icons()
@@ -16,7 +15,7 @@ auth_choices = (
 
 class NavigationItemForm(forms.ModelForm):
     icon = forms.ChoiceField(required=False, choices=CHOICES, widget=AwesomeFontWidget(choices=CHOICES), label="Icon")
-
+    order = forms.IntegerField(widget=forms.HiddenInput)
     auth = forms.ChoiceField(required=False, choices=(auth_choices), label="Auth",
                              help_text="If user need to be authenticated to see item")
 
@@ -36,3 +35,4 @@ class NavigationItemForm(forms.ModelForm):
 
     def clean_custom_url(self):
         return self.cleaned_data['custom_url'] or None
+

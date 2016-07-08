@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 import sys
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -30,6 +31,7 @@ try:
 except ImportError:
     from it_blog.local_settings import *
 
+
 ALLOWED_HOSTS = []
 
 AUTH_USER_MODEL = 'users.User'
@@ -45,19 +47,29 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
-    'blog',
-    'users',
-    'navigation',
     'ckeditor',
     'ckeditor_uploader',
     'mptt',
+    'haystack',
+    'blog',
+    'users',
+    'navigation',
+    'search'
 ]
 
-SITE_ID = 1
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://127.0.0.1:9200/',
+        'INDEX_NAME': 'haystack',
+    },
+}
 
 MPTT_DEFAULT_LEVEL_INDICATOR = ''
+
 CKEDITOR_JQUERY_URL = '//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
@@ -128,6 +140,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+LOGIN_REDIRECT_URL = '/profile/'
+LOGIN_URL = '/sign_in/'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
@@ -149,6 +163,8 @@ NAV_CLASSES = {
         'child_class': "nav-pills nav-stacked",
     }
 }
+
+NAV_SEARCH_FORM = 'search.forms.OneModelSearchForm'
 
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}

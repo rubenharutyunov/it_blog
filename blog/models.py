@@ -86,8 +86,6 @@ class Tag(models.Model):
 
 
 class BlogFlatPage(FlatPage):
-    name = models.SlugField(help_text='Name for navigation menu. Now available: "about" and "contacts"')
-
     class Meta:
         verbose_name = "Blog Page"
         verbose_name_plural = "Blog Pages"

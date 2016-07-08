@@ -22,4 +22,4 @@ class PostForm(forms.ModelForm):
 class BlogFlatPageForm(FlatpageForm):
     class Meta:
         model = BlogFlatPage
-        fields = ('url', 'title', 'content', 'sites', 'name')
+        fields = ('url', 'title', 'content', 'sites')

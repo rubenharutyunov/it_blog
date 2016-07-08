@@ -1,3 +1,4 @@
+import importlib
 from django import template
 from navigation.models import BlogNavigation, BlogNavigationItem
 from django.conf import settings
@@ -15,11 +16,20 @@ def get_nav(name, request, active=None):
     menu_classes = None
     if getattr(settings, 'NAV_CLASSES', None):
         menu_classes = settings.NAV_CLASSES.get(name)
+    search_form = getattr(settings, 'NAV_SEARCH_FORM', None)
+    if search_form:
+        splited = search_form.split('.')
+        name = splited[-1]
+        module = '.'.join(splited[:-1])
+        search_form = importlib.import_module(module)
+        search_form = getattr(search_form, name)
+
     return {
         'items': nav_items,
         'request': request,
         'active': active,
-        'attrs': menu_classes
+        'attrs': menu_classes,
+        'search_form': search_form()
     }
 
 
@@ -44,7 +54,7 @@ def show_user(val, request):
 
 
 @register.filter(name='is_search')
-def show_user(val):
+def is_search(val):
     if '[search]' in val:
         return True
     return False

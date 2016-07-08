@@ -1,6 +1,5 @@
 {% extends "blog/base.html" %}
 {% block nav %}
-    {% include "blog/navigation.html" with active="profile" active_sub='sign_in' %}
     {% load nav_tags %}
     {% get_nav 'main' request active="profile" %}
 {% endblock %}
