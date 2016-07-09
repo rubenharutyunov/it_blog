@@ -270,6 +270,11 @@ a.anon {
     color: #fff;
 }
 
+.pagination .dots span:hover {
+    background-color: #fff;
+    color: #337ab7;
+}
+
 /* Sidebar styles */
 
 .sidebar {

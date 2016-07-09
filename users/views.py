@@ -6,6 +6,7 @@ from users.forms import SignInForm
 from users.models import User
 from blog.views import pagination
 
+
 def sign_in(request):
     if request.method == 'GET':
         form = SignInForm()

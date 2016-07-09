@@ -11,6 +11,6 @@
                 {% include 'single_user.html' with user=user %}
              </div>
         {% endfor %}
-        {% include 'pagination.html' with obj=users %}
+        {% load pagination %}{% paginator users %}
     </div>
 {% endblock %}

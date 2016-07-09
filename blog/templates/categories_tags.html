@@ -17,7 +17,7 @@
     </div>
     {% endfor %}
     <div class="posts-pagination text-center">
-        {% include "pagination.html" with obj=result %}
+        {% load pagination %}{% paginator result %}
     </div>
 </div>
 {% endblock %}

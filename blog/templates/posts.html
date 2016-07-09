@@ -22,6 +22,6 @@
             </div>
         </div>
         {% endfor %}
-        {% include "pagination.html" with obj=posts %}
+        {% load pagination %}{% paginator posts %}
     </div>
 {% endblock %}
