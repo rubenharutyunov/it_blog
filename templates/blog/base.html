@@ -7,14 +7,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Blog</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     {% load staticfiles %}
+    <script src="{% static 'jquery-1.12.4.min.js' %}"></script>
     <script src="{% static 'blog/js/script.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.4.0/styles/default.min.css">
+    <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
     <script>
         var csrf ='{{ csrf_token }}'

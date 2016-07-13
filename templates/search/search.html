@@ -59,7 +59,7 @@
                         <h3 class="post-title"><a href="{% url 'tag' result.object.slug %}">{{ result.object.title }}</a></h3>
                     </div>
                 {% elif form.models.value == "users.user" %}
-                    <div class="post">
+                    <div class="user">
                         {% include "single_user.html" with user=result.object %}
                     </div>
                 {% elif form.models.value == "blog.comment" %}

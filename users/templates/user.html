@@ -8,6 +8,12 @@
         <div class="user user-init">
             <h3 class="main-title text-uppercase">User - {{ user.username }}</h3>
             {% include 'single_user.html' with user=user %}
+            {% if editable %}
+            <div class="edit-profile">
+                <a href="{% url "edit_profile" %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
+            </div>
+            {% endif %}
+            <div class="clearfix"></div>
             <div class="user-personal-info">
                 {% if user.personal_info %}
                     <h3 class="user-personal-info-header">About {{ user.username }}</h3>

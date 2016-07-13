@@ -33,9 +33,8 @@ class User(AbstractUser):
     github = models.URLField(blank=True, validators=[URLDomainValidator(['github.com'])])
     linkedin = models.URLField(blank=True, validators=[URLDomainValidator(['linkedin.com'])])
     vk = models.URLField(blank=True, validators=[URLDomainValidator(['vk.com', 'vkontakte.ru'])])
-
-    def links(self):
-        return [self[name] for name in filter(lambda x: x.endswith('_url'), self.fields.values())]
+    activation_key = models.CharField(max_length=40, blank=True, null=True)
+    key_expires = models.DateTimeField(blank=True, null=True)
 
     class Meta:
         verbose_name = "User"

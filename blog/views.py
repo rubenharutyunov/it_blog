@@ -137,14 +137,14 @@ def add_to_fav(request):
 
 
 @require_POST
-def delete_comment(request):
+def delete_comment(request):  # TODO: Check if author is correct
     comment_id = request.POST.get('comment_id')
     get_object_or_404(Comment, id=comment_id).delete()
     return HttpResponse(json.dumps({'status': 'OK'}))
 
 
 @require_POST
-def add_comment(request):
+def add_comment(request):  # TODO: require login
     post_id = request.POST.get('post_id')
     comment_text = request.POST.get('text')
     comment_author = request.user
@@ -173,7 +173,7 @@ def refresh_comments(request):
 
 
 @require_POST
-def edit_comment(request):
+def edit_comment(request): # TODO: Check if author is correct, require login
     comment_text = request.POST.get('text')
     comment_id = request.POST.get('comment_id')
     comment = get_object_or_404(Comment, id=comment_id)
@@ -216,7 +216,7 @@ def add_edit_post(request, slug=None):
             form.save_m2m()
             success = True
         return render(request, 'add_post_success.html', {
-            'success': success
+            'success': success,
         })
 
 

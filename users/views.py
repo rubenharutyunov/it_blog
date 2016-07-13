@@ -1,9 +1,14 @@
+from django.utils import timezone
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from users.forms import SignInForm
+from django.conf import settings
+from django.core.exceptions import PermissionDenied
+from django.contrib.auth import update_session_auth_hash
+from users.forms import SignInForm, SignUpForm, ProfileEditForm
 from users.models import User
+from users.utils import generate_activation_key, send_activation_email, TOMORROW
 from blog.views import pagination
 
 
@@ -21,15 +26,73 @@ def sign_in(request):
                     login(request, user)
                     if 'remember' in request.POST:
                         request.session.set_expiry(1209600)  # 2 weeks
-                    return HttpResponseRedirect('/')
+                    next = request.GET.get('next', settings.LOGIN_REDIRECT_URL)
+                    return HttpResponseRedirect(next)
                 else:
-                    form.add_error(None, 'User is blocked')
+                    form.add_error(None, 'User is not active')
             else:
                 form.add_error(None, 'Username or password are incorrect')
 
     return render(request, 'sign_in.html', {
         'form': form
     })
+
+
+def sign_up(request, edit=False):
+    if request.method == 'GET':
+        if edit and request.user.is_authenticated():
+            form = ProfileEditForm(instance=request.user)
+        else:
+            form = SignUpForm()
+    else:
+        if edit and request.user.is_authenticated():
+            form = ProfileEditForm(request.POST, request.FILES, instance=request.user)
+            if form.is_valid():
+                form.save()
+                update_session_auth_hash(request, request.user)
+                return HttpResponseRedirect('/')
+        else:
+            form = SignUpForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                return render(request, 'registration_success.html', {
+                    'username': form.cleaned_data['username']
+                })
+    return render(request, 'sign_up.html', {
+        'form': form
+    })
+
+
+def activate_account(request, activation_key):
+    user = get_object_or_404(User, activation_key=activation_key)
+    expired = False
+    already_activated = False
+    if not user.is_active:
+        if timezone.now() > user.key_expires:
+            expired = True
+        else:
+            user.is_active = True
+            user.save()
+    else:
+        already_activated = True
+    return render(request, 'activation.html', {
+        'user': user,
+        'expired': expired,
+        'already_activated': already_activated
+    })
+
+
+def new_activation_link(request, username):
+    user = get_object_or_404(User, username=username)
+    if user is not None and not request.user.is_authenticated() and not user.is_active:
+        activation_key = generate_activation_key(username)
+        user.activation_key = activation_key
+        user.key_expires = TOMORROW
+        user.save()
+        send_activation_email(username, activation_key, user.email)
+        return render(request, 'new_activation_link.html')
+    else:
+        raise PermissionDenied
 
 
 def sign_out(request):
@@ -66,8 +129,12 @@ def get_user_comments(request, username=None):
 
 
 def get_user(request, username=None):
+    editable = False
     username = username or request.user.username
+    if request.user.username == username:
+        editable = True
     user = get_object_or_404(User, username=username)
     return render(request, 'user.html', {
-        'user': user
+        'user': user,
+        'editable': editable
     })

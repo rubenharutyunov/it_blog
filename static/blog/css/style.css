@@ -210,6 +210,10 @@ select#id_tags {
     margin-top: 2%;
 }
 
+.edit-profile {
+    margin-top: 2%;
+}
+
 .post {
     padding: 2%;
     margin-bottom: 4%;
@@ -445,7 +449,11 @@ a.anon {
     background-color: #2EC7F3;
     color: #fff;
     border-color: #fff;
-} 
+}
+
+.password-reset {
+    float: right;
+}
 
 /* Sign up || add */
 
@@ -465,6 +473,21 @@ h2.reg {
 
 .container, .reg-form {
     margin-bottom: 2%;
+}
+
+.reg-form .show_add {
+    float: none;
+    cursor: pointer;
+    margin-left: -5px;
+    padding-right: 0;
+}
+
+#additional-fields {
+    margin: 2% 0 2% 0;
+}
+
+.reg-form .bottom-note {
+    margin-top: 2%;
 }
 
 /*  User styles */

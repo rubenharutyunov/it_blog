@@ -237,6 +237,7 @@ $(document).ready(function() {
     handle_comment_add();
     handle_comments_refresh();
     handle_comment_edit();
+    $("#additional-fields:has(.has-error)").collapse("show")
 });
 
 

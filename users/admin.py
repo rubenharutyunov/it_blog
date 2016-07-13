@@ -17,6 +17,7 @@ class UserAdmin(BaseUserAdmin):
             'avatar',
             'personal_info',
             'favorite_posts',
+            'key_expires'
         )}),
         ('Links', {'classes': ('collapse',), 'fields': ('website', 'facebook', 'gplus',
                               'twitter', 'github', 'linkedin', 'vk')}),
