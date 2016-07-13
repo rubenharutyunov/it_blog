@@ -1,12 +1,12 @@
 import itertools
 from django.db import models
-from users.models import User
 from django.template.defaultfilters import slugify
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 from django.contrib.flatpages.models import FlatPage
 from mptt.models import MPTTModel, TreeForeignKey
-from django.core.urlresolvers import reverse
+from users.models import User
+from blog.utils import send_approved_email
 
 
 class Post(models.Model):
@@ -33,6 +33,11 @@ class Post(models.Model):
             if not Post.objects.filter(slug=self.slug).exists():
                 break
             self.slug = '%s-%d' % (orig, x)
+        if self.pk is not None:
+            orig = Post.objects.get(pk=self.pk)
+            if not orig.approved and self.approved:
+                send_approved_email(self)
+                print('approved')
         super(Post, self).save()
 
     def __str__(self):

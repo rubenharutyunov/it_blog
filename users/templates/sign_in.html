@@ -1,33 +1,29 @@
 {% extends "blog/base.html" %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="profile" %}
+    {% get_nav 'main' request active="Profile" %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
     <h2 class="main-title text-uppercase">IT Blog - sign in</h2>
     <div class="post col-lg-6">
-        <form action="#" method="POST" role="form">
+        <form action="" method="POST" role="form">
             {% csrf_token %}
             {% load blog_tags %}
-            <div class="form-group {% if form.username_or_email.errors %}has-error{% endif %}">
-                <label class="control-label" name="{{ form.username_or_email.name }}" for="email">{{ form.username_or_email.label }}</label>
-                {{ form.username_or_email|add_class:"form-control" }}
-                 <span class="help-block">
-                    {% for error in  form.username_or_email.errors %}{{ error }}{% endfor %}
-                </span>
+            {% for field in form %}
+            <div class="form-group {% if field.errors %}has-error{% endif %}">
+                <label class="control-label" name="{{ field.name }}" for="email">{{ field.label }}</label>
+                {% if field|need_form_control %}
+                    {{ field|add_class:"form-control" }}
+                {% else %}
+                    {{ field }}
+                {% endif %}
             </div>
-            <div class="form-group {% if form.password.errors %}has-error{% endif %}">
-                <label class="control-label" name="{{ form.password.name }}" for="password">{{ form.password.label }}</label>
-                {{ form.password|add_class:"form-control" }}
-                <span class="help-block">
-                    {% for error in  form.password.errors %}{{ error }}{% endfor %}
-                </span>
+            {% endfor %}
+            <div class="form-group password-reset">
+                <a href="{% url "reset_password" %}">Password reset</a>
             </div>
-            <div class="form-group">
-                <label name="{{ form.remember.name }}" for="email">{{ form.remember.label }}</label>
-                {{ form.remember }}
-            </div>
+
             {% if form.non_field_errors %}
                 <div class="alert alert-danger">
                     {% for error in form.non_field_errors %} {{error}} {% endfor %}

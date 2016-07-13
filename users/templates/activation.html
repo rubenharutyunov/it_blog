@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+{% block nav %}
+    {% load nav_tags %}
+    {% get_nav 'main' request active="Profile" %}
+{% endblock %}
+{% block main_content %}
+    <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
+        <div class="alert {% if expired or already_activated %}alert-danger{% else %}alert-success{% endif %}">
+            {% if expired %}
+                <strong>Error!</strong>
+                <p>Your activation link is expired</p>
+                <p><a href="{% url "new_activation_link" user.username %}">You can request new activation link</a></p>
+            {% elif already_activated %}
+                <strong>Error!</strong>
+                <p>You account is already activated</p>
+            {% else %}
+                <strong>Success!</strong>
+                <p>Your account successfully activated. You can now <a href="{% url "sign_in" %}">Sign In</a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

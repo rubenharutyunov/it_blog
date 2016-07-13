@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+{% block nav %}
+    {% load nav_tags %}
+    {% get_nav 'main' request active="Profile" %}
+{% endblock %}
+{% block main_content %}
+    <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
+        <div class="alert alert-success">
+            <strong>Success!</strong>
+            <p>You've successfully registered. Now you need activate your account. Check your email.</p>
+            <p>If you haven't recieve activation link you can <a href="{% url "new_activation_link" username %}">request new activation link</a></p>
+        </div>
+    </div>
+{% endblock %}

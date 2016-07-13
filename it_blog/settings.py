@@ -135,9 +135,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
 ]
 
 LOGIN_REDIRECT_URL = '/profile/'
@@ -146,7 +143,7 @@ LOGIN_URL = '/sign_in/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us'  # TODO: Add Armenian
 
 TIME_ZONE = 'Asia/Yerevan'
 
@@ -165,6 +162,7 @@ NAV_CLASSES = {
 }
 
 NAV_SEARCH_FORM = 'search.forms.OneModelSearchForm'
+
 
 if 'test' in sys.argv:
     DATABASES['default'] = {'ENGINE': 'django.db.backends.sqlite3'}

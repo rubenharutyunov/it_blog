@@ -1,4 +1,6 @@
 from django import template
+from django.forms import CheckboxInput
+from users.widgets import FileInputPreview
 register = template.Library()
 
 
@@ -25,6 +27,13 @@ def liked(user, post):
 @register.filter(name='add_class')
 def add_class(field, classname):
     return field.as_widget(attrs={'class': classname})
+
+
+@register.filter(name='need_form_control')
+def need_form_control(field):
+    name = field.field.widget.__class__.__name__
+    return not (name == CheckboxInput().__class__.__name__ or
+                name == FileInputPreview().__class__.__name__)
 
 
 @register.filter(name='approved_count')

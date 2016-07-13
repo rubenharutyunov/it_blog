@@ -18,30 +18,14 @@
         <form action="" method="POST" class="add-form form-horizontal" role="form">
             {% csrf_token %}
             {% load blog_tags %}
+            {% for field in form %}
             <div class="form-group">
-                <label for="title" class="col-lg-2 col-md-3 control-label">{{ form.title.label }}</label>
-                <div class="col-lg-4 col-md-6">
-                    {{ form.title|add_class:"form-control" }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="text" class="col-lg-2 col-md-3 control-label">{{ form.text.label }}</label>
+                <label for="{{ field.name }}" class="col-lg-2 col-md-3 control-label">{{ field.label }}</label>
                 <div class="col-lg-9 col-md-9">
-                     {{ form.text|add_class:"form-control" }}
+                    {{ field|add_class:"form-control" }}
                 </div>
             </div>
-            <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="sel1">{{ form.category.label }}</label>
-                <div class="col-lg-9 col-md-9">
-                    {{ form.category|add_class:"form-control" }}
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 col-md-3 control-label" for="sel2">{{ form.tags.label }}</label>
-                <div class="col-lg-9 col-md-9">
-                    {{ form.tags|add_class:"form-control" }}
-                </div>
-            </div>
+            {% endfor %}
             <div class="form-group">
                 <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
                     {% if edit %}
@@ -51,6 +35,6 @@
                     {% endif %}
                 </div>
             </div>
-        </form> <!-- /form -->
-    </div> <!-- ./container -->
+        </form>
+    </div>
 {% endblock %}

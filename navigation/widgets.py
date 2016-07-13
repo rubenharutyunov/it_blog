@@ -17,7 +17,7 @@ class AwesomeFontWidget(forms.Select):
             )
         }
         js = (
-            "/static/jquery-3.0.0.min.js",
+            "/static/jquery-1.12.4.min.js",
             "/static/navigation/select2/js/select2.min.js",
             "/static/navigation/js/awesome.js",
         )
