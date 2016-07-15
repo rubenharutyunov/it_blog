@@ -1,6 +1,7 @@
+{% load i18n %}
 <div class="col-lg-3 col-md-4 col-sm-5 col-sx-12 sidebars">
     <div class="sidebar">
-        <h3>New</h3>
+        <h3>{% blocktrans %}New{% endblocktrans %}</h3>
         <ul class="sidebar-posts">
             {% for post in new %}
                 <li><a href="{% url 'post' post.slug %}">{{ post.title }}</a></li>
@@ -8,7 +9,7 @@
         </ul>
     </div>
     <div class="sidebar">
-        <h3>Best</h3>
+        <h3>{% blocktrans %}Best{% endblocktrans %}</h3>
         <ul class="sidebar-posts">
             {% for post in best %}
                 <li><a href="{% url 'post' post.slug %}">{{ post.title }}</a></li>
@@ -16,7 +17,7 @@
         </ul>
     </div>
     <div class="sidebar">
-        <h3>Top categories</h3>
+        <h3>{% blocktrans %}Top categories{% endblocktrans %}</h3>
         <ul class="sidebar-posts">
             {% for post in top_categories %}
                 <li><a href="{% url 'category' post.slug %}">{{ post.title }}</a></li>
@@ -24,7 +25,7 @@
         </ul>
     </div>
     <div class="sidebar">
-        <h3>Top tags</h3>
+        <h3>{% blocktrans %}Top tags{% endblocktrans %}</h3>
         <ul class="sidebar-posts">
             {% for post in top_tags %}
                 <li><a href="{% url 'tag' post.slug %}">{{ post.title }}</a></li>

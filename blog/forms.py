@@ -1,11 +1,13 @@
 from django import forms
 from blog.models import Post, BlogFlatPage
-from ckeditor.widgets import CKEditorWidget
 from django.contrib.flatpages.admin import FlatpageForm
+from django.utils.translation import ugettext as _
+from ckeditor.widgets import CKEditorWidget
+
 
 
 class CommentForm(forms.Form):
-    text = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 100}), label="Add comment:")
+    text = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 100}), label=_("Add comment:"))
     parent = forms.CharField(widget=forms.HiddenInput(), required=False)
 
 

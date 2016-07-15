@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request active="Add post" %}
@@ -6,9 +7,9 @@
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <div class="alert alert-success">
-            <strong>Success!</strong>
-            <p>Your post is successfully added and waiting for moderation. You will receive email.</p>
-            <p>You will be redirected in few seconds</p>
+            <strong>{% blocktrans %}Success!{% endblocktrans %}</strong>
+            <p>{% blocktrans %}Your post is successfully added and waiting for moderation. You will receive email.{% endblocktrans %}</p>
+            <p>{% blocktrans %}You will be redirected in few seconds{% endblocktrans %}</p>
             <meta http-equiv="refresh" content="5;url=/" />
         </div>
     </div>

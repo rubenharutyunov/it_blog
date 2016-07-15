@@ -2,13 +2,14 @@ from django.template.loader import render_to_string
 from django.contrib.sites.models import Site
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 
 def send_approved_email(post):
     user = post.author
     domain = Site.objects.get_current().domain
     link = "http://%s/post/%s/" % (domain, post.slug)
-    subject = "Your post in was approved!"
+    subject = _("Your post in was approved!")
     message = render_to_string('approved_email.html', {
         'link': link,
         'title': post.title,

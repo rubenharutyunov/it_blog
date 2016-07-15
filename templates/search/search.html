@@ -1,100 +1,100 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request active="Search" %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-
-    <div class="post col-lg-4 col-md-6">
-        <h2 class="main-title text-uppercase">Search</h2>
-         <form action="{% url "haystack_search" %}" class="">
-        <div class="form-group">
-            <input name="{{ form.q.name }}" type="text" class="form-control" value="{{ query }}" placeholder="{{ form.q.label }}">
+        <div class="post col-lg-4 col-md-6">
+            <h2 class="main-title text-uppercase">{% blocktrans %}Search{% endblocktrans %}</h2>
+             <form action="{% url "haystack_search" %}" class="">
+            <div class="form-group">
+                <input name="{{ form.q.name }}" type="text" class="form-control" value="{{ query }}" placeholder="{{ form.q.label }}">
+            </div>
+            <div class="form-group">
+                <select class="form-control" name="models">
+                {% for val, lab in form.models.field.choices %}
+                    <option {% if val == form.models.value %}selected{% endif %} value="{{ val }}">{{ lab }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <input class="btn btn-default" type="submit" value="{% blocktrans %}Search{% endblocktrans %}">
+        </form>
         </div>
-        <div class="form-group">
-            <select class="form-control" name="models">
-            {% for val, lab in form.models.field.choices %}
-                <option {% if val == form.models.value %}selected{% endif %} value="{{ val }}">{{ lab }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <input class="btn btn-default" type="submit" value="Search">
-    </form>
-    </div>
 
-    <div class="col-md-12 post">
-        {% if query %}
-            <h2 class="text-uppercase">Results</h2>
-            {% for result in page.object_list %}
-                {% if form.models.value == "blog.post" %}
-                    <div class="post">
-                        <h3 class="post-title"><a href="{% url 'post' result.object.slug %}">{{ result.object.title }}</a></h3>
-                        <div class="post-tags">
-                            {% include "post_tags.html" with post=result.object %}
-                        </div>
-                        <div class="post-content">
-                            {{ result.object.text | truncatewords_html:200 | safe }}
-                        </div>
-                        <div class="post-info">
-                            {% include "post_info.html" with post=result.object %}
-                        </div>
-                    </div>
-                {% elif form.models.value == "blog.blogflatpage" %}
-                    <div class="post">
-                        <h3 class="post-title"><a href="{{ result.object.url }}">{{ result.object.title }}</a></h3>
-                        <div class="post-content">
-                            {{ result.object.content | truncatewords_html:200 | safe }}
-                        </div>
-                    </div>
-                {% elif form.models.value == "blog.category" %}
-                    <div class="post">
-                        <h3 class="post-title"><a href="{% url 'category' result.object.slug %}">{{ result.object.title }}</a></h3>
-                        <div class="post-content">
-                            {{ result.object.description | truncatewords_html:200 | safe }}
-                        </div>
-                    </div>
-                {% elif form.models.value == "blog.tag" %}
-                    <div class="post">
-                        <h3 class="post-title"><a href="{% url 'tag' result.object.slug %}">{{ result.object.title }}</a></h3>
-                    </div>
-                {% elif form.models.value == "users.user" %}
-                    <div class="user">
-                        {% include "single_user.html" with user=result.object %}
-                    </div>
-                {% elif form.models.value == "blog.comment" %}
-                    <div id="{{ result.object.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
-                        <div class="comment-info">
-                            <div class="comment-author comment{{ node.id }}-author">
-                                <i class="fa fa-user "></i> <a href="{% url 'user' result.object.author.username %}">{{ result.object.author }}</a>
+        <div class="col-md-12 post">
+            {% if query %}
+                <h2 class="text-uppercase">{% blocktrans %}Results{% endblocktrans %}</h2>
+                {% for result in page.object_list %}
+                    {% if form.models.value == "blog.post" %}
+                        <div class="post">
+                            <h3 class="post-title"><a href="{% url 'post' result.object.slug %}">{{ result.object.title }}</a></h3>
+                            <div class="post-tags">
+                                {% include "post_tags.html" with post=result.object %}
                             </div>
-                            <div class="comment-datetime">
-                                {{ result.object.date_time }}
+                            <div class="post-content">
+                                {{ result.object.text | truncatewords_html:200 | safe }}
                             </div>
-                            <div class="comment-post">
-                                <a href="{% url 'post' result.object.post.slug %}">To post {{ result.object.post }}</a>
+                            <div class="post-info">
+                                {% include "post_info.html" with post=result.object %}
                             </div>
                         </div>
-                        <hr>
-                        <div class="comment-text">
-                            {{ result.object.text }}
+                    {% elif form.models.value == "blog.blogflatpage" %}
+                        <div class="post">
+                            <h3 class="post-title"><a href="{{ result.object.url }}">{{ result.object.title }}</a></h3>
+                            <div class="post-content">
+                                {{ result.object.content | truncatewords_html:200 | safe }}
+                            </div>
                         </div>
+                    {% elif form.models.value == "blog.category" %}
+                        <div class="post">
+                            <h3 class="post-title"><a href="{% url 'category' result.object.slug %}">{{ result.object.title }}</a></h3>
+                            <div class="post-content">
+                                {{ result.object.description | truncatewords_html:200 | safe }}
+                            </div>
+                        </div>
+                    {% elif form.models.value == "blog.tag" %}
+                        <div class="post">
+                            <h3 class="post-title"><a href="{% url 'tag' result.object.slug %}">{{ result.object.title }}</a></h3>
+                        </div>
+                    {% elif form.models.value == "users.user" %}
+                        <div class="user">
+                            {% include "single_user.html" with user=result.object %}
+                        </div>
+                    {% elif form.models.value == "blog.comment" %}
+                        <div id="{{ result.object.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                            <div class="comment-info">
+                                <div class="comment-author comment{{ node.id }}-author">
+                                    <i class="fa fa-user "></i> <a href="{% url 'user' result.object.author.username %}">{{ result.object.author }}</a>
+                                </div>
+                                <div class="comment-datetime">
+                                    {{ result.object.date_time }}
+                                </div>
+                                <div class="comment-post">
+                                    <a href="{% url 'post' result.object.post.slug %}">To post {{ result.object.post }}</a>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="comment-text">
+                                {{ result.object.text }}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% empty %}
+                    <p>{% blocktrans %}No results found.{% endblocktrans %}</p>
+                {% endfor %}
+
+                {% if page.has_previous or page.has_next %}
+                    <div>
+                        {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; {% blocktrans %}Previous{% endblocktrans %}{% if page.has_previous %}</a>{% endif %}
+                        |
+                        {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}{% blocktrans %}Next{% endblocktrans %} &raquo;{% if page.has_next %}</a>{% endif %}
                     </div>
                 {% endif %}
-            {% empty %}
-                <p>No results found.</p>
-            {% endfor %}
-
-            {% if page.has_previous or page.has_next %}
-                <div>
-                    {% if page.has_previous %}<a href="?q={{ query }}&amp;page={{ page.previous_page_number }}">{% endif %}&laquo; Previous{% if page.has_previous %}</a>{% endif %}
-                    |
-                    {% if page.has_next %}<a href="?q={{ query }}&amp;page={{ page.next_page_number }}">{% endif %}Next &raquo;{% if page.has_next %}</a>{% endif %}
-                </div>
+            {% else %}
+                {# Show some example queries to run, maybe query syntax, something else? #}
             {% endif %}
-        {% else %}
-            {# Show some example queries to run, maybe query syntax, something else? #}
-        {% endif %}
-</div>
+        </div>
     </div>
 {% endblock %}

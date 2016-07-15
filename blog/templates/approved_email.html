@@ -1,4 +1,5 @@
-<p>Hi, {{ username }}</p>
-<p>Your post "<a href="{{ link }}">{{ title }}</a>" in IT Blog was approved by moderators</p>
-<p>Thanks for using our site!</p>
-<p>The IT Blog team</p>
+{% load i18n %}
+<p>{% blocktrans %}Hi, {{ username }}{% endblocktrans %}</p>
+<p>{% blocktrans %}Your post <a href="{{ link }}">"{{ title }}"</a> in IT Blog was approved by moderators{% endblocktrans %}</p>
+<p>{% blocktrans %}Thanks for using our site!{% endblocktrans %}</p>
+<p>{% blocktrans %}The IT Blog team{% endblocktrans %}</p>

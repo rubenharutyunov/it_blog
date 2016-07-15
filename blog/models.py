@@ -1,29 +1,30 @@
 import itertools
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.contrib.flatpages.models import FlatPage
+from django.utils.translation import ugettext as _
 from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
-from django.contrib.flatpages.models import FlatPage
 from mptt.models import MPTTModel, TreeForeignKey
 from users.models import User
 from blog.utils import send_approved_email
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=255)
-    text = RichTextUploadingField()
-    slug = models.SlugField(unique=True)
-    views = models.IntegerField(default=0)  
-    likes = models.ManyToManyField(User, related_name='likes', blank=True)
-    date_time = models.DateTimeField(auto_now=True) 
-    author = models.ForeignKey(User)
-    category = models.ForeignKey('blog.Category', blank=True, null=True)
-    tags = models.ManyToManyField('blog.Tag', blank=True)
-    approved = models.BooleanField(default=True)
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    text = RichTextUploadingField(verbose_name=_('Content'))
+    slug = models.SlugField(unique=True, verbose_name=_('Slug'))
+    views = models.IntegerField(default=0, verbose_name=_('Views'))
+    likes = models.ManyToManyField(User, related_name='likes', blank=True, verbose_name=_('Likes'))
+    date_time = models.DateTimeField(auto_now=True, verbose_name=_('Date/Time'))
+    author = models.ForeignKey(User, verbose_name=_('Author'))
+    category = models.ForeignKey('blog.Category', blank=True, null=True, verbose_name=_('Category'))
+    tags = models.ManyToManyField('blog.Tag', blank=True, verbose_name=_('Tags'))
+    approved = models.BooleanField(default=True, verbose_name=_('Approved'))
 
     class Meta:
-        verbose_name = 'Post'
-        verbose_name_plural = 'Posts'
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
         get_latest_by = "-date_time"
         ordering = ['-date_time', 'title']
 
@@ -45,16 +46,17 @@ class Post(models.Model):
 
 
 class Comment(MPTTModel):
-    text = models.TextField(max_length=255)
-    author = models.ForeignKey(User, editable=False)
-    date_time = models.DateTimeField(auto_now=True) 
-    likes = models.IntegerField(default=0)
-    post = models.ForeignKey(Post)
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+    text = models.TextField(max_length=255, verbose_name=_('Content'))
+    author = models.ForeignKey(User, editable=False, verbose_name=_('Author'))
+    date_time = models.DateTimeField(auto_now=True, verbose_name=_('Date/Time'))
+    likes = models.IntegerField(default=0, verbose_name=_('Likes'))
+    post = models.ForeignKey(Post, verbose_name=_('Post'))
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True,
+                            verbose_name=_('Parent'))
 
     class Meta:
-        verbose_name = 'Comment'
-        verbose_name_plural = 'Comments'
+        verbose_name = _('Comment')
+        verbose_name_plural = _('Comments')
         get_latest_by = "date_time"
         ordering = ['-post', 'date_time']
 
@@ -66,25 +68,25 @@ class Comment(MPTTModel):
 
 
 class Category(models.Model):
-    title = models.CharField(max_length=255)
-    description = RichTextField()
-    slug = models.SlugField(unique=True, null=True)
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    description = RichTextField(verbose_name=_('Description'))
+    slug = models.SlugField(unique=True, null=True, verbose_name=_('Slug'))
 
     class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
+        verbose_name = _("Category")
+        verbose_name_plural = _("Categories")
 
     def __str__(self):
         return self.title
 
 
 class Tag(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(unique=True, null=True)  
+    title = models.CharField(max_length=255, verbose_name=_('Title'))
+    slug = models.SlugField(unique=True, null=True, verbose_name=_('Slug'))
 
     class Meta:
-        verbose_name = "Tag"
-        verbose_name_plural = "Tags"
+        verbose_name = _("Tag")
+        verbose_name_plural = _("Tags")
 
     def __str__(self):
         return self.title
@@ -92,6 +94,6 @@ class Tag(models.Model):
 
 class BlogFlatPage(FlatPage):
     class Meta:
-        verbose_name = "Blog Page"
-        verbose_name_plural = "Blog Pages"
+        verbose_name = _("Page")
+        verbose_name_plural = _("Pages")
 
