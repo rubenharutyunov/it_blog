@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request active="Add post" %}
@@ -6,9 +7,9 @@
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
         {% if edit %}
-            <h2 class="add">Edit post</h2>
+            <h2 class="add">{% blocktrans %}Edit post{% endblocktrans %}</h2>
         {% else %}
-            <h2 class="add">Add post</h2>
+            <h2 class="add">{% blocktrans %}Add post{% endblocktrans %}</h2>
         {% endif %}
         {% load staticfiles %}
         {{ form.media }}
@@ -29,9 +30,9 @@
             <div class="form-group">
                 <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
                     {% if edit %}
-                        <button type="submit" class="btn btn-primary btn-block">Edit post</button>
+                        <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Edit post{% endblocktrans %}</button>
                     {% else %}
-                        <button type="submit" class="btn btn-primary btn-block">Add post</button>
+                        <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Add post{% endblocktrans %}</button>
                     {% endif %}
                 </div>
             </div>

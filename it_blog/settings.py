@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django.contrib.flatpages',
+    'django.contrib.humanize',
     'ckeditor',
     'ckeditor_uploader',
     'mptt',
@@ -143,7 +144,11 @@ LOGIN_URL = '/sign_in/'
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'  # TODO: Add Armenian
+LANGUAGE_CODE = 'hy'  # TODO: Add Armenian
+
+DATE_FORMAT = None
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'it_blog/locale'),)
 
 TIME_ZONE = 'Asia/Yerevan'
 

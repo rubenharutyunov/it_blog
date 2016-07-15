@@ -2,7 +2,6 @@ import json
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse, HttpResponseRedirect
-from blog.models import Post, Comment, Category, Tag
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django import http
 from django.db.models import F
@@ -11,7 +10,9 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext as _
 from blog.forms import CommentForm, PostForm
+from blog.models import Post, Comment, Category, Tag
 
 
 def pagination(request, obj, items):
@@ -29,13 +30,13 @@ def pagination(request, obj, items):
 def get_posts(request, order_by='new'):
     if order_by == 'most_viewed':
         posts = Post.objects.filter(approved=True).order_by('-views')
-        type = "Most Viewed"
+        type = _("Most Viewed")
     elif order_by == 'new':
         posts = Post.objects.filter(approved=True).order_by('-date_time')
-        type = "New"
+        type = _("New")
     else:  # Best
         posts = Post.objects.filter(approved=True).order_by('-likes')
-        type = "Best"
+        type = _("Best")
     posts = pagination(request, posts, 10)
     return render(request, 'posts.html', {
         'posts': posts,

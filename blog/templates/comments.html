@@ -1,4 +1,5 @@
 {% load mptt_tags %}
+{% load i18n %}
 {% if comments %}
     {% recursetree comments %}
     <div id="{{ node.id }}" class="comment comment-init col-lg-9 col-md-8 col-sm-7 col-xs-12">
@@ -7,7 +8,8 @@
                 <i class="fa fa-user "></i> <a href="{% url 'user' node.author.username %}">{{ node.author }}</a>
             </div>
             <div class="comment-datetime">
-                {{ node.date_time }}
+                {% load humanize %}
+                {{ node.date_time|naturaltime }}
             </div>
         </div>
         <hr>
@@ -16,7 +18,7 @@
         </div>
         <div class="comments-manage"></div>
         <div class="comment-reply">
-            <a href="#"><i class="fa fa-reply"></i> Reply</a>
+            <a href="#"><i class="fa fa-reply"></i> {% blocktrans %}Reply{% endblocktrans %}</a>
         </div>
         {% if request.user == node.author or perms.blog.can_change_comment %}
             <div class="comment-edit">
@@ -25,7 +27,7 @@
         {% endif %}
         {% if request.user == node.author or perms.blog.can_delete_comment %}
             <div class="comment-delete">
-                <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> Delete</a>
+                <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> {% blocktrans %}Delete{% endblocktrans %}</a>
             </div>
         {% endif %}
         <div class="comment-replies">
@@ -37,6 +39,6 @@
     {% endrecursetree %}
 {% else %}
     <div class="comment col-lg-9 col-md-8 col-sm-7 col-xs-12">
-        <p>No comments</p> <!-- TODO: Fix bug when editing via AJAX -->
+        <p>{% blocktrans %}No comments{% endblocktrans %}</p> <!-- TODO: Fix bug when editing via AJAX -->
     </div>
 {% endif %}

@@ -4,6 +4,7 @@ from blog.forms import BlogFlatPageForm
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 from django.db.models import TextField
+from django.utils.translation import ugettext as _
 from mptt.admin import MPTTModelAdmin
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.flatpages.admin import FlatPageAdmin
@@ -41,13 +42,13 @@ def show_urls(objects):
 
 def approve_action(modeladmin, request, queryset):
     queryset.update(approved=True)
-approve_action.short_description = "Approve selected"
+approve_action.short_description = _("Approve selected")
 
 
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('views',  'author')
-    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'comment_count', 'post_tags', 'post_category')
+    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'post_tags', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
     actions = [approve_action]
@@ -55,22 +56,22 @@ class PostAdmin(admin.ModelAdmin):
     def post_tags(self, obj):
         tags = obj.tags.all()
         return show_urls(tags)
-    post_tags.short_description = "Tags"
+    post_tags.short_description = _("Tags")
     post_tags.allow_tags = True
 
     def post_likes(self, obj):
         return len(obj.likes.all())
-    post_likes.short_description = "Likes"
+    post_likes.short_description = _("Likes")
 
     def post_category(self, obj):
         category = obj.category
         return show_urls([category])
-    post_category.short_description = "Category"
+    post_category.short_description = _("Category")
     post_category.allow_tags = True   
 
     def comment_count(self, obj):
         return obj.comment_set.count() 
-    comment_count.short_description = 'Comments'  
+    comment_count.short_description = _('Comments')
 
     def save_model(self, request, instance, form, change):
         return save_current_user(request, instance, form) 
@@ -84,7 +85,7 @@ class CommentAdmin(MPTTModelAdmin):
     def truncate(self, obj):
         text = strip_tags(obj.text)
         return truncate_text(text)
-    truncate.short_description = 'Text'    
+    truncate.short_description = _('Text')
 
     def save_model(self, request, instance, form, change):
         return save_current_user(request, instance, form) 
@@ -97,13 +98,13 @@ class CategoryAdmin(admin.ModelAdmin):
     def truncate(self, obj):
         text = strip_tags(obj.description)
         return truncate_text(text)
-    truncate.short_description = 'Description' 
+    truncate.short_description = _('Description')
 
     def post_count(self, obj):
         posts = Post.objects.filter(category=obj)
         return show_urls(posts)
     post_count.allow_tags = True    
-    post_count.short_description = 'Posts in category'  
+    post_count.short_description = _('Posts in category')
 
 
 class TagAdmin(admin.ModelAdmin):
@@ -113,7 +114,7 @@ class TagAdmin(admin.ModelAdmin):
     def post_count(self, obj):
         posts = Post.objects.filter(tags=obj)
         return show_urls(posts)
-    post_count.short_description = 'Posts with tag'
+    post_count.short_description = _('Posts with tag')
     post_count.allow_tags = True        
 
 

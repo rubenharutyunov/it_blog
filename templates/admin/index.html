@@ -1,11 +1,12 @@
 {% extends "admin/index.html" %}
+{% load i18n %}
 {% block content %}
     {{ block.super }}
 {% endblock %}
 {% block sidebar %}
     <div id="content-related">
         <div class="module" id="modereate-actions-module">
-            <h2>Posts to moderate</h2>
+            <h2>{% blocktrans %}Posts to moderate{% endblocktrans %}</h2>
             {% load moderation %}
             {% get_moderation_sidebar %}
             {% for entry in posts %}

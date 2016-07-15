@@ -1,6 +1,8 @@
 {% load blog_tags %}
+{% load i18n %}
 <div class="post-datetime">
-    <i class="fa fa-clock-o"></i> {{ post.date_time }}
+    {% load humanize %}
+    <i class="fa fa-clock-o"></i> {{ post.date_time|naturalday }} {{ post.date_time|time:"H:i" }}
 </div>
 <div class="post-author">
     <i class="fa fa-user "></i> <a href="{% url 'user' post.author.username %}">{{ post.author }}</a>
@@ -9,9 +11,9 @@
     Likes: <span class="likes{{ post.id }}">{{ post.likes.count }}</span>&nbsp;
     <a class="{{ request.user|liked:post }}{% if not request.user.is_authenticated %}anon{% endif %}" id="{{ post.id }}" href=""
         {% if request.user.is_authenticated %}
-            title="Like this post!">
+            title="{% blocktrans %}Like this post!{% endblocktrans %}">
         {% else %}
-            title="Sign in for voting!">
+            title="{% blocktrans %}Sign in for voting!{% endblocktrans %}">
         {% endif %}
         <i class="fa fa-thumbs-o-up"></i>
     </a>
@@ -32,16 +34,16 @@
 {% endif %}
 {% if request.user == post.author or request.user.is_staff %}
     <div class="post-edit">
-      <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+      <a href="{% url "edit_post" post.slug %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% blocktrans %}Edit{% endblocktrans %}</a>
     </div>
 {% endif %}
 {% if request.user == post.author or request.user.is_staff %}
     <div class="post-delete">
-      <a href="{% url "delete_post" post.slug %}"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+      <a href="{% url "delete_post" post.slug %}"><i class="fa fa-trash-o" aria-hidden="true"></i> {% blocktrans %}Delete{% endblocktrans %}</a>
     </div>
 {% endif %}
 {% if not full %}
     <div class="post-more">
-        <a href="{% url 'post' post.slug %}">Read more <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
+        <a href="{% url 'post' post.slug %}">{% blocktrans %}Read more{% endblocktrans %} <i class="fa fa-arrow-circle-o-right"></i></a>&nbsp;
     </div>
 {% endif %}
