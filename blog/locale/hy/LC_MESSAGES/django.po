@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-16 00:46+0400\n"
-"PO-Revision-Date: 2016-07-16 00:41+0400\n"
+"POT-Creation-Date: 2016-07-16 15:02+0400\n"
+"PO-Revision-Date: 2016-07-16 14:40+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hy\n"
@@ -152,10 +152,7 @@ msgid "Hi, %(username)s"
 msgstr "Բարև, %(username)s"
 
 #: blog/templates/approved_email.html:3
-#, fuzzy, python-format
-#| msgid ""
-#| "Your post \"<a href=\"%(link)s\">%(title)s</a>\" in IT Blog was approved "
-#| "by moderators"
+#, python-format
 msgid ""
 "Your post <a href=\"%(link)s\">\"%(title)s\"</a> in IT Blog was approved by "
 "moderators"

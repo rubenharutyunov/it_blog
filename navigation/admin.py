@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.db import models
 from django.forms import widgets
+from django.forms import BaseInlineFormSet
+from django.utils.translation import ugettext as _
 from navigation.models import BlogNavigation, BlogNavigationItem
 from navigation.forms import NavigationItemForm
-from django.forms import BaseInlineFormSet
 
 
 class CustomInlineFormSet(BaseInlineFormSet):
@@ -16,8 +17,8 @@ class CustomInlineFormSet(BaseInlineFormSet):
 class BlogNavigationInline(admin.TabularInline):
     model = BlogNavigationItem
     form = NavigationItemForm
-    verbose_name = "Menu Item"
-    verbose_name_plural = "Menu Items"
+    verbose_name = _("Menu Item")
+    verbose_name_plural = _("Menu Items")
     extra = 0
     formfield_overrides = {
         models.CharField: {'widget': widgets.TextInput(attrs={'size': 14})},
