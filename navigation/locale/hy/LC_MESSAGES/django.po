@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-16 15:02+0400\n"
+"PO-Revision-Date: 2016-07-16 15:02+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: navigation/admin.py:20 navigation/models.py:26
+msgid "Menu Item"
+msgstr "Մենյուի օբյեկտ"
+
+#: navigation/admin.py:21
+msgid "Menu Items"
+msgstr "Մենյուի օբյեկտներ"
+
+#: navigation/apps.py:7
+msgid "Navigation"
+msgstr "Մենյու"
+
+#: navigation/forms.py:10
+msgid "Not set"
+msgstr "Նշված չէ"
+
+#: navigation/forms.py:11
+msgid "Authenticated"
+msgstr "Իսկորոշված է"
+
+#: navigation/forms.py:12
+msgid "Not authenticated"
+msgstr "Իսկորոշված չէ"
+
+#: navigation/forms.py:13
+msgid "Is Staff"
+msgstr "Անձնակազմի անդամ է"
+
+#: navigation/forms.py:19 navigation/models.py:18
+msgid "Icon"
+msgstr "Պատկեր"
+
+#: navigation/forms.py:21
+msgid "Auth"
+msgstr "Իսկորոշում"
+
+#: navigation/forms.py:22
+msgid "If user need to be authenticated to see item"
+msgstr "Արդյոք օգտագործողը պետք է իսկորոշված լինի օբյեկտը տեսնելու համար"
+
+#: navigation/models.py:11
+msgid ""
+"Name to show in menu.\n"
+"Use [user] variable to display current user\n"
+"Use [search] variable to display search form"
+msgstr ""
+"Ընտրացանկում ցուցադրվող անունը։\n"
+"Օգտագործեք [user] փոփոխականը ընթացիկ օգտագործողին ցույց տալու համար\n"
+"Օգտագործեք [search] փոփոխականը որոնման ձևը ցուցադրելու համար"
+
+#: navigation/models.py:12
+msgid "Menu name"
+msgstr "Անուն"
+
+#: navigation/models.py:13
+msgid "Post"
+msgstr "Գրառում"
+
+#: navigation/models.py:14
+msgid "Page"
+msgstr "Էջ"
+
+#: navigation/models.py:15
+msgid "Custom URL"
+msgstr "Այլ URL"
+
+#: navigation/models.py:16
+msgid "URL name"
+msgstr "URL֊ի անուն"
+
+#: navigation/models.py:17
+msgid "Url name from urls.py files"
+msgstr "URL֊ի անունը urls.py ֆայլերից"
+
+#: navigation/models.py:20
+msgid "Parent"
+msgstr "Վերադաս"
+
+#: navigation/models.py:22
+msgid "Authentication"
+msgstr "Իսկորոշում"
+
+#: navigation/models.py:36
+msgid "You should specify only one field"
+msgstr "Դուք պետք է նշեք միայն մի դաշտ"
+
+#: navigation/models.py:63
+#, python-format
+msgid "Item with id %s"
+msgstr "%s համարով օբյեկտ"
+
+#: navigation/models.py:70
+msgid "Navigation Menu"
+msgstr "Նավիգացիոն Մենյու"
+
+#: navigation/models.py:71
+msgid "Navigation Menus"
+msgstr "Նավիգացիոն Մենյուներ"
