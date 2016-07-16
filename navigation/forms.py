@@ -1,23 +1,25 @@
 from django import forms
-from navigation.models import BlogNavigationItem, BlogNavigation
+from django.utils.translation import ugettext as _
+from navigation.models import BlogNavigationItem
 from navigation.widgets import AwesomeFontWidget
 from navigation.utils import get_icons
 
 
 CHOICES = get_icons()
 auth_choices = (
-    (None, "Not set"),
-    (1, "Authenticated"),
-    (0, "Not authenticated"),
-    (2, "Is Staff")
+    (None, _("Not set")),
+    (1, _("Authenticated")),
+    (0, _("Not authenticated")),
+    (2, _("Is Staff"))
+
 )
 
 
 class NavigationItemForm(forms.ModelForm):
-    icon = forms.ChoiceField(required=False, choices=CHOICES, widget=AwesomeFontWidget(choices=CHOICES), label="Icon")
+    icon = forms.ChoiceField(required=False, choices=CHOICES, widget=AwesomeFontWidget(choices=CHOICES), label=_("Icon"))
     order = forms.IntegerField(widget=forms.HiddenInput)
-    auth = forms.ChoiceField(required=False, choices=(auth_choices), label="Auth",
-                             help_text="If user need to be authenticated to see item")
+    auth = forms.ChoiceField(required=False, choices=(auth_choices), label=_("Auth"),
+                             help_text=_("If user need to be authenticated to see item"))
 
     class Media:
         js = (
