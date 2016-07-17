@@ -1,21 +1,24 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Profile" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <div class="alert {% if expired or already_activated %}alert-danger{% else %}alert-success{% endif %}">
             {% if expired %}
-                <strong>Error!</strong>
-                <p>Your activation link is expired</p>
-                <p><a href="{% url "new_activation_link" user.username %}">You can request new activation link</a></p>
+                <strong>{% blocktrans %}Error!{% endblocktrans %}</strong>
+                <p>{% blocktrans %}Your activation link is expired{% endblocktrans %}</p>
+                <p><a href="{% url "new_activation_link" user.username %}">
+                    {% blocktrans %}You can request new activation link{% endblocktrans %}
+                </a></p>
             {% elif already_activated %}
-                <strong>Error!</strong>
-                <p>You account is already activated</p>
+                <strong>{% blocktrans %}Error!{% endblocktrans%}</strong>
+                <p>{% blocktrans %}You account is already activated{% endblocktrans %}</p>
             {% else %}
-                <strong>Success!</strong>
-                <p>Your account successfully activated. You can now <a href="{% url "sign_in" %}">Sign In</a></p>
+                <strong>{% blocktrans %}Success!{% endblocktrans%}</strong>
+                <p>{% blocktrans %}Your account successfully activated. You can now{% endblocktrans%} <a href="{% url "sign_in" %}">{% blocktrans %}Sign In {% endblocktrans %}</a></p>
             {% endif %}
         </div>
     </div>

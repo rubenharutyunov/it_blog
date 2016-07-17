@@ -1,12 +1,13 @@
 {% extends 'blog/base.html' %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Profile" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <h2 class="main-title text-uppercase">
-            IT Blog - {{ username }}'s comments
+            {% blocktrans %}IT Blog - {{ username }}'s comments{% endblocktrans %}
         </h2>
         {% load mptt_tags %}
         <div class="row comments-container">
@@ -20,7 +21,7 @@
                         {{ node.date_time }}
                     </div>
                     <div class="comment-post">
-                        <a href="{% url 'post' node.post.slug %}">To post {{ node.post }}</a>
+                        <a href="{% url 'post' node.post.slug %}">{% blocktrans %}Post{% endblocktrans %} {{ node.post }}</a>
                     </div>
                 </div>
                 <hr>
@@ -30,7 +31,7 @@
                 {% if request.user == node.author or perms.blog.can_delete_comment %}
                     <div class="comments-manage">`</div>
                     <div class="comment-delete">
-                        <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> Delete</a>
+                        <a class="{{ node.id }}" href=""><i class="fa fa-trash-o"></i> {% blocktrans %}Delete{% endblocktrans %}</a>
                     </div>
                 {% endif %}
                 <div class="comment-replies">

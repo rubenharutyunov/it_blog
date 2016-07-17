@@ -197,10 +197,6 @@ def add_edit_post(request, slug=None):
                 form = PostForm(instance=post)
             else:
                 raise PermissionDenied
-        return render(request, 'add_edit_post.html', {
-            'form': form,
-            'edit': slug is not None
-        })
     else:  # POST
         if not slug:
             form = PostForm(request.POST)
@@ -216,9 +212,13 @@ def add_edit_post(request, slug=None):
             instance.save()
             form.save_m2m()
             success = True
-        return render(request, 'add_post_success.html', {
-            'success': success,
-        })
+            return render(request, 'add_post_success.html', {
+                'success': success,
+            })
+    return render(request, 'add_edit_post.html', {
+        'form': form,
+        'edit': slug is not None
+    })
 
 
 def delete_post(request, slug):

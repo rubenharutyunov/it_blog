@@ -4,9 +4,9 @@
     {% if items %}
         {% recursetree items %}
         {% load nav_tags %}
-        <li class="{% get_active active node path %}">
+        <li class="{% get_active node path %}">
             {% if node.auth|check_perms:request.user %}
-                {% if  node.menu_name|is_search %}
+                {% if  node.name|is_search %}
                     <form action="{% url "haystack_search" %}" class="col-lg-9 col-md-10 col-sm-10 col-xs-10 navbar-form navbar-left" role="search">
                         <input name="{{ search_form.q.name }}" type="text" class="form-control" placeholder="{{ search_form.q.label }}">
                     </form>
@@ -15,7 +15,7 @@
                         {% if node.icon %}
                             <span class="fa-stack fa-lg pull-left">
                                 <i class="fa {{ node.icon }} fa-stack-1x "></i>
-                            </span>{{ node.menu_name|show_user:request }}
+                            </span>{{ node.name|show_user:request }}
                         {% endif %}
                     </a>
                 {% endif %}

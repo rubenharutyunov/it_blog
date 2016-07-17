@@ -34,7 +34,7 @@ def show_urls(objects):
         if object_:
             info = (object_._meta.app_label, object_._meta.model_name)
             admin_url = reverse('admin:%s_%s_change' % info, args=(object_.pk,))
-            res += '<a href="%s">%s</a>%s &nbsp;' % (admin_url,object_.title, ',' if count < len(objects)-1 else '')
+            res += '<a href="%s">%s</a>%s ' % (admin_url,object_.title, ',' if count < len(objects)-1 else '')
         else:
             return None    
     return res or None

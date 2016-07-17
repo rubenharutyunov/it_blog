@@ -49,7 +49,7 @@ class BlogNavigationItemAdmin(admin.ModelAdmin):
     form = NavigationItemForm
     fieldsets = (
         (None, {
-            'fields': ('menu_name', 'post', 'page', 'custom_url', 'icon', 'parent', 'order')
+            'fields': ('name', 'post', 'page', 'custom_url', 'icon', 'parent', 'order')
         }),
         ('Advanced', {
             'fields': ('urls_name',),

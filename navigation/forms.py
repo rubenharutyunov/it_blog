@@ -33,7 +33,7 @@ class NavigationItemForm(forms.ModelForm):
 
     class Meta:
         model = BlogNavigationItem
-        fields = ('menu_name', 'auth', 'page', 'custom_url', 'urls_name', 'icon', 'parent', 'order')
+        fields = ('name', 'auth', 'page', 'custom_url', 'urls_name', 'icon', 'parent', 'order')
 
     def clean_custom_url(self):
         return self.cleaned_data['custom_url'] or None

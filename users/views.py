@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.contrib.auth import update_session_auth_hash
+from django.utils.translation import ugettext as _
 from users.forms import SignInForm, SignUpForm, ProfileEditForm
 from users.models import User
 from users.utils import generate_activation_key, send_activation_email, TOMORROW
@@ -29,9 +30,9 @@ def sign_in(request):
                     next = request.GET.get('next', settings.LOGIN_REDIRECT_URL)
                     return HttpResponseRedirect(next)
                 else:
-                    form.add_error(None, 'User is not active')
+                    form.add_error(None, _('User is not active'))
             else:
-                form.add_error(None, 'Username or password are incorrect')
+                form.add_error(None, _('Username or password are incorrect'))
 
     return render(request, 'sign_in.html', {
         'form': form
