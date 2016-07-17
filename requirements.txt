@@ -3,6 +3,9 @@ django-ckeditor==5.0.3
 django-haystack==2.5.dev2
 django-mptt==0.8.4
 elasticsearch==2.3.0
+lorem-ipsum-generator==0.3
 Pillow==3.1.1
 pytz==2016.3
+six==1.10.0
+transliterate==1.8.1
 urllib3==1.16
