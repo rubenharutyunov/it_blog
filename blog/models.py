@@ -1,6 +1,6 @@
 import itertools
 from django.db import models
-from django.template.defaultfilters import slugify
+from transliterate import slugify
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import ugettext as _
 from ckeditor_uploader.fields import RichTextUploadingField
