@@ -1,0 +1,366 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-17 16:54+0400\n"
+"PO-Revision-Date: 2016-07-16 20:52+0400\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.7.1\n"
+
+#: users/apps.py:7 users/models.py:43
+msgid "Users"
+msgstr "Օգտագործողներ"
+
+#: users/forms.py:21
+msgid "Username or Email"
+msgstr "Օգտագործողի անուն կամ Email"
+
+#: users/forms.py:22 users/forms.py:29
+msgid "Password"
+msgstr "Գաղտնաբառ"
+
+#: users/forms.py:23
+msgid "Remember"
+msgstr "Հիշել"
+
+#: users/forms.py:27 users/templates/reset_password.html.py:14
+msgid "Email"
+msgstr "Email"
+
+#: users/forms.py:28 users/models.py:30
+msgid "Personal Info"
+msgstr "Անձնական ինֆորմացիա"
+
+#: users/forms.py:30
+msgid "Password confirmation"
+msgstr "Գաղտնաբառը նորից"
+
+#: users/forms.py:39
+msgid "First Name"
+msgstr "Անուն"
+
+#: users/forms.py:40
+msgid "Last Name"
+msgstr "Ազգանուն"
+
+#: users/forms.py:41
+msgid "Username"
+msgstr "Օգտագործողի անուն"
+
+#: users/forms.py:42 users/models.py:31
+msgid "Website"
+msgstr "Կայք"
+
+#: users/forms.py:43
+msgid "Facebook"
+msgstr "Facebook"
+
+#: users/forms.py:44
+msgid "Google Plus"
+msgstr "Google Plus"
+
+#: users/forms.py:45
+msgid "Twitter"
+msgstr "Twitter"
+
+#: users/forms.py:46
+msgid "Github"
+msgstr "Github"
+
+#: users/forms.py:47
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: users/forms.py:48
+msgid "VK"
+msgstr "VK"
+
+#: users/forms.py:62
+msgid "Passwords must match"
+msgstr "Գաղտնաբառերը պետք է համընկնեն"
+
+#: users/forms.py:72
+msgid "A user with that email already exists."
+msgstr "Այս email հասցեով օգտագործող արդեն գրանցված է։"
+
+#: users/forms.py:86
+msgid "Old Password"
+msgstr "Հին գաղտնաբառ"
+
+#: users/forms.py:102
+msgid "Old password is incorrect"
+msgstr "Հին գաղտնաբառը սխալ է"
+
+#: users/models.py:19
+msgid "Enter a valid URL."
+msgstr "Մուտքագրեք ճիշտ URL։"
+
+#: users/models.py:26
+msgid "Rating"
+msgstr "Rating"
+
+#: users/models.py:27
+msgid "Avatar"
+msgstr "Ավատար"
+
+#: users/models.py:29
+msgid "Favorite Posts"
+msgstr "Սիրված գրառումներ"
+
+#: users/models.py:42 users/templates/user.html.py:10
+msgid "User"
+msgstr "Օգտագործող"
+
+#: users/models.py:52
+msgid "Group"
+msgstr "Խումբ"
+
+#: users/models.py:53
+msgid "Groups"
+msgstr "Խմբեր"
+
+#: users/templates/activation.html:11 users/templates/activation.html.py:17
+msgid "Error!"
+msgstr "Սխալ"
+
+#: users/templates/activation.html:12
+msgid "Your activation link is expired"
+msgstr "Ձեր ակտիվացման հղումը ժամկետն անց է"
+
+#: users/templates/activation.html:14
+msgid "You can request new activation link"
+msgstr "Դուք կարող եք ստանալ նոր ակտիվացման հղում "
+
+#: users/templates/activation.html:18
+msgid "You account is already activated"
+msgstr "Ձեր account֊ը արդեն ակտիվացված է"
+
+#: users/templates/activation.html:20
+#: users/templates/registration_success.html:10
+msgid "Success!"
+msgstr "Ամեն ինչ պատրաստ է"
+
+#: users/templates/activation.html:21
+msgid "Your account successfully activated. You can now"
+msgstr "Ձեր account֊ը հաջողությամբ ակտիվացված է։ Հիմա դուք կարող եք"
+
+#: users/templates/activation.html:21
+msgid "Sign In "
+msgstr "մուտք գործել"
+
+#: users/templates/activation_email.html:2
+#, python-format
+msgid "Hi, %(username)s. Thank you for joining IT Blog."
+msgstr "Բարև, %(username)s։ Շնորհակալություն IT Blog կայքին միանալու համար։"
+
+#: users/templates/activation_email.html:3
+msgid "Please confirm your email address by clicking the link below."
+msgstr ""
+"Հաստատեք ձեր էլեկտրոնային փոստի հասցեն սեղմելով ստորև գտնվող հղման վրա։"
+
+#: users/templates/activation_email.html:6
+msgid "Confirm email address"
+msgstr "Հաստատել էլեկտրոնային փոստի հասցեն"
+
+#: users/templates/activation_email.html:8
+#: users/templates/password_reset_email.html:8
+msgid "The IT Blog team"
+msgstr "IT Blog կայքի թիմ"
+
+#: users/templates/file_input_preview.html:6
+msgid "Clear"
+msgstr "Մաքրել"
+
+#: users/templates/file_input_preview.html:10
+msgid "Browse"
+msgstr "Զննարկել"
+
+#: users/templates/new_activation_link.html:10
+msgid "New activation link has been sent to your email"
+msgstr "Նոր ակտիվացման հղումը ուղարկվեց ձեր էլեկտրոնային փոստի հասցեին"
+
+#: users/templates/password_reset_confirm.html:16
+msgid "New password"
+msgstr "Նոր գաղտնաբառ"
+
+#: users/templates/password_reset_confirm.html:25
+msgid "Confirm password"
+msgstr "Նոր գաղտնաբառը նորից"
+
+#: users/templates/password_reset_confirm.html:32
+#: users/templates/reset_password.html:20 users/templates/sign_in.html.py:33
+#: users/templates/sign_up.html:54
+msgid "Submit"
+msgstr "Ուղարկել"
+
+#: users/templates/password_reset_done.html:11
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Մենք ուղարկեցինք ձեր էլեկտրոնային փոստի հասցեին գաղտնաբառի փոխման "
+"հրահանգները։ Եթե այդ էլեկտրոնային փոստի հասցեով account գոյություն ունի, "
+"դուք շուտով կստանաք դրանք։"
+
+#: users/templates/password_reset_done.html:12
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Եթե դուք չեք ստացել նամակը, համոզվեք, որ մուտքագրել եք այն հասցեն, որը "
+"օգտագործել եք գրանցման ժամանակ և ստուգեք սպամ թղթապանակը։"
+
+#: users/templates/password_reset_email.html:2
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at IT Blog"
+msgstr ""
+"Դուք ստացել եք այս հաղորդագրությունը, քանի որ ցանկացել եք փոխել ձեր "
+"գաղտնաբառը IT Blog կայքում"
+
+#: users/templates/password_reset_email.html:3
+msgid "Please go to the"
+msgstr "Բացեք"
+
+#: users/templates/password_reset_email.html:3
+msgid "following page"
+msgstr "այս էջը"
+
+#: users/templates/password_reset_email.html:4
+#, python-format
+msgid ""
+"and choose a new password.</p>\n"
+"<p>Your username, in case you've forgotten: %(username)s\n"
+msgstr "և ընտրեք նոր գաղտնաբառ <p>Ձեր օգտագործողի անունն է %(username)s\n"
+
+#: users/templates/password_reset_email.html:7
+msgid "Thanks for using our site!"
+msgstr "Շնորհակալ ենք մեր կայքից օգտվելու համար"
+
+#: users/templates/password_reset_subject.txt:2
+msgid "Password reset on IT Blog"
+msgstr "Գաղտնաբառի թարմացում IT Blog կայքում"
+
+#: users/templates/registration_success.html:11
+msgid ""
+"You've successfully registered. Now you need activate your account. Check "
+"your email."
+msgstr ""
+"Դուք հաջողությամբ գրանցվել եք։ Հիմա անհրաժեշտ է ակտիվացնել account֊ը։ "
+"Ստուգեք ձեր էլեկտրոնային փոստը։"
+
+#: users/templates/registration_success.html:12
+msgid "If you haven't recieve activation link you can"
+msgstr "Եթե դուք չեք ստացել ակտիվացման հղումը, դուք կարող եք"
+
+#: users/templates/registration_success.html:12
+msgid "request new activation link"
+msgstr "ստանալ նորը"
+
+#: users/templates/reset_password.html:9
+msgid "Reset Password"
+msgstr "Փոխել գաղտնաբառը"
+
+#: users/templates/sign_in.html:9
+msgid "sign in"
+msgstr "մուտք գործել"
+
+#: users/templates/sign_in.html:25
+msgid "Password reset"
+msgstr "Փոխել գաղտնաբառը"
+
+#: users/templates/sign_up.html:9
+msgid "Sign Up"
+msgstr "Գրանցվել"
+
+#: users/templates/sign_up.html:32
+msgid ""
+"You also can provide additional information about yourself, if you'd like"
+msgstr "Դուք նաև կարող եք տրամադրել լրացուցիչ ինֆորմացիա ձեր մասին"
+
+#: users/templates/sign_up.html:53
+msgid "Fields marked with an asterisk (*) are required."
+msgstr "Աստղանիշով (*) նշված դաշտերը պարտադիր են"
+
+#: users/templates/single_user.html:12
+msgid "First name:"
+msgstr "Անուն:"
+
+#: users/templates/single_user.html:12 users/templates/single_user.html:13
+msgid "Not set"
+msgstr "Նշված չէ"
+
+#: users/templates/single_user.html:13
+msgid "Last name:"
+msgstr "Ազգանուն:"
+
+#: users/templates/single_user.html:14
+msgid "Posts:"
+msgstr "Գրառումներ:"
+
+#: users/templates/single_user.html:22
+msgid "Comments:"
+msgstr "Մեկնաբանություններ:"
+
+#: users/templates/single_user.html:28
+msgid "Last seen:"
+msgstr "Վերջի մուտքը:"
+
+#: users/templates/single_user.html:29
+msgid "Likes:"
+msgstr "Հավանումներ:"
+
+#: users/templates/single_user.html:30
+msgid "Questions: (Soon)"
+msgstr "Հարցեր:  (Շուտով)"
+
+#: users/templates/user.html:14
+msgid "Edit profile"
+msgstr "Խմբագրել"
+
+#: users/templates/user.html:20
+#, python-format
+msgid "About %(user.username)s"
+msgstr "%(user.username)s օգտագործողի մասին"
+
+#: users/templates/user.html:23
+#, python-format
+msgid "User %(username)s told nothing about himself :("
+msgstr "%(username)s օգտագործողը չի պատմել ոչինչ իր մասին :("
+
+#: users/templates/user_comments.html:10
+#, python-format
+msgid "IT Blog - %(username)s's comments"
+msgstr "IT Blog - %(username)s-ի մեկնաբանությունները"
+
+#: users/templates/user_comments.html:24
+msgid "Post"
+msgstr "Գրառումներ:"
+
+#: users/templates/user_comments.html:34
+msgid "Delete"
+msgstr "Հեռացնել"
+
+#: users/templates/users.html:11
+#, python-format
+msgid "User - %(username)s"
+msgstr "Օգտագործող - %(username)s"
+
+#: users/views.py:33
+msgid "User is not active"
+msgstr "Օգտագործողը ակտիվ չէ"
+
+#: users/views.py:35
+msgid "Username or password are incorrect"
+msgstr "Սխալ օգտագործողի անուն կամ գաղտնաբառ"

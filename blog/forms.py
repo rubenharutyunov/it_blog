@@ -5,7 +5,6 @@ from django.utils.translation import ugettext as _
 from ckeditor.widgets import CKEditorWidget
 
 
-
 class CommentForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea(attrs={'rows': 5, 'cols': 100}), label=_("Add comment:"))
     parent = forms.CharField(widget=forms.HiddenInput(), required=False)
@@ -16,8 +15,8 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'text', 'category', 'tags']
         widgets = {
-            'Title': forms.TextInput(attrs={'placeholder': 'Title'}),
-            'Text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}),
+            'title': forms.TextInput(attrs={'placeholder': _('Title')}),
+            'text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}),
         }
 
 

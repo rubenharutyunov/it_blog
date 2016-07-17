@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-16 15:02+0400\n"
-"PO-Revision-Date: 2016-07-16 14:40+0400\n"
+"POT-Creation-Date: 2016-07-17 16:54+0400\n"
+"PO-Revision-Date: 2016-07-16 21:06+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: hy\n"
@@ -58,11 +58,11 @@ msgstr "Թեգով գրառումներ"
 msgid "Blog"
 msgstr "Բլոգ"
 
-#: blog/forms.py:10
+#: blog/forms.py:9
 msgid "Add comment:"
 msgstr "Ավելացնել մԵկնաբանություն"
 
-#: blog/models.py:14 blog/models.py:71 blog/models.py:84
+#: blog/forms.py:18 blog/models.py:14 blog/models.py:71 blog/models.py:84
 msgid "Title"
 msgstr "Վերնագիր"
 
@@ -122,13 +122,17 @@ msgstr "Էջ"
 msgid "Pages"
 msgstr "Էջեր"
 
-#: blog/templates/add_edit_post.html:10 blog/templates/add_edit_post.html:33
+#: blog/templates/add_edit_post.html:10 blog/templates/add_edit_post.html:39
 msgid "Edit post"
 msgstr "Խմբագրել գրառումը"
 
-#: blog/templates/add_edit_post.html:12 blog/templates/add_edit_post.html:35
+#: blog/templates/add_edit_post.html:12 blog/templates/add_edit_post.html:41
 msgid "Add post"
 msgstr "Ավելացնել գրառում"
+
+#: blog/templates/add_edit_post.html:35
+msgid "Fields marked with an asterisk (*) are required."
+msgstr ""
 
 #: blog/templates/add_post_success.html:10
 msgid "Success!"
@@ -182,7 +186,7 @@ msgstr "Մեկնաբանություններ չկան"
 
 #: blog/templates/post.html:23
 msgid "Comments:"
-msgstr "Մեկնաբանություններ"
+msgstr "Մեկնաբանություններ:"
 
 #: blog/templates/post.html:25
 msgid "Refresh comments"
@@ -197,20 +201,22 @@ msgid "Clear"
 msgstr "Մաքրել"
 
 #: blog/templates/post.html:46
-msgid "sign in"
-msgstr "մուտք գործեք"
+msgid ""
+"sign in</a>\n"
+"                    or"
+msgstr "մուտք գործեք </a> կամ"
 
 #: blog/templates/post.html:47
-msgid "or"
-msgstr "կամ"
+msgid ""
+"sign up</a>\n"
+"                    to add comment"
+msgstr "մուտք գործեք մեկնաբանություն ավելացնելու համար"
 
-#: blog/templates/post.html:47
-msgid "sign up"
-msgstr "գրանցվեք"
-
-#: blog/templates/post.html:48
-msgid "to add comment"
-msgstr "մեկնաբանություն ավելացնելու համար"
+#: blog/templates/post_info.html:11
+#, fuzzy
+#| msgid "Likes"
+msgid "Likes:"
+msgstr "Հավանումներ"
 
 #: blog/templates/post_info.html:14
 msgid "Like this post!"
@@ -267,4 +273,4 @@ msgstr "Ձեր գրառումը ընդունվել է"
 
 #: blog/views.py:33
 msgid "Most Viewed"
-msgstr "Դիտված"
+msgstr "Ամենադիտված"

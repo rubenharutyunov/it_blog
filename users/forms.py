@@ -1,8 +1,8 @@
-import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth import password_validation
-from users.models import User, URLDomainValidator
+from django.utils.translation import ugettext as _
+from users.models import User
 from users.widgets import FileInputPreview
 from users.utils import generate_activation_key, send_activation_email, TOMORROW
 
@@ -18,16 +18,16 @@ class CustomUserChangeForm(UserChangeForm):
 
 
 class SignInForm(forms.Form):
-    username_or_email = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput())
-    remember = forms.BooleanField(required=False)
+    username_or_email = forms.CharField(label=_("Username or Email"))
+    password = forms.CharField(widget=forms.PasswordInput(), label=_("Password"))
+    remember = forms.BooleanField(required=False, label=_("Remember"))
 
 
 class SignUpForm(forms.ModelForm):
-    email = forms.CharField(max_length=75, required=True, widget=forms.EmailInput(attrs={'placeholder': 'Email'}))
-    personal_info = forms.CharField(required=False, widget=forms.Textarea(attrs={'placeholder': 'Personal Info'}))
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput)
-    password2 = forms.CharField(label="Password confirmation", widget=forms.PasswordInput)
+    email = forms.CharField(max_length=75, required=True, widget=forms.EmailInput(attrs={'placeholder': _('Email')}))
+    personal_info = forms.CharField(label=_("Personal Info"), required=False, widget=forms.Textarea(attrs={'placeholder': _('Personal Info')}))
+    password1 = forms.CharField(label=_("Password"), widget=forms.PasswordInput)
+    password2 = forms.CharField(label=_("Password confirmation"), widget=forms.PasswordInput)
 
     class Meta:
         main_fields = ('first_name', 'last_name', 'username',
@@ -36,16 +36,16 @@ class SignUpForm(forms.ModelForm):
         fields = main_fields + additional_fields
         model = User
         widgets = {
-            'first_name': forms.TextInput(attrs={'placeholder': 'First Name'}),
-            'last_name': forms.TextInput(attrs={'placeholder': 'Last Name'}),
-            'username': forms.TextInput(attrs={'placeholder': 'Username'}),
-            'website': forms.TextInput(attrs={'placeholder': 'Website'}),
-            'facebook': forms.TextInput(attrs={'placeholder': 'Facebook'}),
-            'gplus': forms.TextInput(attrs={'placeholder': 'Google Plus'}),
-            'twitter': forms.TextInput(attrs={'placeholder': 'Twitter'}),
-            'github': forms.TextInput(attrs={'placeholder': 'Github'}),
-            'linkedin': forms.TextInput(attrs={'placeholder': 'LinkedIn'}),
-            'vk': forms.TextInput(attrs={'placeholder': 'VK'}),
+            'first_name': forms.TextInput(attrs={'placeholder': _('First Name')}),
+            'last_name': forms.TextInput(attrs={'placeholder': _('Last Name')}),
+            'username': forms.TextInput(attrs={'placeholder': _('Username')}),
+            'website': forms.TextInput(attrs={'placeholder': _('Website')}),
+            'facebook': forms.TextInput(attrs={'placeholder': _('Facebook')}),
+            'gplus': forms.TextInput(attrs={'placeholder': _('Google Plus')}),
+            'twitter': forms.TextInput(attrs={'placeholder': _('Twitter')}),
+            'github': forms.TextInput(attrs={'placeholder': _('Github')}),
+            'linkedin': forms.TextInput(attrs={'placeholder': _('LinkedIn')}),
+            'vk': forms.TextInput(attrs={'placeholder': _('VK')}),
             'avatar': FileInputPreview()
         }
 
@@ -59,7 +59,7 @@ class SignUpForm(forms.ModelForm):
         password1 = self.cleaned_data.get("password1")
         password2 = self.cleaned_data.get("password2")
         if password1 and password2 and password1 != password2:
-            raise forms.ValidationError("Passwords must match")
+            raise forms.ValidationError(_("Passwords must match"))
         self.instance.username = self.cleaned_data.get('username')
         if password2:
             password_validation.validate_password(password2, self.instance)
@@ -69,7 +69,7 @@ class SignUpForm(forms.ModelForm):
         super(SignUpForm, self).clean()
         email = self.cleaned_data.get('email')
         if User.objects.exclude(pk=self.instance.pk).filter(email=email).exists():
-            raise forms.ValidationError("A user with that email already exists.")
+            raise forms.ValidationError(_("A user with that email already exists."))
         return email
 
     def save(self, commit=True):
@@ -83,7 +83,7 @@ class SignUpForm(forms.ModelForm):
 
 
 class ProfileEditForm(SignUpForm):
-    old_password = forms.CharField(widget=forms.PasswordInput())
+    old_password = forms.CharField(widget=forms.PasswordInput(), label=_("Old Password"))
 
     class Meta(SignUpForm.Meta):
         SignUpForm.Meta.main_fields = SignUpForm.Meta.main_fields[:4] + \
@@ -99,7 +99,7 @@ class ProfileEditForm(SignUpForm):
         old_password = self.cleaned_data.get('old_password')
         if old_password:
             if not self.instance.check_password(old_password):
-                raise forms.ValidationError('Old password is incorrect')
+                raise forms.ValidationError(_('Old password is incorrect'))
         return old_password
 
     def save(self, commit=True):

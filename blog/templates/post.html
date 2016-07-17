@@ -2,10 +2,10 @@
 {% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Home" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% load nav_tags %}
-{% get_nav 'main' request active="Home" %}
+{% get_nav 'main' request %}
 {% block main_content %}
  <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
     <h2 class="main-title text-uppercase">{{ post.title }}</h2>
@@ -43,9 +43,9 @@
         {% else %}
             <div class="row">
                 <p>
-                    You need to <a href="{% url 'sign_in' %}">{% blocktrans %}sign in{% endblocktrans %}</a>
-                    {% blocktrans %}or{% endblocktrans %} <a href="{% url 'sign_up' %}">{% blocktrans %}sign up{% endblocktrans %}</a>
-                    {% blocktrans %}to add comment{% endblocktrans %}
+                    You need to <a href="{% url 'sign_in' %}">{% blocktrans %}sign in</a>
+                    or{% endblocktrans %} <a href="{% url 'sign_up' %}">{% blocktrans %}sign up</a>
+                    to add comment{% endblocktrans %}
                 </p>
             </div>
         {% endif %}

@@ -1,12 +1,13 @@
+{% load i18n %}
 <div class="input-group image-preview">
     <input type="text" class="form-control image-preview-filename" disabled="disabled">
     <span class="input-group-btn">
         <button type="button" class="btn btn-default image-preview-clear" style="display:none;">
-            <i class="fa fa-times" aria-hidden="true"></i> Clear
+            <i class="fa fa-times" aria-hidden="true"></i> {% blocktrans %}Clear{% endblocktrans %}
         </button>
         <div class="btn btn-default image-preview-input">
             <i class="fa fa-download" aria-hidden="true"></i>
-            <span class="image-preview-input-title">Browse</span>
+            <span class="image-preview-input-title">{% blocktrans %}Browse{% endblocktrans %}</span>
             {{ input }}
         </div>
     </span>

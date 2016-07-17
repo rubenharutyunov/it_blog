@@ -1,11 +1,12 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {%  block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Profile" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="reg">Sign Up</h2>
+    <h2 class="reg">{% blocktrans %}Sign Up{% endblocktrans %}</h2>
     {% load blog_tags %}
     {{ form.media }}
     <form enctype='multipart/form-data' method="POST" class="reg-form form-horizontal" role="form" novalidate>
@@ -28,7 +29,7 @@
         {% endfor %}
         <ul class="nav nav-pills nav-stacked show_add col-lg-8 col-md-11">
             <li data-toggle="collapse" data-target="#additional-fields" class="active">
-                <a>You also can provide additional information about yourself, if you'd like</a>
+                <a>{% blocktrans %}You also can provide additional information about yourself, if you'd like{% endblocktrans %}</a>
             </li>
         </ul>
         <div id="additional-fields" class="collapse">
@@ -49,8 +50,8 @@
                 {% for error in form.non_field_errors %} {{error}} {% endfor %}
             </div>
         {% endif %}
-        <p class="bottom-note text-success">Fields marked with an asterisk (*) are required.</p>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form> <!-- /form -->
-</div> <!-- ./container -->
+        <p class="bottom-note text-success">{% blocktrans %}Fields marked with an asterisk (*) are required.{% endblocktrans %}</p>
+        <button type="submit" class="btn btn-default">{% blocktrans %}Submit{% endblocktrans %}</button>
+    </form>
+</div>
 {% endblock %}

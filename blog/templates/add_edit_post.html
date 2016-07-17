@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Add post" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
@@ -20,15 +20,21 @@
             {% csrf_token %}
             {% load blog_tags %}
             {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.name }}" class="col-lg-2 col-md-3 control-label">{{ field.label }}</label>
+            <div class="form-group {% if field.errors %}has-error error{% endif %}">
+                <label for="{{ field.name }}" class="col-lg-2 col-md-3 control-label">
+                    {{ field.label }} {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                </label>
                 <div class="col-lg-9 col-md-9">
                     {{ field|add_class:"form-control" }}
+                    <label class="help-block text-danger" for="{{ field.name }}">{% for error in field.errors %} {{error}} {% endfor %}</label>
                 </div>
             </div>
             {% endfor %}
             <div class="form-group">
-                <div class="col-lg-2 col-md-3 col-md-offset-9 col-lg-offset-9">
+                <div class="col-md-12">
+                    <p class="bottom-note text-success">{% blocktrans %}Fields marked with an asterisk (*) are required.{% endblocktrans %}</p>
+                </div>
+                <div class="col-lg-3 col-md-4 col-md-offset-8 col-lg-offset-8">
                     {% if edit %}
                         <button type="submit" class="btn btn-primary btn-block">{% blocktrans %}Edit post{% endblocktrans %}</button>
                     {% else %}

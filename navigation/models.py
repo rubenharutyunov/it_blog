@@ -7,9 +7,9 @@ from blog.models import Post, BlogFlatPage
 
 
 class BlogNavigationItem(MPTTModel):
-    menu_name = models.CharField(max_length=255, blank=True,
-                                 help_text=_("Name to show in menu.\nUse [user] variable to display current user\nUse "
-                                             "[search] variable to display search form"), verbose_name=_("Menu name"))
+    name = models.CharField(max_length=255, blank=True,
+                            help_text=_("Name to show in menu.\nUse [user] variable to display current user\n"
+                                        "Use [search] variable to display search form"), verbose_name=_("Menu name"))
     post = models.ForeignKey(Post, blank=True, null=True, verbose_name=_("Post"))
     page = models.OneToOneField(BlogFlatPage, blank=True, null=True, verbose_name=_("Page"))
     custom_url = models.CharField(max_length=255, blank=True, null=True, verbose_name=_("Custom URL"))
@@ -60,7 +60,7 @@ class BlogNavigationItem(MPTTModel):
         return self.page or self.post or self.custom_url or self.urls_name
 
     def __str__(self):
-        return "%s %s" % ("---" * self.get_level(), self.menu_name or _("Item with id %s" % self.id))
+        return "%s %s" % ("---" * self.get_level(), self.name or _("Item with id %s" % self.id))
 
 
 class BlogNavigation(models.Model):

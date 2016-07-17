@@ -1,8 +1,9 @@
-<p>Hi, {{ username }}. Thank you for joining IT Blog.</p>
-<p>Please confirm your email address by clicking the link below.</p>
+{% load i18n %}
+<p>{% blocktrans %}Hi, {{ username }}. Thank you for joining IT Blog.{% endblocktrans %}</p>
+<p>{% blocktrans %}Please confirm your email address by clicking the link below.{% endblocktrans %}</p>
 
 
-<p><a href="{{ activation_link }}" class="btn-primary" itemprop="url">Confirm email address</a></p>
+<p><a href="{{ activation_link }}" class="btn-primary" itemprop="url">{% blocktrans %}Confirm email address{% endblocktrans %}</a></p>
 
-<p>The IT Blog team</p>
+<p>{% blocktrans %}The IT Blog team{% endblocktrans %}</p>
 

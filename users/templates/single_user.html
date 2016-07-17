@@ -1,3 +1,4 @@
+{% load i18n %}
 <div class="user-content">
     <div class="user-avatar">
         {% if user.avatar %}
@@ -8,9 +9,9 @@
     </div>
     <div class="user-info">
         <ul>
-            <li>First name: {% if user.first_name %}{{ user.first_name }}{% else %}Not set{% endif %}</li>
-            <li>Last name: {% if user.last_name %}{{ user.last_name }}{% else %}Not set{% endif %}</li>
-            <li>Posts:
+            <li>{% blocktrans %}First name:{% endblocktrans %} {% if user.first_name %}{{ user.first_name }}{% else %}{% blocktrans %}Not set{% endblocktrans %}{% endif %}</li>
+            <li>{% blocktrans %}Last name:{% endblocktrans %} {% if user.last_name %}{{ user.last_name }}{% else %}{% blocktrans %}Not set{% endblocktrans %}{% endif %}</li>
+            <li>{% blocktrans %}Posts:{% endblocktrans %}
                 {% if user.post_set.count > 0 %}
                     {% load blog_tags %}
                     <a href="{% url 'user_posts' user.username %}">{{ user|approved_count }}</a>
@@ -18,15 +19,15 @@
                     {{ user.post_set.count }}
                 {% endif %}
             </li>
-            <li>Comments:
+            <li>{% blocktrans %}Comments:{% endblocktrans %}
                 {% if user.comment_set.count > 0 %}
                     <a href="{% url 'user_comments' user.username %}">{{ user.comment_set.count }}</a>
                 {% else %}
                     {{ user.comment_set.count }}
                 {% endif %}</li>
-            <li>Last seen: {{ user.last_login }}</li>
-            <li>Likes: {{ user.likes.count }}</li>
-            <li>Questions: (Soon)</li>
+            <li>{% blocktrans %}Last seen:{% endblocktrans %} {{ user.last_login }}</li>
+            <li>{% blocktrans %}Likes:{% endblocktrans %} {{ user.likes.count }}</li>
+            <li>{% blocktrans %}Questions: (Soon){% endblocktrans %}</li>
         </ul>
         <div class="user-social">
             {% if user.website %}

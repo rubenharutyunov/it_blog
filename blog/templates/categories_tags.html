@@ -1,9 +1,9 @@
 {% extends "blog/base.html" %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Add post" %}
+    {% get_nav 'main' request %}
 {% endblock %}
-{% get_nav 'main' request active="Add post" %}
+{% get_nav 'main' request %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
     <h2 class="main-title text-uppercase">IT Blog - {{ type }}</h2>

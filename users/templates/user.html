@@ -1,25 +1,26 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Profile" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <div class="user user-init">
-            <h3 class="main-title text-uppercase">User - {{ user.username }}</h3>
+            <h3 class="main-title text-uppercase">{% blocktrans %}User{% endblocktrans %} - {{ user.username }}</h3>
             {% include 'single_user.html' with user=user %}
             {% if editable %}
             <div class="edit-profile">
-                <a href="{% url "edit_profile" %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit profile</a>
+                <a href="{% url "edit_profile" %}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% blocktrans %}Edit profile{% endblocktrans %}</a>
             </div>
             {% endif %}
             <div class="clearfix"></div>
             <div class="user-personal-info">
                 {% if user.personal_info %}
-                    <h3 class="user-personal-info-header">About {{ user.username }}</h3>
+                    <h3 class="user-personal-info-header">{% blocktrans %}About {{ user.username }}{% endblocktrans %}</h3>
                     {{ user.personal_info|safe }}
                 {% else %}
-                    <p>User {{ user.username }} told nothing about himself :(</p>
+                    <p>{% blocktrans with username=user.username %}User {{ username }} told nothing about himself :({% endblocktrans %}</p>
                 {% endif %}
             </div>
         </div>

@@ -8,7 +8,7 @@
     <i class="fa fa-user "></i> <a href="{% url 'user' post.author.username %}">{{ post.author }}</a>
 </div>
 <div class="post-like">
-    Likes: <span class="likes{{ post.id }}">{{ post.likes.count }}</span>&nbsp;
+    {% blocktrans %}Likes:{% endblocktrans %} <span class="likes{{ post.id }}">{{ post.likes.count }}</span>&nbsp;
     <a class="{{ request.user|liked:post }}{% if not request.user.is_authenticated %}anon{% endif %}" id="{{ post.id }}" href=""
         {% if request.user.is_authenticated %}
             title="{% blocktrans %}Like this post!{% endblocktrans %}">

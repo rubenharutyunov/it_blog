@@ -1,12 +1,13 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block nav %}
     {% load nav_tags %}
-    {% get_nav 'main' request active="Profile" %}
+    {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <div class="alert alert-info">
-            <p>New activation link has been sent to your email</p>
+            <p>{% blocktrans %}New activation link has been sent to your email{% endblocktrans %}</p>
             <meta http-equiv="refresh" content="5;url=/" />
         </div>
     </div>
