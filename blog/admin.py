@@ -15,7 +15,7 @@ from django.contrib.flatpages.models import FlatPage
 def save_current_user(request, instance, form):
     user = request.user 
     instance = form.save(commit=False)
-    if not instance.author:
+    if not hasattr(instance, 'author'):
         instance.author = user
     instance.save()
     form.save_m2m()
@@ -48,7 +48,7 @@ approve_action.short_description = _("Approve selected")
 class PostAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('views',  'author')
-    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'post_tags', 'post_category')
+    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
     actions = [approve_action]
