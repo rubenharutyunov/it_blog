@@ -172,7 +172,8 @@ function handle_reply(id) {
         parent.val(id);
         textarea.val("@"+author+", ");
         textarea.focus();
-        label.text("Reply to " + author);
+        fmts = gettext("Reply to %s ");
+        label.text(interpolate(fmts, [author]));
     });
     var clear_button = $(".btn-clear");
     clear_button.click(function (event) {
@@ -212,7 +213,7 @@ function handle_comment_edit() {
         var comment_id = $this.attr('class');
         textarea.val(comment_text);
         textarea.focus();
-        label.text("Edit comment");
+        label.text(gettext("Edit comment"));
         comment_form.find('button').attr('data-comment-id', comment_id);
     })
 }
@@ -221,7 +222,7 @@ function handle_comment_edit() {
 function clear_comment_form() {
     var textarea = $(".comment-form textarea").val("");
     var parent = $(".comment-form input[name='parent']").val("");
-    var label = $(".comment-form label").text("Add comment:");
+    var label = $(".comment-form label").text(gettext("Add comment:"));
     $('.comment-form button').removeAttr('data-comment-id');
     $('.comment-form input[name="parent"]').removeAttr('value');
     $(".errorlist").hide();

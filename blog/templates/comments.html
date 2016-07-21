@@ -22,7 +22,7 @@
         </div>
         {% if request.user == node.author or perms.blog.can_change_comment %}
             <div class="comment-edit">
-                <a class="{{ node.id }}" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                <a class="{{ node.id }}" href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i> {% blocktrans %}Edit{% endblocktrans %}</a>
             </div>
         {% endif %}
         {% if request.user == node.author or perms.blog.can_delete_comment %}
