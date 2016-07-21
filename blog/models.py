@@ -29,16 +29,16 @@ class Post(models.Model):
         ordering = ['-date_time', 'title']
 
     def save(self, **kwargs):
-        self.slug = orig = slugify(self.title)
-        for x in itertools.count(1):
-            if not Post.objects.filter(slug=self.slug).exists():
-                break
-            self.slug = '%s-%d' % (orig, x)
         if self.pk is not None:
             orig = Post.objects.get(pk=self.pk)
             if not orig.approved and self.approved:
                 send_approved_email(self)
-                print('approved')
+        else:
+            self.slug = orig = slugify(self.title)
+            for x in itertools.count(1):
+                if not Post.objects.filter(slug=self.slug).exists():
+                    break
+                self.slug = '%s-%d' % (orig, x)
         super(Post, self).save()
 
     def __str__(self):

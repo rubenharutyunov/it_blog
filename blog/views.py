@@ -76,12 +76,17 @@ def get_post(request, slug):
 def get_categories_tags(request, type):
     if type == 'categories':
         result = Category.objects.all()
+        type = _('Categories')
+        tags = False
     else:  # Tags
         result = Tag.objects.all()
+        type = _('Tags')
+        tags = True
     result = pagination(request, result, 20)
     return render(request, 'categories_tags.html', {
         'result': result,
-        'type': type
+        'type': type,
+        'tags': tags
     })
 
 

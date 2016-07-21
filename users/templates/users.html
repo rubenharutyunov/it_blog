@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom - {% blocktrans %}Users{% endblocktrans %}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
@@ -8,7 +11,7 @@
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
         {% for user in users %}
              <div class="user user-init">
-                <h3 class="main-title text-uppercase"><a href="{% url 'user' user.username %}">{% blocktrans with username=user.username %}User - {{ username }}{% endblocktrans %}</a></h3>
+                <h3 class="main-title"><a href="{% url 'user' user.username %}">{% blocktrans with username=user.username %}User - {{ username }}{% endblocktrans %}</a></h3>
                 {% include 'single_user.html' with user=user %}
              </div>
         {% endfor %}

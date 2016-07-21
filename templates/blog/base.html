@@ -6,8 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Blog</title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
     {% load staticfiles %}
+    <link rel="shortcut icon" href="{% static 'blog/images/favicon.ico' %}?v=3"/>
     <script src="{% static 'jquery-1.12.4.min.js' %}"></script>
     <script src="{% static 'blog/js/script.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
@@ -15,7 +19,8 @@
     <link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static "font-awesome/css/font-awesome.min.css" %}">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.5.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
     <script>
         var csrf ='{{ csrf_token }}'
     </script>
@@ -27,7 +32,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
               <i class="fa fa-bars"></i>
             </button>
-            <a class="navbar-brand" href="/"><img src="{% static 'blog/images/logo_transparent.png' %}" alt=""> IT Blog</a>
+            <a class="navbar-brand" href="/"><img src="{% static 'blog/images/new_logo.png' %}" alt="IT and Wisdom Ամեն ինչ ՏՏ-ի մասին"></a>
         </div><!-- navbar-header-->
     </nav>
     <div id="wrapper" class="toggled-2">
@@ -59,7 +64,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-xs-5">
-                     © IT Blog {% now "Y" %}
+                     © itandwisdom.com {% now "Y" %}
                 </div>
                 <div class="col-md-7 col-xs-7 social">
                      {% load nav_tags %}

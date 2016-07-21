@@ -21,7 +21,7 @@ def generate_activation_key(username):
 def send_activation_email(username, activation_key, email):
     domain = Site.objects.get_current().domain
     link = "http://%s/activate/" % domain + activation_key
-    subject = "IT Blog account activation"
+    subject = "itandwisdom.com account activation"
     message = render_to_string('activation_email.html', {
         'activation_link': link,
         'username': username

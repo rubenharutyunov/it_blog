@@ -2,7 +2,7 @@
 WARNING: This code is just HORRIBLE O_o
 Maybe i'll refactor it or rewrite from scratch..
 ..in the next life...
-* */
+*/
 
 function initMenu() {
     $("#menu-toggle").click(function(e) {

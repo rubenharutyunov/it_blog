@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom - {% blocktrans %}Sign Up{% endblocktrans %}
+{% endblock %}
 {%  block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}

@@ -1,13 +1,16 @@
 {% extends 'blog/base.html' %}
 {% load i18n %}
+{% block title %}
+    {% blocktrans %}IT and Wisdom - {{ username }}'s comments{% endblocktrans %}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-        <h2 class="main-title text-uppercase">
-            {% blocktrans %}IT Blog - {{ username }}'s comments{% endblocktrans %}
+        <h2 class="main-title">
+            {% blocktrans %}IT and Wisdom - {{ username }}'s comments{% endblocktrans %}
         </h2>
         {% load mptt_tags %}
         <div class="row comments-container">
