@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-07-21 23:09+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: hy\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: static/admin/js/SelectFilter2.js:47
+#, javascript-format
+msgid "Available %s"
+msgstr "Հասանելի %s"
+
+#: static/admin/js/SelectFilter2.js:53
+#, javascript-format
+msgid ""
+"This is the list of available %s. You may choose some by selecting them in "
+"the box below and then clicking the \"Choose\" arrow between the two boxes."
+msgstr ""
+"Սա հասանելի %sի ցուցակ է։ Դուք կարող եք ընտրել նրանցից որոշները ընտրելով "
+"դրանք ստորև գտնվող վանդակում և սեղմելով երկու վանդակների միջև գտնվող \"Ընտրել"
+"\" սլաքը։"
+
+#: static/admin/js/SelectFilter2.js:69
+#, javascript-format
+msgid "Type into this box to filter down the list of available %s."
+msgstr "Մուտքագրեք այս դաշտում հասանելի %sի ցուցակը ֆիլտրելու համար։"
+
+#: static/admin/js/SelectFilter2.js:74
+msgid "Filter"
+msgstr "Ֆիլտրել"
+
+#: static/admin/js/SelectFilter2.js:78
+msgid "Choose all"
+msgstr "Ընտրել բոլորը"
+
+#: static/admin/js/SelectFilter2.js:78
+#, javascript-format
+msgid "Click to choose all %s at once."
+msgstr "Սեղմեք բոլոր %sը ընտրելու համար։"
+
+#: static/admin/js/SelectFilter2.js:84
+msgid "Choose"
+msgstr "Ընտրել"
+
+#: static/admin/js/SelectFilter2.js:86
+msgid "Remove"
+msgstr "Հեռացնել"
+
+#: static/admin/js/SelectFilter2.js:92
+#, javascript-format
+msgid "Chosen %s"
+msgstr "Ընտրված %s"
+
+#: static/admin/js/SelectFilter2.js:98
+#, javascript-format
+msgid ""
+"This is the list of chosen %s. You may remove some by selecting them in the "
+"box below and then clicking the \"Remove\" arrow between the two boxes."
+msgstr ""
+"Սա հասանելի %sի ցուցակ է։ Դուք կարող եք հեռացնել նրանցից որոշները ընտրելով "
+"դրանք ստորև գտնվող վանդակում և սեղմելով երկու վանդակների միջև գտնվող "
+"\"Հեռացնել\" սլաքը։"
+
+#: static/admin/js/SelectFilter2.js:108
+msgid "Remove all"
+msgstr "Հեռացնել բոլորը"
+
+#: static/admin/js/SelectFilter2.js:108
+#, javascript-format
+msgid "Click to remove all chosen %s at once."
+msgstr "Սեղմեք բոլոր %sը հեռացնելու համար։"
+
+#: static/admin/js/actions.js:47 static/admin/js/actions.min.js:2
+msgid "%(sel)s of %(cnt)s selected"
+msgid_plural "%(sel)s of %(cnt)s selected"
+msgstr[0] "Ընտրված է %(cnt)s-ից %(sel)s-ը"
+msgstr[1] "Ընտրված է %(cnt)s-ից %(sel)s-ը"
+
+#: static/admin/js/actions.js:116 static/admin/js/actions.min.js:4
+msgid ""
+"You have unsaved changes on individual editable fields. If you run an "
+"action, your unsaved changes will be lost."
+msgstr ""
+"Դուք ունեք չպահպանված անհատական խմբագրելի դաշտեր։ Եթե դուք կատարեք "
+"գործողությունը, ձեր չպահպանված փոփոխությունները կկորեն։"
+
+#: static/admin/js/actions.js:128 static/admin/js/actions.min.js:5
+msgid ""
+"You have selected an action, but you haven't saved your changes to "
+"individual fields yet. Please click OK to save. You'll need to re-run the "
+"action."
+msgstr ""
+"Դուք ընտրել եք գործողություն, բայց դեռ չեք պահպանել անհատական խմբագրելի "
+"դաշտերի փոփոխությունները Սեղմեք OK պահպանելու համար։ Անհրաժեշտ կլինի "
+"վերագործարկել գործողությունը"
+
+#: static/admin/js/actions.js:130 static/admin/js/actions.min.js:5
+msgid ""
+"You have selected an action, and you haven't made any changes on individual "
+"fields. You're probably looking for the Go button rather than the Save "
+"button."
+msgstr ""
+"Դուք ընտրել եք գործողություն, բայց դեռ չեք կատարել որևէ անհատական խմբագրելի "
+"դաշտերի փոփոխություն Ձեզ հավանաբար պետք է Կատարել կոճակը, Պահպանել կոճակի "
+"փոխարեն"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:74
+#, javascript-format
+msgid "Note: You are %s hour ahead of server time."
+msgid_plural "Note: You are %s hours ahead of server time."
+msgstr[0] "Ձեր ժամը առաջ է սերվերի ժամանակից %s ժամով"
+msgstr[1] "Ձեր ժամը առաջ է սերվերի ժամանակից %s ժամով"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:82
+#, javascript-format
+msgid "Note: You are %s hour behind server time."
+msgid_plural "Note: You are %s hours behind server time."
+msgstr[0] "Ձեր ժամը հետ է սերվերի ժամանակից %s ժամով"
+msgstr[1] "Ձեր ժամը հետ է սերվերի ժամանակից %s ժամով"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:109
+#: static/admin/js/admin/DateTimeShortcuts.js:149
+msgid "Now"
+msgstr "Հիմա"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:116
+msgid "Choose a Time"
+msgstr "Ընտրեք ժամանակ"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:146
+msgid "Choose a time"
+msgstr "Ընտրեք ժամանակ"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:150
+msgid "Midnight"
+msgstr "Կեսգիշեր"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:151
+msgid "6 a.m."
+msgstr "6 a.m."
+
+#: static/admin/js/admin/DateTimeShortcuts.js:152
+msgid "Noon"
+msgstr "Կեսօր"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:153
+msgid "6 p.m."
+msgstr "6 p.m."
+
+#: static/admin/js/admin/DateTimeShortcuts.js:157
+#: static/admin/js/admin/DateTimeShortcuts.js:281
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:217
+#: static/admin/js/admin/DateTimeShortcuts.js:274
+msgid "Today"
+msgstr "Այսօր"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:224
+msgid "Choose a Date"
+msgstr "Ընտրեք ամսաթիվ"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:272
+msgid "Yesterday"
+msgstr "Երեկ"
+
+#: static/admin/js/admin/DateTimeShortcuts.js:276
+msgid "Tomorrow"
+msgstr "Վաղը"
+
+#: static/admin/js/calendar.js:11
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+"Հունվար Փետրվար Մարտ Ապրիլ Մայիս Հունիս Հուլիս Օգոստոս Սեպտեմբեր Հոկտեմբեր "
+"Նոյեմբեր Դեկտեմբեր"
+
+#: static/admin/js/calendar.js:12
+msgid "S M T W T F S"
+msgstr "Կ Ե Ե Չ Հ ՈՒ Շ"
+
+#: static/admin/js/collapse.js:10 static/admin/js/collapse.js:21
+#: static/admin/js/collapse.min.js:1
+msgid "Show"
+msgstr "Ցույց տալ"
+
+#: static/admin/js/collapse.js:18 static/admin/js/collapse.min.js:1
+msgid "Hide"
+msgstr "Թաքցնել"
+
+#: static/blog/js/script.js:175
+msgid "Reply to %s "
+msgstr "Պատասխանել %s-ին "
+
+#: static/blog/js/script.js:215
+msgid "Edit comment"
+msgstr "Խմբագրել մեկնաբանությունը"
+
+#: static/blog/js/script.js:224
+msgid "Add comment:"
+msgstr "Ավելացնել մեկնաբանություն"

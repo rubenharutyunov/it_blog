@@ -19,11 +19,16 @@ from it_blog import settings
 from blog import urls as blog_urls
 from users import urls as users_url
 from django.conf.urls.static import static
+from django.views.i18n import javascript_catalog
 from haystack.views import search_view_factory
 from search.views import OneModelSearchView
 from search.forms import OneModelSearchForm
 
 urlpatterns = []
+
+js_info_dict = {
+    'packages': ('blog',),
+}
 
 if settings.DEBUG:
     urlpatterns = static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
@@ -36,5 +41,6 @@ urlpatterns += [
     url(r'^admin/', admin.site.urls),
     url(r'^ckeditor/', include('ckeditor_uploader.urls')),
     url(r'^search/$', search_view_factory(view_class=OneModelSearchView, form_class=OneModelSearchForm), name='haystack_search'),
-] 
+    url(r'^jsi18n/$', javascript_catalog, js_info_dict, name='javascript-catalog'),
+]
 
