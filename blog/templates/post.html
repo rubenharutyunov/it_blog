@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom - {{ post.title }}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
@@ -8,7 +11,7 @@
 {% get_nav 'main' request %}
 {% block main_content %}
  <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="main-title text-uppercase">{{ post.title }}</h2>
+    <h2 class="main-title">{{ post.title }}</h2>
     <div class="post">
         {% include "post_tags.html" with post=post %}
         <div class="post-content">
@@ -42,8 +45,8 @@
             </div>
         {% else %}
             <div class="row">
-                <p>
-                    You need to <a href="{% url 'sign_in' %}">{% blocktrans %}sign in</a>
+                <p class="col-lg-9 col-md-8 col-sm-7 col-xs-12">
+                    {% blocktrans %}You need to{% endblocktrans %} <a href="{% url 'sign_in' %}">{% blocktrans %}sign in</a>
                     or{% endblocktrans %} <a href="{% url 'sign_up' %}">{% blocktrans %}sign up</a>
                     to add comment{% endblocktrans %}
                 </p>

@@ -1,5 +1,8 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom - {% blocktrans %}User{% endblocktrans %} - {{ user.username }}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
@@ -7,7 +10,7 @@
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
         <div class="user user-init">
-            <h3 class="main-title text-uppercase">{% blocktrans %}User{% endblocktrans %} - {{ user.username }}</h3>
+            <h3 class="main-title">{% blocktrans %}User{% endblocktrans %} - {{ user.username }}</h3>
             {% include 'single_user.html' with user=user %}
             {% if editable %}
             <div class="edit-profile">

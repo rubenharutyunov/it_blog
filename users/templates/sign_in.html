@@ -1,12 +1,15 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom - {% blocktrans %}Sign In{% endblocktrans %}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="main-title text-uppercase">IT Blog - {% blocktrans %}sign in{% endblocktrans %}</h2>
+    <h2 class="main-title">IT and Wisdom - {% blocktrans %}sign in{% endblocktrans %}</h2>
     <div class="post col-lg-6">
         <form action="" method="POST" role="form">
             {% csrf_token %}

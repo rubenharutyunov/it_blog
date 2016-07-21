@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-17 16:54+0400\n"
+"POT-Creation-Date: 2016-07-21 19:48+0400\n"
 "PO-Revision-Date: 2016-07-16 20:52+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: users/apps.py:7 users/models.py:43
+#: users/apps.py:7 users/models.py:43 users/templates/users.html.py:4
 msgid "Users"
 msgstr "Օգտագործողներ"
 
@@ -118,7 +118,8 @@ msgstr "Ավատար"
 msgid "Favorite Posts"
 msgstr "Սիրված գրառումներ"
 
-#: users/models.py:42 users/templates/user.html.py:10
+#: users/models.py:42 users/templates/user.html.py:4
+#: users/templates/user.html:13
 msgid "User"
 msgstr "Օգտագործող"
 
@@ -157,12 +158,13 @@ msgstr "Ձեր account֊ը հաջողությամբ ակտիվացված է։ Հ
 
 #: users/templates/activation.html:21
 msgid "Sign In "
-msgstr "մուտք գործել"
+msgstr "Մուտք գործել"
 
 #: users/templates/activation_email.html:2
 #, python-format
-msgid "Hi, %(username)s. Thank you for joining IT Blog."
-msgstr "Բարև, %(username)s։ Շնորհակալություն IT Blog կայքին միանալու համար։"
+msgid "Hi, %(username)s. Thank you for joining itandwisdom.com."
+msgstr ""
+"Բարև, %(username)s։ Շնորհակալություն itandwisdom.com կայքին միանալու համար։"
 
 #: users/templates/activation_email.html:3
 msgid "Please confirm your email address by clicking the link below."
@@ -175,8 +177,8 @@ msgstr "Հաստատել էլեկտրոնային փոստի հասցեն"
 
 #: users/templates/activation_email.html:8
 #: users/templates/password_reset_email.html:8
-msgid "The IT Blog team"
-msgstr "IT Blog կայքի թիմ"
+msgid "The itandwisdom.com team"
+msgstr "itandwisdom.com կայքի թիմ"
 
 #: users/templates/file_input_preview.html:6
 msgid "Clear"
@@ -199,8 +201,8 @@ msgid "Confirm password"
 msgstr "Նոր գաղտնաբառը նորից"
 
 #: users/templates/password_reset_confirm.html:32
-#: users/templates/reset_password.html:20 users/templates/sign_in.html.py:33
-#: users/templates/sign_up.html:54
+#: users/templates/reset_password.html:20 users/templates/sign_in.html.py:36
+#: users/templates/sign_up.html:57
 msgid "Submit"
 msgstr "Ուղարկել"
 
@@ -224,10 +226,10 @@ msgstr ""
 #: users/templates/password_reset_email.html:2
 msgid ""
 "You're receiving this email because you requested a password reset for your "
-"user account at IT Blog"
+"user account at itandwisdom.com"
 msgstr ""
 "Դուք ստացել եք այս հաղորդագրությունը, քանի որ ցանկացել եք փոխել ձեր "
-"գաղտնաբառը IT Blog կայքում"
+"գաղտնաբառը itandwisdom.com կայքում"
 
 #: users/templates/password_reset_email.html:3
 msgid "Please go to the"
@@ -249,8 +251,8 @@ msgid "Thanks for using our site!"
 msgstr "Շնորհակալ ենք մեր կայքից օգտվելու համար"
 
 #: users/templates/password_reset_subject.txt:2
-msgid "Password reset on IT Blog"
-msgstr "Գաղտնաբառի թարմացում IT Blog կայքում"
+msgid "Password reset on itandwisdom.com"
+msgstr "Գաղտնաբառի թարմացում itandwisdom.com կայքում"
 
 #: users/templates/registration_success.html:11
 msgid ""
@@ -272,24 +274,28 @@ msgstr "ստանալ նորը"
 msgid "Reset Password"
 msgstr "Փոխել գաղտնաբառը"
 
-#: users/templates/sign_in.html:9
-msgid "sign in"
-msgstr "մուտք գործել"
+#: users/templates/sign_in.html:4
+msgid "Sign In"
+msgstr "Մուտք գործել"
 
-#: users/templates/sign_in.html:25
+#: users/templates/sign_in.html:12
+msgid "sign in"
+msgstr "Մուտք գործել"
+
+#: users/templates/sign_in.html:28
 msgid "Password reset"
 msgstr "Փոխել գաղտնաբառը"
 
-#: users/templates/sign_up.html:9
+#: users/templates/sign_up.html:4 users/templates/sign_up.html.py:12
 msgid "Sign Up"
 msgstr "Գրանցվել"
 
-#: users/templates/sign_up.html:32
+#: users/templates/sign_up.html:35
 msgid ""
 "You also can provide additional information about yourself, if you'd like"
 msgstr "Դուք նաև կարող եք տրամադրել լրացուցիչ ինֆորմացիա ձեր մասին"
 
-#: users/templates/sign_up.html:53
+#: users/templates/sign_up.html:56
 msgid "Fields marked with an asterisk (*) are required."
 msgstr "Աստղանիշով (*) նշված դաշտերը պարտադիր են"
 
@@ -325,34 +331,34 @@ msgstr "Հավանումներ:"
 msgid "Questions: (Soon)"
 msgstr "Հարցեր:  (Շուտով)"
 
-#: users/templates/user.html:14
+#: users/templates/user.html:17
 msgid "Edit profile"
 msgstr "Խմբագրել"
 
-#: users/templates/user.html:20
+#: users/templates/user.html:23
 #, python-format
 msgid "About %(user.username)s"
 msgstr "%(user.username)s օգտագործողի մասին"
 
-#: users/templates/user.html:23
+#: users/templates/user.html:26
 #, python-format
 msgid "User %(username)s told nothing about himself :("
 msgstr "%(username)s օգտագործողը չի պատմել ոչինչ իր մասին :("
 
-#: users/templates/user_comments.html:10
+#: users/templates/user_comments.html:4 users/templates/user_comments.html:13
 #, python-format
-msgid "IT Blog - %(username)s's comments"
-msgstr "IT Blog - %(username)s-ի մեկնաբանությունները"
+msgid "IT and Wisdom - %(username)s's comments"
+msgstr "IT and Wisdom - %(username)s-ի մեկնաբանությունները"
 
-#: users/templates/user_comments.html:24
+#: users/templates/user_comments.html:27
 msgid "Post"
 msgstr "Գրառումներ:"
 
-#: users/templates/user_comments.html:34
+#: users/templates/user_comments.html:37
 msgid "Delete"
 msgstr "Հեռացնել"
 
-#: users/templates/users.html:11
+#: users/templates/users.html:14
 #, python-format
 msgid "User - %(username)s"
 msgstr "Օգտագործող - %(username)s"

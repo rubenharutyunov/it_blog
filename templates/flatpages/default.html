@@ -1,11 +1,14 @@
 {% extends 'blog/base.html' %}
+{% block title %}
+    IT and Wisdom - {{ flatpage.title }}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-        <h2 class="main-title text-uppercase">{{ flatpage.title }}</h2>
+        <h2 class="main-title">{{ flatpage.title }}</h2>
         <div class="post">
             {{ flatpage.content }}
         </div>

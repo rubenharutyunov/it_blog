@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-17 16:54+0400\n"
+"POT-Creation-Date: 2016-07-21 19:48+0400\n"
 "PO-Revision-Date: 2016-07-16 21:06+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "Approve selected"
 msgstr "Հաստատել ընտրվածները"
 
-#: blog/admin.py:59 blog/models.py:22 blog/models.py:89
+#: blog/admin.py:59 blog/models.py:22 blog/models.py:89 blog/views.py:83
 msgid "Tags"
 msgstr "Թեգեր"
 
@@ -106,7 +106,7 @@ msgstr "Վերադաս"
 msgid "Comment"
 msgstr "ՄԵկնաբանություն"
 
-#: blog/models.py:77
+#: blog/models.py:77 blog/views.py:79
 msgid "Categories"
 msgstr "Կատեգորիաներ"
 
@@ -158,8 +158,8 @@ msgstr "Բարև, %(username)s"
 #: blog/templates/approved_email.html:3
 #, python-format
 msgid ""
-"Your post <a href=\"%(link)s\">\"%(title)s\"</a> in IT Blog was approved by "
-"moderators"
+"Your post <a href=\"%(link)s\">\"%(title)s\"</a> in itandwisdom.com was "
+"approved by moderators"
 msgstr ""
 "Ձեր <a href=\"%(link)s\">\"%(title)s\"</a> գրառումը հաստատվել է կայքի "
 "մոդերատորների կողմից"
@@ -169,8 +169,8 @@ msgid "Thanks for using our site!"
 msgstr "Շնորհակալ ենք մեր կայքից օգտվելու համար։"
 
 #: blog/templates/approved_email.html:5
-msgid "The IT Blog team"
-msgstr "IT Blog կայքի թիմ"
+msgid "The itandwisdom.com team"
+msgstr "itandwisdom.com կայքի թիմ"
 
 #: blog/templates/comments.html:21
 msgid "Reply"
@@ -201,6 +201,10 @@ msgid "Clear"
 msgstr "Մաքրել"
 
 #: blog/templates/post.html:46
+msgid "You need to"
+msgstr " "
+
+#: blog/templates/post.html:46
 msgid ""
 "sign in</a>\n"
 "                    or"
@@ -210,13 +214,11 @@ msgstr "մուտք գործեք </a> կամ"
 msgid ""
 "sign up</a>\n"
 "                    to add comment"
-msgstr "մուտք գործեք մեկնաբանություն ավելացնելու համար"
+msgstr "գրանցվեք </a> մեկնաբանություն ավելացնելու համար"
 
 #: blog/templates/post_info.html:11
-#, fuzzy
-#| msgid "Likes"
 msgid "Likes:"
-msgstr "Հավանումներ"
+msgstr "Հավանումներ:"
 
 #: blog/templates/post_info.html:14
 msgid "Like this post!"

@@ -1,5 +1,13 @@
 {% extends "blog/base.html" %}
 {% load i18n %}
+{% block title %}
+    IT and Wisdom -
+     {% if edit %}
+        {% blocktrans %}Edit post{% endblocktrans %}
+     {% else %}
+        {% blocktrans %}Add post{% endblocktrans %}
+     {% endif %}
+{% endblock %}
 {% block nav %}
     {% load nav_tags %}
     {% get_nav 'main' request %}
