@@ -13,6 +13,7 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 from blog.forms import CommentForm, PostForm
 from blog.models import Post, Comment, Category, Tag
+from blog.utils import clean_untrusted_tags
 
 
 def pagination(request, obj, items):
@@ -124,6 +125,7 @@ def like(request):
     return HttpResponse(json.dumps(res), content_type='application/json')
 
 
+@login_required
 @require_POST
 def add_to_fav(request):
     post_id = request.POST.get('post_id')
@@ -142,15 +144,20 @@ def add_to_fav(request):
     return HttpResponse(json.dumps(res), content_type='application/json')
 
 
+@login_required
 @require_POST
-def delete_comment(request):  # TODO: Check if author is correct
+def delete_comment(request):
     comment_id = request.POST.get('comment_id')
-    get_object_or_404(Comment, id=comment_id).delete()
-    return HttpResponse(json.dumps({'status': 'OK'}))
+    comment = get_object_or_404(Comment, id=comment_id)
+    if comment.author == request.user or request.user.is_staff:
+        comment.delete()
+        return HttpResponse(json.dumps({'status': 'OK', 'count': Comment.objects.filter(post=comment.post).count()}))
+    raise PermissionDenied
 
 
+@login_required
 @require_POST
-def add_comment(request):  # TODO: require login
+def add_comment(request):
     post_id = request.POST.get('post_id')
     comment_text = request.POST.get('text')
     comment_author = request.user
@@ -178,18 +185,21 @@ def refresh_comments(request):
     }, request=request))
 
 
+@login_required
 @require_POST
-def edit_comment(request): # TODO: Check if author is correct, require login
+def edit_comment(request):
     comment_text = request.POST.get('text')
     comment_id = request.POST.get('comment_id')
     comment = get_object_or_404(Comment, id=comment_id)
-    comment.text = comment_text
-    comment.save()
-    descendants = comment.get_descendants()
-    replies = render_to_string('comments.html', {
-        'comments': descendants
-    }, request=request)
-    return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment_id, 'replies': replies}))
+    if comment.author == request.user or request.user.is_staff:
+        comment.text = comment_text
+        comment.save()
+        descendants = comment.get_descendants()
+        replies = render_to_string('comments.html', {
+            'comments': descendants
+        }, request=request)
+        return HttpResponse(json.dumps({'status': 'OK', 'comment_id': comment_id, 'replies': replies}))
+    raise PermissionDenied
 
 
 @login_required
@@ -207,19 +217,15 @@ def add_edit_post(request, slug=None):
             form = PostForm(request.POST)
         else:
             form = PostForm(request.POST, instance=get_object_or_404(Post, slug=slug))
-        success = False
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user
             if not request.user.is_staff:
                 instance.approved = False
-
+            instance.text = clean_untrusted_tags(instance.text)
             instance.save()
             form.save_m2m()
-            success = True
-            return render(request, 'add_post_success.html', {
-                'success': success,
-            })
+            return render(request, 'add_post_success.html', {})
     return render(request, 'add_edit_post.html', {
         'form': form,
         'edit': slug is not None
@@ -233,7 +239,3 @@ def delete_post(request, slug):
     else:
         raise PermissionDenied
     return HttpResponseRedirect(reverse('new_posts'))
-
-
-def placeholder(request, *args, **kwargs):
-    return HttpResponse("placeholder")

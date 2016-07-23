@@ -16,7 +16,7 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'text', 'category', 'tags']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': _('Title')}),
-            'text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}),
+            'text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}, config_name='minimal'),
         }
 
 

@@ -1,5 +1,5 @@
 from django.conf.urls import url, include
-from blog.views import placeholder, get_posts, get_post, posts_in_category, get_categories_tags, placeholder, like, add_to_fav, delete_comment, add_comment, refresh_comments, edit_comment, add_edit_post, delete_post
+from blog.views import get_posts, get_post, posts_in_category, get_categories_tags, like, add_to_fav, delete_comment, add_comment, refresh_comments, edit_comment, add_edit_post, delete_post
 
 urlpatterns = [
     url(r'^$', get_posts, name='new_posts'),

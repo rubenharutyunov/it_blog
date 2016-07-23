@@ -76,7 +76,7 @@ class SignUpForm(forms.ModelForm):
         user = super(SignUpForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password1'])
         user.is_active = False
-        user.activation_key = generate_activation_key(user.username)  # TODO: Store as hash
+        user.activation_key = generate_activation_key(user.username)
         user.key_expires = TOMORROW
         user.save()
         send_activation_email(user.username, user.activation_key, user.email)

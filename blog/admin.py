@@ -9,7 +9,8 @@ from mptt.admin import MPTTModelAdmin
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
-
+from django.db import models
+from ckeditor.widgets import CKEditorWidget
 
 # Helper functions
 def save_current_user(request, instance, form):
@@ -52,6 +53,10 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
     actions = [approve_action]
+
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorWidget},
+    }
 
     def post_tags(self, obj):
         tags = obj.tags.all()
