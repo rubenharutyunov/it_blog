@@ -53,7 +53,6 @@ function handle_likes() {
                    }
                 },
                 error: function(rs, e) {
-                    console.log(rs.responseText); // For debug
                 }
           });
     });
@@ -80,7 +79,6 @@ function handle_fav() {
                    }
                 },
                 error: function(rs, e) {
-                    console.log(rs.responseText); // For debug
                 }
           });
     });
@@ -105,7 +103,6 @@ function handle_comment_del() {
                    }
                 },
                 error: function(rs, e) {
-                    console.log(rs.responseText); // For debug
                 }
           });
     });
@@ -132,7 +129,6 @@ function add_edit_comment(form_data) {
                    var comment_container = $('.comments-container');
                    var parent_id = comment_form.find('input[name="parent"]').attr('value');
                    if (comment_id) { // If comment ID is set (Editing comment)
-                            console.log('HERE');
                            $('.comment#'+comment_id + ' > .comment-text').text($('.comment-form textarea').val());
                            $('.comment#'+comment_id + ' > .comment-replies').html(response.replies);
                    } else {
@@ -151,7 +147,6 @@ function add_edit_comment(form_data) {
                }
            },
            error: function(rs, e) {
-                console.log(rs.responseText); // For debug
            }
     });
 }
@@ -196,11 +191,9 @@ function handle_comments_refresh() {
                data: {'post_id': post_id,'csrfmiddlewaretoken': csrf},
                dataType: "html",
                success: function(response) {
-                   console.log(response)
                    $this.parent().find('.comments-container').html(response).hide(0).fadeIn("slow");
                 },
                 error: function(rs, e) {
-                    console.log(rs.responseText); // For debug
                 }
           });
     })
@@ -243,7 +236,6 @@ $(document).ready(function() {
     handle_comment_add();
     handle_comments_refresh();
     handle_comment_edit();
-    $("#additional-fields:has(.has-error)").collapse("show")
 });
 
 

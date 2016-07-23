@@ -5,6 +5,8 @@
         <ul class="sidebar-posts">
             {% for post in new %}
                 <li><a href="{% url 'post' post.slug %}">{{ post.title }}</a></li>
+            {% empty %}
+                {% blocktrans %} No posts to show :( {% endblocktrans %}
             {% endfor %}
         </ul>
     </div>
@@ -13,6 +15,8 @@
         <ul class="sidebar-posts">
             {% for post in best %}
                 <li><a href="{% url 'post' post.slug %}">{{ post.title }}</a></li>
+            {% empty %}
+                {% blocktrans %} No posts to show :( {% endblocktrans %}
             {% endfor %}
         </ul>
     </div>
@@ -21,6 +25,8 @@
         <ul class="sidebar-posts">
             {% for post in top_categories %}
                 <li><a href="{% url 'category' post.slug %}">{{ post.title }}</a></li>
+            {% empty %}
+                {% blocktrans %} Categories posts to show :( {% endblocktrans %}
             {% endfor %}
         </ul>
     </div>
@@ -29,6 +35,8 @@
         <ul class="sidebar-posts">
             {% for post in top_tags %}
                 <li><a href="{% url 'tag' post.slug %}">{{ post.title }}</a></li>
+            {% empty %}
+                {% blocktrans %} No tags to show :( {% endblocktrans %}
             {% endfor %}
         </ul>
     </div>
