@@ -1,9 +1,9 @@
 import itertools
 from django.db import models
-from transliterate import slugify
+from django.utils.text import slugify
+from transliterate import slugify as trans_slugify
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import ugettext as _
-from ckeditor_uploader.fields import RichTextUploadingField
 from ckeditor.fields import RichTextField
 from mptt.models import MPTTModel, TreeForeignKey
 from users.models import User
@@ -12,7 +12,7 @@ from blog.utils import send_approved_email
 
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Title'))
-    text = RichTextUploadingField(verbose_name=_('Content'))
+    text = models.TextField(verbose_name=_('Content'))
     slug = models.SlugField(unique=True, verbose_name=_('Slug'))
     views = models.IntegerField(default=0, verbose_name=_('Views'))
     likes = models.ManyToManyField(User, related_name='likes', blank=True, verbose_name=_('Likes'))
@@ -34,7 +34,7 @@ class Post(models.Model):
             if not orig.approved and self.approved:
                 send_approved_email(self)
         else:
-            self.slug = orig = slugify(self.title)
+            self.slug = orig = trans_slugify(self.title) or slugify(self.title)
             for x in itertools.count(1):
                 if not Post.objects.filter(slug=self.slug).exists():
                     break

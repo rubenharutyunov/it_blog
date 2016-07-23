@@ -99,6 +99,9 @@ function handle_comment_del() {
                    if (response.status == 'OK') {
                        var comment =  $('.comment#'+$this.attr('class'));
                        comment.hide('slow');
+                       if (response.count == 0) {
+                           $('.no-comments').show();
+                       }
                    }
                 },
                 error: function(rs, e) {
@@ -144,6 +147,7 @@ function add_edit_comment(form_data) {
                    $('html, body').animate({
                        scrollTop: new_comment.offset().top
                    }, 500);
+                   $('.no-comments').hide();
                }
            },
            error: function(rs, e) {
@@ -192,6 +196,7 @@ function handle_comments_refresh() {
                data: {'post_id': post_id,'csrfmiddlewaretoken': csrf},
                dataType: "html",
                success: function(response) {
+                   console.log(response)
                    $this.parent().find('.comments-container').html(response).hide(0).fadeIn("slow");
                 },
                 error: function(rs, e) {
