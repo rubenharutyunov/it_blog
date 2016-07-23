@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 19:48+0400\n"
+"POT-Creation-Date: 2016-07-23 23:29+0400\n"
 "PO-Revision-Date: 2016-07-16 21:06+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,39 +18,39 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: blog/admin.py:45
+#: blog/admin.py:46
 msgid "Approve selected"
 msgstr "Հաստատել ընտրվածները"
 
-#: blog/admin.py:59 blog/models.py:22 blog/models.py:89 blog/views.py:83
+#: blog/admin.py:64 blog/models.py:22 blog/models.py:89 blog/views.py:84
 msgid "Tags"
 msgstr "Թեգեր"
 
-#: blog/admin.py:64 blog/models.py:18 blog/models.py:52
+#: blog/admin.py:69 blog/models.py:18 blog/models.py:52
 msgid "Likes"
 msgstr "Հավանումներ"
 
-#: blog/admin.py:69 blog/models.py:21 blog/models.py:76
+#: blog/admin.py:74 blog/models.py:21 blog/models.py:76
 msgid "Category"
 msgstr "Կատեգորիա"
 
-#: blog/admin.py:74 blog/models.py:59
+#: blog/admin.py:79 blog/models.py:59
 msgid "Comments"
 msgstr "ՄԵկնաբանություններ"
 
-#: blog/admin.py:88
+#: blog/admin.py:93
 msgid "Text"
 msgstr "Պարունակություն"
 
-#: blog/admin.py:101 blog/models.py:72
+#: blog/admin.py:106 blog/models.py:72
 msgid "Description"
 msgstr "Նկարագրություն"
 
-#: blog/admin.py:107
+#: blog/admin.py:112
 msgid "Posts in category"
 msgstr "Գրառումներ կատեգորիայում"
 
-#: blog/admin.py:117
+#: blog/admin.py:122
 msgid "Posts with tag"
 msgstr "Թեգով գրառումներ"
 
@@ -106,7 +106,7 @@ msgstr "Վերադաս"
 msgid "Comment"
 msgstr "ՄԵկնաբանություն"
 
-#: blog/models.py:77 blog/views.py:79
+#: blog/models.py:77 blog/views.py:80
 msgid "Categories"
 msgstr "Կատեգորիաներ"
 
@@ -122,15 +122,17 @@ msgstr "Էջ"
 msgid "Pages"
 msgstr "Էջեր"
 
-#: blog/templates/add_edit_post.html:10 blog/templates/add_edit_post.html:39
+#: blog/templates/add_edit_post.html:6 blog/templates/add_edit_post.html:18
+#: blog/templates/add_edit_post.html:47
 msgid "Edit post"
 msgstr "Խմբագրել գրառումը"
 
-#: blog/templates/add_edit_post.html:12 blog/templates/add_edit_post.html:41
+#: blog/templates/add_edit_post.html:8 blog/templates/add_edit_post.html:20
+#: blog/templates/add_edit_post.html:49
 msgid "Add post"
 msgstr "Ավելացնել գրառում"
 
-#: blog/templates/add_edit_post.html:35
+#: blog/templates/add_edit_post.html:43
 msgid "Fields marked with an asterisk (*) are required."
 msgstr ""
 
@@ -176,7 +178,11 @@ msgstr "itandwisdom.com կայքի թիմ"
 msgid "Reply"
 msgstr "Պատասխանել"
 
-#: blog/templates/comments.html:30 blog/templates/post_info.html.py:42
+#: blog/templates/comments.html:25 blog/templates/post_info.html:37
+msgid "Edit"
+msgstr "Խմբագրել"
+
+#: blog/templates/comments.html:30 blog/templates/post_info.html:42
 msgid "Delete"
 msgstr "Հեռացնել"
 
@@ -184,33 +190,33 @@ msgstr "Հեռացնել"
 msgid "No comments"
 msgstr "Մեկնաբանություններ չկան"
 
-#: blog/templates/post.html:23
+#: blog/templates/post.html:25
 msgid "Comments:"
 msgstr "Մեկնաբանություններ:"
 
-#: blog/templates/post.html:25
+#: blog/templates/post.html:27
 msgid "Refresh comments"
 msgstr "Թարմացնել մեկնաբանությունները"
 
-#: blog/templates/post.html:39
+#: blog/templates/post.html:41
 msgid "Submit"
 msgstr "Ուղարկել"
 
-#: blog/templates/post.html:40
+#: blog/templates/post.html:42
 msgid "Clear"
 msgstr "Մաքրել"
 
-#: blog/templates/post.html:46
+#: blog/templates/post.html:48
 msgid "You need to"
 msgstr " "
 
-#: blog/templates/post.html:46
+#: blog/templates/post.html:48
 msgid ""
 "sign in</a>\n"
 "                    or"
 msgstr "մուտք գործեք </a> կամ"
 
-#: blog/templates/post.html:47
+#: blog/templates/post.html:49
 msgid ""
 "sign up</a>\n"
 "                    to add comment"
@@ -228,29 +234,38 @@ msgstr "Հավանել այս գրառումը"
 msgid "Sign in for voting!"
 msgstr "Մուտք գործեք քվեարկելու համար"
 
-#: blog/templates/post_info.html:37
-msgid "Edit"
-msgstr "Խմբագրել"
-
 #: blog/templates/post_info.html:47
 msgid "Read more"
 msgstr "Կարդալ ավելին"
 
-#: blog/templates/sidebar.html:4 blog/views.py:36
+#: blog/templates/posts.html:29 blog/templates/sidebar.html:9
+#: blog/templates/sidebar.html:19
+msgid " No posts to show :( "
+msgstr "Գրառումներ չկան :("
+
+#: blog/templates/sidebar.html:4 blog/views.py:37
 msgid "New"
 msgstr "Նոր գրառումներ"
 
-#: blog/templates/sidebar.html:12 blog/views.py:39
+#: blog/templates/sidebar.html:14 blog/views.py:40
 msgid "Best"
 msgstr "Լավագույնը"
 
-#: blog/templates/sidebar.html:20
+#: blog/templates/sidebar.html:24
 msgid "Top categories"
 msgstr "Լավագույն կատեգորիաներ"
 
-#: blog/templates/sidebar.html:28
+#: blog/templates/sidebar.html:29
+msgid " Categories posts to show :( "
+msgstr "Կատեգորիաներ չկան :("
+
+#: blog/templates/sidebar.html:34
 msgid "Top tags"
 msgstr "Լավագույն թեգեր"
+
+#: blog/templates/sidebar.html:39
+msgid " No tags to show :( "
+msgstr "Թեգեր չկան :("
 
 #: blog/templates/to_moderate.html:7
 msgid "at"
@@ -269,10 +284,10 @@ msgstr "Եվ այլ %(remaining)s գրառումներ"
 msgid "See all"
 msgstr "Դիտել բոլորը"
 
-#: blog/utils.py:12
+#: blog/utils.py:13
 msgid "Your post in was approved!"
 msgstr "Ձեր գրառումը ընդունվել է"
 
-#: blog/views.py:33
+#: blog/views.py:34
 msgid "Most Viewed"
 msgstr "Ամենադիտված"

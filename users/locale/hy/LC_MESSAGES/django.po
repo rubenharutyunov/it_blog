@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-21 19:48+0400\n"
+"POT-Creation-Date: 2016-07-23 23:29+0400\n"
 "PO-Revision-Date: 2016-07-16 20:52+0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: users/apps.py:7 users/models.py:43 users/templates/users.html.py:4
+#: users/apps.py:7 users/models.py:43 users/templates/users.html:4
 msgid "Users"
 msgstr "Օգտագործողներ"
 
@@ -34,7 +34,7 @@ msgstr "Գաղտնաբառ"
 msgid "Remember"
 msgstr "Հիշել"
 
-#: users/forms.py:27 users/templates/reset_password.html.py:14
+#: users/forms.py:27 users/templates/reset_password.html:14
 msgid "Email"
 msgstr "Email"
 
@@ -118,8 +118,7 @@ msgstr "Ավատար"
 msgid "Favorite Posts"
 msgstr "Սիրված գրառումներ"
 
-#: users/models.py:42 users/templates/user.html.py:4
-#: users/templates/user.html:13
+#: users/models.py:42 users/templates/user.html:4 users/templates/user.html:13
 msgid "User"
 msgstr "Օգտագործող"
 
@@ -131,7 +130,7 @@ msgstr "Խումբ"
 msgid "Groups"
 msgstr "Խմբեր"
 
-#: users/templates/activation.html:11 users/templates/activation.html.py:17
+#: users/templates/activation.html:11 users/templates/activation.html:17
 msgid "Error!"
 msgstr "Սխալ"
 
@@ -201,7 +200,7 @@ msgid "Confirm password"
 msgstr "Նոր գաղտնաբառը նորից"
 
 #: users/templates/password_reset_confirm.html:32
-#: users/templates/reset_password.html:20 users/templates/sign_in.html.py:36
+#: users/templates/reset_password.html:20 users/templates/sign_in.html:36
 #: users/templates/sign_up.html:57
 msgid "Submit"
 msgstr "Ուղարկել"
@@ -286,7 +285,7 @@ msgstr "Մուտք գործել"
 msgid "Password reset"
 msgstr "Փոխել գաղտնաբառը"
 
-#: users/templates/sign_up.html:4 users/templates/sign_up.html.py:12
+#: users/templates/sign_up.html:4 users/templates/sign_up.html:12
 msgid "Sign Up"
 msgstr "Գրանցվել"
 

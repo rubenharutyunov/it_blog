@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load i18n %}
 {% block title %}
     IT and Wisdom - {{ type }}
 {% endblock %}
@@ -24,6 +25,8 @@
                 {% include "post_info.html" with post=post %}
             </div>
         </div>
+         {% empty %}
+            {% blocktrans %} No posts to show :( {% endblocktrans %}
         {% endfor %}
         {% load pagination %}{% paginator posts %}
     </div>
