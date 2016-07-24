@@ -36,7 +36,7 @@ allowed_tags = [
 
 allowed_styles = [
     'margin', 'margin-left', 'margin-right', 'margin-top', 'margin-bottom', 'padding', 'padding-left',
-    'padding-right', 'padding-top', 'padding-bottom', 'text-align', 'page-break-after'
+    'padding-right', 'padding-top', 'padding-bottom', 'text-align', 'page-break-after', 'width', 'height'
 ]
 
 
