@@ -10,7 +10,8 @@ from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
 from django.db import models
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+
 
 # Helper functions
 def save_current_user(request, instance, form):
@@ -55,7 +56,7 @@ class PostAdmin(admin.ModelAdmin):
     actions = [approve_action]
 
     formfield_overrides = {
-        models.TextField: {'widget': CKEditorWidget},
+        models.TextField: {'widget': CKEditorUploadingWidget},
     }
 
     def post_tags(self, obj):

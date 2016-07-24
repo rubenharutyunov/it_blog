@@ -21,9 +21,6 @@
         {% endif %}
         {% load staticfiles %}
         {{ form.media }}
-        {% if not request.user.is_staff %}
-            <script src="{% static 'blog/js/disable_ckeditor_upload.js' %}"></script>
-        {% endif %}
         <form action="" method="POST" class="add-form form-horizontal" role="form">
             {% csrf_token %}
             {% load blog_tags %}
