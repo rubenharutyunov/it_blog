@@ -30,7 +30,7 @@ allowed_attrs = {
 }
 
 allowed_tags = [
-    'a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p', 'strong', 'em', 'u', 's', 'br',
+    'a', 'img', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p', 'strong', 'em', 'u', 's', 'br',
     'sub', 'sup', 'ol', 'ul', 'li', 'table', 'tbody', 'tr', 'td', 'hr', 'pre', 'code'
 ]
 
