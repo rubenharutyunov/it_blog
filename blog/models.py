@@ -13,7 +13,7 @@ from blog.utils import send_approved_email
 class Post(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('Title'))
     text = models.TextField(verbose_name=_('Content'))
-    slug = models.SlugField(unique=True, verbose_name=_('Slug'))
+    slug = models.SlugField(unique=True, verbose_name=_('Slug'), blank=True)
     views = models.IntegerField(default=0, verbose_name=_('Views'))
     likes = models.ManyToManyField(User, related_name='likes', blank=True, verbose_name=_('Likes'))
     date_time = models.DateTimeField(auto_now=True, verbose_name=_('Date/Time'))
