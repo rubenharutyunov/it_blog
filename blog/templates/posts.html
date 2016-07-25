@@ -19,7 +19,11 @@
                 {% include "post_tags.html" with post=post %}
             </div>
             <div class="post-content">
-                {{ post.text | truncatewords_html:150 | safe }}
+                {% if post.excerpt %}
+                    {{ post.excerpt | truncatewords_html:150 | safe }}
+                {% else %}
+                    {{ post.text | truncatewords_html:150 | safe }}
+                {% endif %}
             </div>
             <div class="post-info">
                 {% include "post_info.html" with post=post %}
