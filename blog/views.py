@@ -219,7 +219,8 @@ def add_edit_post(request, slug=None):
             form = PostForm(request.POST, instance=get_object_or_404(Post, slug=slug))
         if form.is_valid():
             instance = form.save(commit=False)
-            instance.author = request.user
+            if not getattr(instance, 'author'):
+                instance.author = request.user
             if not request.user.is_staff:
                 instance.approved = False
             instance.text = clean_untrusted_tags(instance.text)
