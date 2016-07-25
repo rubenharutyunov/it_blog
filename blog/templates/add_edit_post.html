@@ -30,7 +30,11 @@
                     {{ field.label }} {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
                 </label>
                 <div class="col-lg-9 col-md-9">
-                    {{ field|add_class:"form-control" }}
+                    {% if field|need_form_control %}
+                        {{ field|add_class:"form-control" }}
+                    {% else %}
+                        {{ field }}
+                    {% endif %}
                     <label class="help-block text-danger" for="{{ field.name }}">{% for error in field.errors %} {{error}} {% endfor %}</label>
                 </div>
             </div>
