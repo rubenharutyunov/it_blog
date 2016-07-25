@@ -5,6 +5,7 @@ from transliterate import slugify as trans_slugify
 from django.contrib.flatpages.models import FlatPage
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
+from django.utils.timezone import now
 from ckeditor.fields import RichTextField
 from mptt.models import MPTTModel, TreeForeignKey
 from users.models import User
@@ -18,7 +19,7 @@ class Post(models.Model):
     slug = models.SlugField(unique=True, verbose_name=_('Slug'), blank=True)
     views = models.IntegerField(default=0, verbose_name=_('Views'))
     likes = models.ManyToManyField(User, related_name='likes', blank=True, verbose_name=_('Likes'))
-    date_time = models.DateTimeField(verbose_name=_('Date/Time'))
+    date_time = models.DateTimeField(verbose_name=_('Date/Time'), default=now)
     author = models.ForeignKey(User, verbose_name=_('Author'))
     category = models.ForeignKey('blog.Category', blank=True, null=True, verbose_name=_('Category'))
     tags = models.ManyToManyField('blog.Tag', blank=True, verbose_name=_('Tags'))
