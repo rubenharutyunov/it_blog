@@ -36,7 +36,7 @@ def show_links(objects):
         if object_:
             info = (object_._meta.app_label, object_._meta.model_name)
             admin_url = reverse('admin:%s_%s_change' % info, args=(object_.pk,))
-            res += '<a href="%s">%s</a>%s ' % (admin_url, object_, ',' if count < len(objects)-1 else '')
+            res += '<a href="%s">%s</a> %s ' % (admin_url, object_, ',' if count < len(objects)-1 else '')
         else:
             return None
     return res or None
@@ -52,6 +52,7 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes_count', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
+    exclude = ('likes',)
     actions = [approve_action]
 
     formfield_overrides = {
