@@ -30,15 +30,15 @@ def truncate_text(text):
     return "%s..." % text[:100]
 
 
-def show_urls(objects):
+def show_links(objects):
     res = ''
     for count, object_ in enumerate(objects):
         if object_:
             info = (object_._meta.app_label, object_._meta.model_name)
             admin_url = reverse('admin:%s_%s_change' % info, args=(object_.pk,))
-            res += '<a href="%s">%s</a>%s ' % (admin_url,object_.title, ',' if count < len(objects)-1 else '')
+            res += '<a href="%s">%s</a>%s ' % (admin_url, object_, ',' if count < len(objects)-1 else '')
         else:
-            return None    
+            return None
     return res or None
     
 
@@ -48,8 +48,8 @@ approve_action.short_description = _("Approve selected")
 
 
 class PostAdmin(admin.ModelAdmin):
-    readonly_fields = ('views',  'author')
-    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'post_category')
+    readonly_fields = ('views',  'author', 'post_likes')
+    list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes_count', 'post_category')
     search_fields = ('title', 'text', 'author__username')
     list_filter = ('approved', 'author__username', 'category', 'tags')
     actions = [approve_action]
@@ -60,17 +60,23 @@ class PostAdmin(admin.ModelAdmin):
 
     def post_tags(self, obj):
         tags = obj.tags.all()
-        return show_urls(tags)
+        return show_links(tags)
     post_tags.short_description = _("Tags")
     post_tags.allow_tags = True
 
     def post_likes(self, obj):
-        return len(obj.likes.all())
+        return show_links(obj.likes.all())
     post_likes.short_description = _("Likes")
+    post_likes.allow_tags = True
+
+    def post_likes_count(self, obj):
+        return len(obj.likes.all())
+    post_likes_count.short_description = _("Likes")
+    post_likes_count.allow_tags = True
 
     def post_category(self, obj):
         category = obj.category
-        return show_urls([category])
+        return show_links([category])
     post_category.short_description = _("Category")
     post_category.allow_tags = True   
 
@@ -106,17 +112,18 @@ class CategoryAdmin(admin.ModelAdmin):
 
     def post_count(self, obj):
         posts = Post.objects.filter(category=obj)
-        return show_urls(posts)
+        return show_links(posts)
     post_count.allow_tags = True    
     post_count.short_description = _('Posts in category')
 
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('title', 'post_count')
+    list_filter = ('post',)
 
     def post_count(self, obj):
         posts = Post.objects.filter(tags=obj)
-        return show_urls(posts)
+        return show_links(posts)
     post_count.short_description = _('Posts with tag')
     post_count.allow_tags = True        
 
