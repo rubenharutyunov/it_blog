@@ -39,7 +39,7 @@ def show_links(objects):
             res += '<a href="%s">%s</a> %s ' % (admin_url, object_, ',' if count < len(objects)-1 else '')
         else:
             return None
-    return res or None
+    return res or '-'
     
 
 def approve_action(modeladmin, request, queryset):
@@ -109,6 +109,7 @@ class CategoryAdmin(admin.ModelAdmin):
     def truncate(self, obj):
         text = strip_tags(obj.description)
         return truncate_text(text)
+    truncate.allow_tags = True
     truncate.short_description = _('Description')
 
     def post_count(self, obj):
