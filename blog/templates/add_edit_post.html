@@ -15,9 +15,9 @@
 {% block main_content %}
     <div class="reg-container col-lg-9 col-md-8 col-sm-7 col-xs-12">
         {% if edit %}
-            <h2 class="add">{% blocktrans %}Edit post{% endblocktrans %}</h2>
+            <h1 class="add">{% blocktrans %}Edit post{% endblocktrans %}</h1>
         {% else %}
-            <h2 class="add">{% blocktrans %}Add post{% endblocktrans %}</h2>
+            <h1 class="add">{% blocktrans %}Add post{% endblocktrans %}</h1>
         {% endif %}
         {% load staticfiles %}
         {{ form.media }}

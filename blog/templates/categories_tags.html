@@ -9,16 +9,16 @@
 {% get_nav 'main' request %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-    <h2 class="main-title">IT and Wisdom - {{ type }}</h2>
+    <h1 class="main-title">IT and Wisdom - {{ type }}</h1>
     {% for res in result %}
     <div class="post">
-        <h3 class="post-title"><a href="
+        <h2 class="post-title"><a href="
         {% if tags %}
         {% url 'tag' res.slug %}
         {% else %}
         {% url 'category' res.slug %}
         {% endif %}
-        ">{{ res.title }}</a></h3>
+        ">{{ res.title }}</a></h2>
         <div class="post-content">
             {{ res.description | truncatewords_html:200 | safe }}
         </div>

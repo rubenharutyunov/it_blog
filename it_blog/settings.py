@@ -126,6 +126,7 @@ CKEDITOR_CONFIGS = {
         'skin': 'bootstrapck',
         'extraPlugins': 'codesnippet',
         'toolbar': 'Custom',
+        'width': '100%',
         'toolbar_Custom': [
             {'name': 'document', 'items': ['Source', '-', 'Save', 'NewPage', 'Preview', 'Print', '-', 'Templates']},
             {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},

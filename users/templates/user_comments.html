@@ -9,9 +9,9 @@
 {% endblock %}
 {% block main_content %}
     <div class="post-wrap col-lg-9 col-md-8 col-sm-7 col-xs-12">
-        <h2 class="main-title">
+        <h1 class="main-title">
             {% blocktrans %}IT and Wisdom - {{ username }}'s comments{% endblocktrans %}
-        </h2>
+        </h1>
         {% load mptt_tags %}
         <div class="row comments-container">
             {% recursetree comments %}
