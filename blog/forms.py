@@ -13,10 +13,11 @@ class CommentForm(forms.Form):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'text', 'category', 'tags']
+        fields = ['title', 'text', 'excerpt', 'category', 'tags']
         widgets = {
             'title': forms.TextInput(attrs={'placeholder': _('Title')}),
-            'text': CKEditorWidget(attrs={'rows': 500, 'cols': 10}, config_name='minimal'),
+            'text': CKEditorWidget(config_name='minimal'),
+            'excerpt': CKEditorWidget(config_name='minimal'),
         }
 
 

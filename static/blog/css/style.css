@@ -155,7 +155,7 @@ select#id_tags {
     min-height: 200px;
 }
 
-#cke_id_text {
+#cke_id_text, #cke_id_excerpt {
     width: inherit !important;
 }
 
@@ -200,6 +200,10 @@ select#id_tags {
 .post-thumbnail img, .user-avatar {
     float: left;
     margin: 0 2% 1% 0;
+}
+
+.post-content table td {
+    padding: 10px;
 }
 
 .user-avatar i {
