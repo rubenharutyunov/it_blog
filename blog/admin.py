@@ -48,7 +48,6 @@ approve_action.short_description = _("Approve selected")
 
 
 class PostAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ('views',  'author')
     list_display = ('title', 'date_time', 'author', 'approved', 'views', 'post_likes', 'post_category')
     search_fields = ('title', 'text', 'author__username')
@@ -98,7 +97,6 @@ class CommentAdmin(MPTTModelAdmin):
 
 
 class CategoryAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
     list_display = ('title',  'truncate', 'post_count')
 
     def truncate(self, obj):
@@ -114,7 +112,6 @@ class CategoryAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    prepopulated_fields = {'slug': ('title',)}
     list_display = ('title', 'post_count')
 
     def post_count(self, obj):
