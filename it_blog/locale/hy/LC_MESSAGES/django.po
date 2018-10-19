@@ -7,10 +7,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-25 14:31+0400\n"
-"PO-Revision-Date: 2016-07-16 00:48+0400\n"
+"POT-Creation-Date: 2016-07-15 00:22+0400\n"
+"PO-Revision-Date: 2016-07-15 20:43+0400\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: Ruben Harutyunov <rharutyunov@mail.ru>\n"
 "Language: hy\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,27 +18,885 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.7.1\n"
 
-#: templates/admin/index.html:9
-msgid "Posts to moderate"
-msgstr "Մոդերացիայի սպասող գրառումներ"
+#: contrib/admin/actions.py:50
+#, python-format
+msgid "Successfully deleted %(count)d %(items)s."
+msgstr "Հաջողությամբ հեռացվել է %(count)d %(items)s։"
 
-#: templates/search/search.html:4 templates/search/search.html:13
-#: templates/search/search.html:25
+#: contrib/admin/actions.py:62 contrib/admin/options.py:1645
+#, python-format
+msgid "Cannot delete %(name)s"
+msgstr "Հնարավոր չէ հեռացնել %(name)s"
+
+#: contrib/admin/actions.py:64 contrib/admin/options.py:1647
+msgid "Are you sure?"
+msgstr "Համոզված ե՞ք"
+
+#: contrib/admin/actions.py:88
+#, python-format
+msgid "Delete selected %(verbose_name_plural)s"
+msgstr "Հեռացնել նշված %(verbose_name_plural)sը"
+
+#: contrib/admin/apps.py:11
+msgid "Administration"
+msgstr "Ադմինիստրավորում"
+
+#: contrib/admin/filters.py:105 contrib/admin/filters.py:205
+#: contrib/admin/filters.py:241 contrib/admin/filters.py:278
+#: contrib/admin/filters.py:386
+msgid "All"
+msgstr "Բոլորը"
+
+#: contrib/admin/filters.py:242
+msgid "Yes"
+msgstr "Այո"
+
+#: contrib/admin/filters.py:243
+msgid "No"
+msgstr "Ոչ"
+
+#: contrib/admin/filters.py:257
+msgid "Unknown"
+msgstr "Անհայտ"
+
+#: contrib/admin/filters.py:317
+msgid "Any date"
+msgstr "Ցանկացած ամսաթիվ"
+
+#: contrib/admin/filters.py:318
+msgid "Today"
+msgstr "Այսօր"
+
+#: contrib/admin/filters.py:322
+msgid "Past 7 days"
+msgstr "Անցած 7 օրերին"
+
+#: contrib/admin/filters.py:326
+msgid "This month"
+msgstr "Այս ամիս"
+
+#: contrib/admin/filters.py:330
+msgid "This year"
+msgstr "Այս տարի"
+
+#: contrib/admin/forms.py:13
+#, python-format
+msgid ""
+"Please enter the correct %(username)s and password for a staff account. Note "
+"that both fields may be case-sensitive."
+msgstr "Մուտքագրեք  անձնակազմի պրոֆիլի ճիշտ %(username)s և գաղտնաբառ։"
+
+#: contrib/admin/helpers.py:30
+msgid "Action:"
+msgstr "Գործողություն"
+
+#: contrib/admin/models.py:34
+msgid "action time"
+msgstr "գործողության ժամանակ"
+
+#: contrib/admin/models.py:41
+msgid "user"
+msgstr "օգտագործող"
+
+#: contrib/admin/models.py:46
+msgid "content type"
+msgstr "կոնտենտի տիպ"
+
+#: contrib/admin/models.py:49
+msgid "object id"
+msgstr "օբյեկտի id"
+
+#: contrib/admin/models.py:50
+msgid "object repr"
+msgstr "օբյեկտի repr"
+
+#: contrib/admin/models.py:51
+msgid "action flag"
+msgstr "գործողության դրոշ"
+
+#: contrib/admin/models.py:52
+msgid "change message"
+msgstr "փոփոխել հաղորդագրությունը"
+
+#: contrib/admin/models.py:57
+msgid "log entry"
+msgstr "log գրառում"
+
+#: contrib/admin/models.py:58
+msgid "log entries"
+msgstr "log գրառումներ"
+
+#: contrib/admin/models.py:67
+#, python-format
+msgid "Added \"%(object)s\"."
+msgstr "%(object)s֊ը ավելացվեց "
+
+#: contrib/admin/models.py:69
+#, python-format
+msgid "Changed \"%(object)s\" - %(changes)s"
+msgstr "%(object)s֊ը փոփոխվեց ֊ %(changes)s"
+
+#: contrib/admin/models.py:74
+#, python-format
+msgid "Deleted \"%(object)s.\""
+msgstr "%(object)s-ը հեռացվեց"
+
+#: contrib/admin/models.py:76
+msgid "LogEntry Object"
+msgstr "LogEntry օբյեկտ"
+
+#: contrib/admin/options.py:192 contrib/admin/options.py:221
+msgid "None"
+msgstr "Ոչինչ"
+
+#: contrib/admin/options.py:257
+msgid ""
+"Hold down \"Control\", or \"Command\" on a Mac, to select more than one."
+msgstr ""
+"Սեղմեք \"Control\", կամ \"Command\" Mac֊ի մրա, մեկից ավելին ընտրելու համար։"
+
+#: contrib/admin/options.py:933
+msgid "Added."
+msgstr "Ավելացվեց։"
+
+#: contrib/admin/options.py:935
+#, python-format
+msgid "Changed %s."
+msgstr "%s֊ը փոփոխվեց։"
+
+#: contrib/admin/options.py:935 contrib/admin/options.py:945
+#: contrib/admin/options.py:1852
+msgid "and"
+msgstr "և"
+
+#: contrib/admin/options.py:940
+#, python-format
+msgid "Added %(name)s \"%(object)s\"."
+msgstr "Ավելացվեց %(name)s %(object)s֊ը։"
+
+#: contrib/admin/options.py:944
+#, python-format
+msgid "Changed %(list)s for %(name)s \"%(object)s\"."
+msgstr "Փոփոխվեց %(list)s֊ը %(name)s \"%(object)s\"֊ի համար։"
+
+#: contrib/admin/options.py:949
+#, python-format
+msgid "Deleted %(name)s \"%(object)s\"."
+msgstr "Հեռացվեց %(name)s %(object)s֊ը։"
+
+#: contrib/admin/options.py:953
+msgid "No fields changed."
+msgstr "Ոչ մի դաշտ չփոփոխվեց։"
+
+#: contrib/admin/options.py:1078 contrib/admin/options.py:1134
+#, python-format
+msgid ""
+"The %(name)s \"%(obj)s\" was added successfully. You may edit it again below."
+msgstr ""
+"%(name)s %(obj)s֊ը հաջողությամբ ավելացվեց։ Կարող եք խմբագրել այն ստորև։"
+
+#: contrib/admin/options.py:1092
+#, python-format
+msgid ""
+"The %(name)s \"%(obj)s\" was added successfully. You may add another "
+"%(name)s below."
+msgstr ""
+"%(name)s %(obj)s֊ը հաջողությամբ ավելացվեց։ Կարող եք ավելացնել այլ %(name)s "
+"ստորև։"
+
+#: contrib/admin/options.py:1099
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was added successfully."
+msgstr "%(name)s %(obj)s֊ը հաջողությամբ ավելացվեց։ "
+
+#: contrib/admin/options.py:1127
+#, python-format
+msgid ""
+"The %(name)s \"%(obj)s\" was changed successfully. You may edit it again "
+"below."
+msgstr "%(name)s %(obj)s֊ը հաջողությամբ փոփոխվեց։ Կարող եք խմբագրել այն ստորև։"
+
+#: contrib/admin/options.py:1144
+#, python-format
+msgid ""
+"The %(name)s \"%(obj)s\" was changed successfully. You may add another "
+"%(name)s below."
+msgstr ""
+"%(name)s %(obj)s֊ը հաջողությամբ փոփոխվեց։ Կարող եք ավելացնել այլ %(name)s "
+"ստորև։"
+
+#: contrib/admin/options.py:1153
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was changed successfully."
+msgstr "%(name)s %(obj)s֊ը հաջողությամբ փոփոխվեց։ "
+
+#: contrib/admin/options.py:1236 contrib/admin/options.py:1502
+msgid ""
+"Items must be selected in order to perform actions on them. No items have "
+"been changed."
+msgstr ""
+"Օբյեկտների հետ գործողություն կատարելու համար նրանք պետք է ընտրվեն․ Ոչ մի "
+"օբյեկտ չի փոփոխվել։"
+
+#: contrib/admin/options.py:1255
+msgid "No action selected."
+msgstr "Գործողությունը ընտրված չէ։"
+
+#: contrib/admin/options.py:1273
+#, python-format
+msgid "The %(name)s \"%(obj)s\" was deleted successfully."
+msgstr "%(name)s  %(obj)s֊ը հաջողությամբ հեռացվեց։"
+
+#: contrib/admin/options.py:1364 contrib/admin/options.py:1620
+#: contrib/admin/options.py:1676
+#, python-format
+msgid "%(name)s object with primary key %(key)r does not exist."
+msgstr "%(key)r հիմնական բանալի ունեցող %(name)s օբյեկտ գոյություն չունի։"
+
+#: contrib/admin/options.py:1411
+#, python-format
+msgid "Add %s"
+msgstr "Ավելացնել %s"
+
+#: contrib/admin/options.py:1411
+#, python-format
+msgid "Change %s"
+msgstr "Փոփոխել %s"
+
+#: contrib/admin/options.py:1481
+msgid "Database error"
+msgstr "Տվյալների բազաի սխալ"
+
+#: contrib/admin/options.py:1544
+#, python-format
+msgid "%(count)s %(name)s was changed successfully."
+msgid_plural "%(count)s %(name)s were changed successfully."
+msgstr[0] "%(count)s %(name)s հաջողությամբ փոփոխվեց։"
+msgstr[1] "%(count)s %(name)s հաջողությամբ փոփոխվեցին։"
+
+#: contrib/admin/options.py:1571
+#, python-format
+msgid "%(total_count)s selected"
+msgid_plural "All %(total_count)s selected"
+msgstr[0] "Ընտրված են %(total_count)s"
+msgstr[1] "Բոլոր %(total_count)s֊ը ընտրված են "
+
+#: contrib/admin/options.py:1577
+#, python-format
+msgid "0 of %(cnt)s selected"
+msgstr "%(cnt)s֊ից 0֊ն ընտրված է"
+
+#: contrib/admin/options.py:1693
+#, python-format
+msgid "Change history: %s"
+msgstr "Փոփոխությունների պատմություն %s"
+
+#. Translators: Model verbose name and instance representation,
+#. suitable to be an item in a list.
+#: contrib/admin/options.py:1846
+#, python-format
+msgid "%(class_name)s %(instance)s"
+msgstr "%(instance)s %(class_name)s"
+
+#: contrib/admin/options.py:1853
+#, python-format
+msgid ""
+"Deleting %(class_name)s %(instance)s would require deleting the following "
+"protected related objects: %(related_objects)s"
+msgstr ""
+"%(instance)s %(class_name)s֊ը հեռացնելու համար անհրաժեշտ է հեռացնել նրա հետ "
+"կապված պաշտպանված օբյեկտները՝ %(related_objects)s"
+
+#: contrib/admin/sites.py:40 contrib/admin/templates/admin/base_site.html.py:3
+msgid "Django site admin"
+msgstr "Django կայքի ադմինիստրավորման էջ"
+
+#: contrib/admin/sites.py:43 contrib/admin/templates/admin/base_site.html.py:6
+msgid "Django administration"
+msgstr "Django ադմինիստրավորում"
+
+#: contrib/admin/sites.py:46
+msgid "Site administration"
+msgstr "Կայքի ադմինիստրավորում"
+
+#: contrib/admin/sites.py:399 contrib/admin/templates/admin/login.html.py:61
+#: contrib/admin/templates/registration/password_reset_complete.html:18
+#: contrib/admin/tests.py:120
+msgid "Log in"
+msgstr "Մուտք"
+
+#: contrib/admin/sites.py:526
+#, python-format
+msgid "%(app)s administration"
+msgstr "%(app)s ադմինիստրավորում"
+
+#: contrib/admin/templates/admin/404.html:4
+#: contrib/admin/templates/admin/404.html:8
+msgid "Page not found"
+msgstr "Էջը գտնված չէ"
+
+#: contrib/admin/templates/admin/404.html:10
+msgid "We're sorry, but the requested page could not be found."
+msgstr "Ներողություն ենք հայցում, բայց հարցվող Էջը գտնված չէ"
+
+#: contrib/admin/templates/admin/500.html:6
+#: contrib/admin/templates/admin/app_index.html:9
+#: contrib/admin/templates/admin/auth/user/change_password.html:13
+#: contrib/admin/templates/admin/base.html:56
+#: contrib/admin/templates/admin/change_form.html:18
+#: contrib/admin/templates/admin/change_list.html:40
+#: contrib/admin/templates/admin/delete_confirmation.html:8
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:8
+#: contrib/admin/templates/admin/invalid_setup.html:6
+#: contrib/admin/templates/admin/object_history.html:6
+#: contrib/admin/templates/registration/logged_out.html:4
+#: contrib/admin/templates/registration/password_change_done.html:6
+#: contrib/admin/templates/registration/password_change_form.html:7
+#: contrib/admin/templates/registration/password_reset_complete.html:6
+#: contrib/admin/templates/registration/password_reset_confirm.html:6
+#: contrib/admin/templates/registration/password_reset_done.html:6
+#: contrib/admin/templates/registration/password_reset_form.html:6
+msgid "Home"
+msgstr "Գլխավոր"
+
+#: contrib/admin/templates/admin/500.html:7
+msgid "Server error"
+msgstr "Սերվերի սխալ"
+
+#: contrib/admin/templates/admin/500.html:11
+msgid "Server error (500)"
+msgstr "Սերվերի սխալ (500)"
+
+#: contrib/admin/templates/admin/500.html:14
+msgid "Server Error <em>(500)</em>"
+msgstr "Սերվերի սխալ <em>(500)</em>"
+
+#: contrib/admin/templates/admin/500.html:15
+msgid ""
+"There's been an error. It's been reported to the site administrators via "
+"email and should be fixed shortly. Thanks for your patience."
+msgstr ""
+"Առաջացել է սխալ։ Ադմինիստրատորները տեղեկացվել են դրա մասին էլեկտրոնային "
+"փոստի միջոցով և այն կուղղվի կարճ ժամանակահատվածի ընդացքում․ Շնորհակալ ենք "
+"ձեր համբերության համար։"
+
+#: contrib/admin/templates/admin/actions.html:4
+msgid "Run the selected action"
+msgstr "Կատարել ընտրված գործողությունը"
+
+#: contrib/admin/templates/admin/actions.html:4
+msgid "Go"
+msgstr "Կատարել"
+
+#: contrib/admin/templates/admin/actions.html:11
+msgid "Click here to select the objects across all pages"
+msgstr "Սեղմեք այստեղ բոլոր էջերից օբյեկտներ ընտրելու համար"
+
+#: contrib/admin/templates/admin/actions.html:11
+#, python-format
+msgid "Select all %(total_count)s %(module_name)s"
+msgstr "Ընտրել բոլոր %(total_count)s %(module_name)s"
+
+#: contrib/admin/templates/admin/actions.html:13
+msgid "Clear selection"
+msgstr "Չեղարկել ընտրությունը"
+
+#: contrib/admin/templates/admin/auth/user/add_form.html:6
+msgid ""
+"First, enter a username and password. Then, you'll be able to edit more user "
+"options."
+msgstr ""
+"Սկզբում մուտքագրեք օգտագործողի անունը և գաղտնաբառը․ Հետո դուք "
+"հնարավորություն կունենաք խմբագրել ավելին։"
+
+#: contrib/admin/templates/admin/auth/user/add_form.html:8
+msgid "Enter a username and password."
+msgstr "Մուտքագրեք օգտագործողի անունը և գաղտնաբառը։"
+
+#: contrib/admin/templates/admin/auth/user/change_password.html:17
+#: contrib/admin/templates/admin/auth/user/change_password.html:54
+#: contrib/admin/templates/admin/base.html:44
+#: contrib/admin/templates/registration/password_change_done.html:3
+#: contrib/admin/templates/registration/password_change_form.html:4
+msgid "Change password"
+msgstr "Փոխել գաղտնաբառը"
+
+#: contrib/admin/templates/admin/auth/user/change_password.html:27
+#: contrib/admin/templates/admin/change_form.html:47
+#: contrib/admin/templates/admin/change_list.html:67
+#: contrib/admin/templates/admin/login.html:21
+#: contrib/admin/templates/registration/password_change_form.html:21
+msgid "Please correct the error below."
+msgstr "Ուղղեք ստորև նշված սխալը։"
+
+#: contrib/admin/templates/admin/auth/user/change_password.html:27
+#: contrib/admin/templates/admin/change_form.html:47
+#: contrib/admin/templates/admin/change_list.html:67
+#: contrib/admin/templates/admin/login.html:21
+#: contrib/admin/templates/registration/password_change_form.html:21
+msgid "Please correct the errors below."
+msgstr "Ուղղեք ստորև նշված սխալները․"
+
+#: contrib/admin/templates/admin/auth/user/change_password.html:31
+#, python-format
+msgid "Enter a new password for the user <strong>%(username)s</strong>."
+msgstr ""
+"Մուտքագրեք նոր գաղտնաբառ <strong>%(username)s</strong> օգտագործողի համար։"
+
+#: contrib/admin/templates/admin/base.html:30
+msgid "Welcome,"
+msgstr "Բարի գալուստ, "
+
+#: contrib/admin/templates/admin/base.html:35
+msgid "View site"
+msgstr "Դիտել կայքը"
+
+#: contrib/admin/templates/admin/base.html:40
+#: contrib/admin/templates/registration/password_change_done.html:3
+#: contrib/admin/templates/registration/password_change_form.html:4
+msgid "Documentation"
+msgstr "Դոկումենտացիա"
+
+#: contrib/admin/templates/admin/base.html:46
+#: contrib/admin/templates/registration/password_change_done.html:3
+#: contrib/admin/templates/registration/password_change_form.html:4
+msgid "Log out"
+msgstr "Դուրս գալ"
+
+#: contrib/admin/templates/admin/change_form.html:21
+#: contrib/admin/templates/admin/index.html:31
+#: contrib/admin/templates/admin/related_widget_wrapper.html:16
+msgid "Add"
+msgstr "Ավելացնել"
+
+#: contrib/admin/templates/admin/change_form.html:33
+#: contrib/admin/templates/admin/object_history.html:10
+msgid "History"
+msgstr "Պատմություն"
+
+#: contrib/admin/templates/admin/change_form.html:35
+#: contrib/admin/templates/admin/edit_inline/stacked.html:10
+#: contrib/admin/templates/admin/edit_inline/tabular.html:33
+msgid "View on site"
+msgstr "Դիտել կայքում"
+
+#: contrib/admin/templates/admin/change_list.html:58
+#, python-format
+msgid "Add %(name)s"
+msgstr "Ավելացնել %(name)s"
+
+#: contrib/admin/templates/admin/change_list.html:78
+msgid "Filter"
+msgstr "Ֆիլտրել"
+
+#: contrib/admin/templates/admin/change_list_results.html:17
+msgid "Remove from sorting"
+msgstr "Հեռացնել դասակարգումից"
+
+#: contrib/admin/templates/admin/change_list_results.html:18
+#, python-format
+msgid "Sorting priority: %(priority_number)s"
+msgstr "Դասակարգման առաջնություն՝  %(priority_number)s"
+
+#: contrib/admin/templates/admin/change_list_results.html:19
+msgid "Toggle sorting"
+msgstr "Toggle sorting"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:12
+#: contrib/admin/templates/admin/related_widget_wrapper.html:23
+#: contrib/admin/templates/admin/submit_line.html:6
+msgid "Delete"
+msgstr "Հեռացնել"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:18
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would result in deleting "
+"related objects, but your account doesn't have permission to delete the "
+"following types of objects:"
+msgstr ""
+"%(object_name)s '%(escaped_object)s'֊ի հեռացումը կարող է հանգեցնել նրա հետ "
+"կապված օբյեկտների հեռացմանը, բայց դուք չունեք իրավունք հեռացնել այդ տիպի "
+"օբյեկտներ․"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:25
+#, python-format
+msgid ""
+"Deleting the %(object_name)s '%(escaped_object)s' would require deleting the "
+"following protected related objects:"
+msgstr ""
+"%(object_name)s '%(escaped_object)s'֊ը հեռացնելու համար կարող է անհրաժեշտ "
+"լինել հեռացնել նրա հետ կապված պաշտպանված օբյեկտները։"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:32
+#, python-format
+msgid ""
+"Are you sure you want to delete the %(object_name)s \"%(escaped_object)s\"? "
+"All of the following related items will be deleted:"
+msgstr ""
+"Համոզված ե՞ք, որ ուզում եք հեռացնել %(object_name)s \"%(escaped_object)s\"֊"
+"ը։ նրա հետ կապված այս բոլոր օբյեկտները կհեռացվեն․"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:34
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:33
+msgid "Objects"
+msgstr "Օբյեկտներ"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:41
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:44
+msgid "Yes, I'm sure"
+msgstr "Այո, ես համոզված եմ"
+
+#: contrib/admin/templates/admin/delete_confirmation.html:42
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:45
+msgid "No, take me back"
+msgstr "Ոչ, տարեք ենձ ետ"
+
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:11
+msgid "Delete multiple objects"
+msgstr "Հեռացնել մի քանի օբյեկտ"
+
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:17
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would result in deleting related "
+"objects, but your account doesn't have permission to delete the following "
+"types of objects:"
+msgstr ""
+"%(objects_name)s֊ների հեռացումը կարող է հանգեցնել նրա հետ կապված օբյեկտների "
+"հեռացմանը, բայց դուք չունեք իրավունք հեռացնել այդ տիպի օբյեկտներ․"
+
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:24
+#, python-format
+msgid ""
+"Deleting the selected %(objects_name)s would require deleting the following "
+"protected related objects:"
+msgstr ""
+"%(objects_name)s֊ը հեռացնելու համար կարող է անհրաժեշտ լինել հեռացնել նրա հետ "
+"կապված պաշտպանված օբյեկտները։"
+
+#: contrib/admin/templates/admin/delete_selected_confirmation.html:31
+#, python-format
+msgid ""
+"Are you sure you want to delete the selected %(objects_name)s? All of the "
+"following objects and their related items will be deleted:"
+msgstr ""
+"Համոզված ե՞ք, որ ուզում եք հեռացնել նշված %(objects_name)s֊ները։ Այս բոլոր "
+"օբյեկտները, ինչպես նաև նրանց հետ կապված օբյեկտները կհեռացվեն․"
+
+#: contrib/admin/templates/admin/edit_inline/stacked.html:8
+#: contrib/admin/templates/admin/edit_inline/tabular.html:31
+#: contrib/admin/templates/admin/index.html:37
+#: contrib/admin/templates/admin/related_widget_wrapper.html:9
+msgid "Change"
+msgstr "Փոփոխել"
+
+#: contrib/admin/templates/admin/edit_inline/stacked.html:26
+#: contrib/admin/templates/admin/edit_inline/tabular.html:80
+msgid "Remove"
+msgstr "Հեռացնել"
+
+#: contrib/admin/templates/admin/edit_inline/stacked.html:27
+#: contrib/admin/templates/admin/edit_inline/tabular.html:79
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "Ավելացնել այլ %(verbose_name)s"
+
+#: contrib/admin/templates/admin/edit_inline/tabular.html:17
+msgid "Delete?"
+msgstr "Հեռացնե՞լ"
+
+#: contrib/admin/templates/admin/filter.html:2
+#, python-format
+msgid " By %(filter_title)s "
+msgstr "%(filter_title)s "
+
+#: contrib/admin/templates/admin/includes/object_delete_summary.html:2
+msgid "Summary"
+msgstr "Ամփոփում"
+
+#: contrib/admin/templates/admin/index.html:20
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr " %(name)s հավելվածի մոդել"
+
+#: contrib/admin/templates/admin/index.html:47
+msgid "You don't have permission to edit anything."
+msgstr "Դուք չունեք իրավունք խմբագրելու որևէ բան։"
+
+#: contrib/admin/templates/admin/index.html:55
+msgid "Recent Actions"
+msgstr "Վերջին գործողություններ"
+
+#: contrib/admin/templates/admin/index.html:56
+msgid "My Actions"
+msgstr "Իմ գործողությունները"
+
+#: contrib/admin/templates/admin/index.html:60
+msgid "None available"
+msgstr "Ոչինք չկա"
+
+#: contrib/admin/templates/admin/index.html:74
+msgid "Unknown content"
+msgstr "Անհայտ կոնտենտ"
+
+#: contrib/admin/templates/admin/invalid_setup.html:12
+msgid ""
+"Something's wrong with your database installation. Make sure the appropriate "
+"database tables have been created, and make sure the database is readable by "
+"the appropriate user."
+msgstr ""
+"Ինչ֊որ բան այն չէ ձեր տվյալների բազայի հետ։ Համոզվեք, որ համապատասխան "
+"աղյուսակները ստեղծվել են և համոզվեք, որ համապատասխան օգտագործողը կարող է "
+"կարդալ բազան։"
+
+#: contrib/admin/templates/admin/login.html:37
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+"Դուք մուտք եք գործել որպես %(username)s, բայց իրավունք չունեք դիտելու այս "
+"էջը։ Ցանկանում ե՞ք մուտք գործել որպես այլ օգտագործող"
+
+#: contrib/admin/templates/admin/login.html:57
+msgid "Forgotten your password or username?"
+msgstr "Մոռացել ե՞ք օգտագործողի անունը կամ գաղտնաբառը"
+
+#: contrib/admin/templates/admin/object_history.html:22
+msgid "Date/time"
+msgstr "Ամսաթիվ/Ժամանակ"
+
+#: contrib/admin/templates/admin/object_history.html:23
+msgid "User"
+msgstr "Օգտագործող"
+
+#: contrib/admin/templates/admin/object_history.html:24
+msgid "Action"
+msgstr "Գործողություն"
+
+#: contrib/admin/templates/admin/object_history.html:38
+msgid ""
+"This object doesn't have a change history. It probably wasn't added via this "
+"admin site."
+msgstr ""
+"Այս օբյեկտը չունի փոփոխման պատմություն։ Այն հավանաբար ավելացված չէ "
+"ադմինիստրավորման էջից։"
+
+#: contrib/admin/templates/admin/pagination.html:10
+#: contrib/admin/templates/admin/search_form.html:9
+msgid "Show all"
+msgstr "Ցույց տալ բոլորը"
+
+#: contrib/admin/templates/admin/pagination.html:11
+#: contrib/admin/templates/admin/submit_line.html:3
+msgid "Save"
+msgstr "Պահպանել"
+
+#: contrib/admin/templates/admin/popup_response.html:3
+msgid "Popup closing..."
+msgstr "Ելնող պատուհանը փակվում է"
+
+#: contrib/admin/templates/admin/related_widget_wrapper.html:8
+#, python-format
+msgid "Change selected %(model)s"
+msgstr "Փոփոխել ընտրված %(model)s տիպի օբյեկտը"
+
+#: contrib/admin/templates/admin/related_widget_wrapper.html:15
+#, python-format
+msgid "Add another %(model)s"
+msgstr "Ավելացնել այլ %(model)s տիպի օբյեկտ"
+
+#: contrib/admin/templates/admin/related_widget_wrapper.html:22
+#, python-format
+msgid "Delete selected %(model)s"
+msgstr "Հեռացնել ընտրված %(model)s տիպի օբյեկտը"
+
+#: contrib/admin/templates/admin/search_form.html:7
 msgid "Search"
+msgstr "Փնտրել"
+
+#: contrib/admin/templates/admin/search_form.html:9
+#, python-format
+msgid "%(counter)s result"
+msgid_plural "%(counter)s results"
+msgstr[0] "%(counter)s արդյունք"
+msgstr[1] "%(counter)s արդյունքներ"
+
+#: contrib/admin/templates/admin/search_form.html:9
+#, python-format
+msgid "%(full_result_count)s total"
+msgstr "%(full_result_count)s ընդհանուր"
+
+#: contrib/admin/templates/admin/submit_line.html:8
+msgid "Save as new"
+msgstr "Պահպանել որպես նոր"
+
+#: contrib/admin/templates/admin/submit_line.html:9
+msgid "Save and add another"
+msgstr "Պահպանել և ավելացնել նորը"
+
+#: contrib/admin/templates/admin/submit_line.html:10
+msgid "Save and continue editing"
+msgstr "Պահպանել և շարունակել խմբագրել"
+
+#: contrib/admin/templates/registration/logged_out.html:8
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr "Շնորհակալություն մեր կայքում ինչ֊որ ժամանակ ծախսելու համար։"
+
+#: contrib/admin/templates/registration/logged_out.html:10
+msgid "Log in again"
+msgstr "Մուտք գործել նորից"
+
+#: contrib/admin/templates/registration/password_change_done.html:7
+#: contrib/admin/templates/registration/password_change_form.html:8
+msgid "Password change"
+msgstr "Փոխել գաղտնաբառը"
+
+#: contrib/admin/templates/registration/password_change_done.html:14
+msgid "Your password was changed."
+msgstr "Ձեր գաղտնաբառը փոխվել է"
+
+#: contrib/admin/templates/registration/password_change_form.html:26
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+"Մուտքագրեք ձեր հին գաղտնաբառը։ Անվտանգության նկատառումներով մուտքագրեք ձեր "
+"նոր գաղտնաբառը երկու անգամ, որպեսզի մենք համոզված լինենք, որ այն ճիշտ է "
+"հավաքված։"
+
+#: contrib/admin/templates/registration/password_change_form.html:54
+#: contrib/admin/templates/registration/password_reset_confirm.html:24
+msgid "Change my password"
+msgstr "Փոխել իմ գաղտնաբառը"
+
+#: contrib/admin/templates/registration/password_reset_complete.html:7
+#: contrib/admin/templates/registration/password_reset_done.html:7
+#: contrib/admin/templates/registration/password_reset_form.html:7
+msgid "Password reset"
+msgstr "Գաղտնաբառի փոփոխում"
+
+#: contrib/admin/templates/registration/password_reset_complete.html:16
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr "Ձեր գաղտնաբառը  պահպանված է․ Կարող եք մուտք գործել։"
+
+#: contrib/admin/templates/registration/password_reset_confirm.html:7
+msgid "Password reset confirmation"
+msgstr "Գաղտնաբառի փոփոխման հաստատում"
+
+#: contrib/admin/templates/registration/password_reset_confirm.html:17
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+"Մուտքագրեք ձեր նոր գաղտնաբառը երկու անգամ, որպեսզի մենք համոզված լինենք, որ "
+"այն ճիշտ է հավաքված։"
+
+#: contrib/admin/templates/registration/password_reset_confirm.html:21
+msgid "New password:"
+msgstr "Նոր գաղտնաբառ․"
+
+#: contrib/admin/templates/registration/password_reset_confirm.html:23
+msgid "Confirm password:"
+msgstr "Նոր գաղտնաբառը նորից․"
+
+#: contrib/admin/templates/registration/password_reset_confirm.html:29
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"Գաղտնաբառի փոփոխման հղում է սխալ է, հավանաբար այն արդեն օգտագործվել է․ Դուք "
+"կարող եք ստանալ նոր հղում։"
+
+#: contrib/admin/templates/registration/password_reset_done.html:15
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+"Մենք ուղարկեցինք ձեր էլեկտրոնային փոստի հասցեին գաղտնաբառը փոփոխելու "
+"հրահանգներ․ Դուք շուտով կստանաք դրանք։"
+
+#: contrib/admin/templates/registration/password_reset_done.html:17
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+"Եթե դուք չեք ստացել էլեկտրոնային նամակ, համոզվեք, որ հավաքել եք այն հասցեն, "
+"որով գրանցվել եք և ստուգեք ձեր սպամի թղթապանակը։"
+
+#: contrib/admin/templates/registration/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+"Դուք ստացել եք այս նամակը, քանի որ ցանկացել եք փոխել ձեր գաղտնաբառը "
+"%(site_name)s կայքում։"
+
+#: contrib/admin/templates/registration/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr "Բացեք հետևյալ էջը և ընտրեք նոր գաղտնաբառ։"
+
+#: contrib/admin/templates/registration/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr "Եթե դուք մոռացել եք ձեր օգտագործողի անունը․"
+
+#: contrib/admin/templates/registration/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr "Շնորհակալություն մեր կայքից օգտվելու համար։"
+
+#: contrib/admin/templates/registration/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr "%(site_name)s կայքի թիմ"
+
+#: contrib/admin/templates/registration/password_reset_form.html:15
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+"Մոռացել ե՞ք ձեր գաղտնաբառը Մուտքագրեք ձեր էլեկտրոնային փոստի հասցեն և մենք "
+"կուղարկենք ձեզ հրահանգներ նորը ստանալու համար։"
+
+#: contrib/admin/templates/registration/password_reset_form.html:19
+msgid "Email address:"
+msgstr "Email հասցե․"
+
+#: contrib/admin/templates/registration/password_reset_form.html:19
+msgid "Reset my password"
+msgstr "Փոխել գաղտնաբառը"
+
+#: contrib/admin/templatetags/admin_list.py:389
+msgid "All dates"
+msgstr "Բոլոր ամսաթվերը"
+
+#: contrib/admin/views/main.py:81
+#, python-format
+msgid "Select %s"
+msgstr "Ընտրեք %s"
+
+#: contrib/admin/views/main.py:83
+#, python-format
+msgid "Select %s to change"
+msgstr "Ընտրեք %s փոխելու համար"
+
+#: contrib/admin/widgets.py:95
+msgid "Date:"
+msgstr "Ամսաթիվ․"
+
+#: contrib/admin/widgets.py:96
+msgid "Time:"
+msgstr "Ժամանակ․"
+
+#: contrib/admin/widgets.py:178
+msgid "Lookup"
 msgstr "Որոնում"
 
-#: templates/search/search.html:31
-msgid "Results"
-msgstr "Որոնման արդյունքներ"
+#: contrib/admin/widgets.py:366
+msgid "Currently:"
+msgstr "Հիմա․"
 
-#: templates/search/search.html:88
-msgid "No results found."
-msgstr "Ոչինչ չի գտնվել։"
-
-#: templates/search/search.html:93
-msgid "Previous"
-msgstr "Նախորդ"
-
-#: templates/search/search.html:95
-msgid "Next"
-msgstr "Հաջորդ"
+#: contrib/admin/widgets.py:367
+msgid "Change:"
+msgstr "Փոփոխել"
