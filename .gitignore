@@ -11,4 +11,5 @@ static/*
 !static/bootstrap
 !static/font-awesome
 !static/jquery-1.12.4.min.js
+!static/ckeditor
 it_blog/production_settings.py
